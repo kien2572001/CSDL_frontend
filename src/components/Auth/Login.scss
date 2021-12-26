@@ -1,20 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-.login-background {
-    background : rgb(34, 193, 195);
-    background : #999;
-    font-family: 'Roboto', sans-serif;
-    height     : 100vh;
-    position   : relative;
 
+.btn-formLogin {
+    float: right;
+}
+
+.login-background {
+    font-family  : 'Roboto', sans-serif;
+    height       : 750px;
+    position     : relative;
+    border-radius: 10px;
 
     .login-container {
-
+        display         : inline;
         max-width       : 480px;
-        height          : 750px;
         background-color: #fff;
         border-radius   : 10px;
-        position        : absolute;
         margin          : auto;
         top             : 0;
         right           : 0;

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+.product-background {
+    height          : 800px;
+    width           : 800px;
+    background-color: #f3f4f6;
+}
+
+.product-container {
+    font-family     : 'Roboto', sans-serif;
+    max-width       : 280px;
+    max-height      : 420px;
+    margin          : 60px;
+    background-color: #fff;
+    border-radius   : 10px;
+    position        : relative;
+
+    .item-product-discount {
+        position        : absolute;
+        background-color: #009f7f;
+        height          : 24px;
+        width           : 40px;
+        border-radius   : 4px;
+        top             : 16px;
+        right           : 16px;
+        color           : #fff;
+        font-size       : 12px;
+        text-align      : center;
+        font-weight     : 500;
+
+        div {
+            padding-top: 3px;
+        }
+    }
+
+
+    .item-image {
+        width: 100%;
+    }
+
+    .item-info {
+        display       : flex;
+        flex-direction: column;
+        padding       : 24px;
+
+        .item-price {
+            padding-bottom: 8px;
+            font-weight   : 500;
+        }
+
+        .item-name {
+            padding-bottom: 16px;
+        }
+
+        .item-btn-quatily {
+            width           : 100%;
+            border          : none;
+            height          : 32px;
+            background-color: #f3f4f6;
+            border-radius   : 10px;
+            position        : relative;
+            color           : #6f7883;
+
+            .item-btn-icon {
+                font-size: 8px;
+
+            }
+
+            .item-btn-quatily-iconadd {
+                position: absolute;
+                right   : 10px;
+
+
+            }
+
+            .item-btn-quatily-iconminus {
+                position: absolute;
+                left    : 10px;
+
+            }
+
+        }
+
+        .item-btn-quatily:hover {
+            background-color: #009f7f;
+            color           : #fff;
+        }
+
+
+
+    }
+}
+
+.product-container:hover {
+    transform          : translateY(-4px);
+    box-shadow         : 0 0 4px rgba(33, 33, 33, .2);
+    transition-duration: .2s
+}
