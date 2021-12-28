@@ -19,7 +19,13 @@ import ReactDOM from "react-dom";
 // eslint-disable-next-line
 import "swiper/bundle";
 import "../components/slider.css";
-import App from "../components/slider.js";
+import Slider from "../components/slider.js";
+
+import "../components/SearchBar.css";
+import SearchBar from '../components/SearchBar';
+
+import "../components/slogan.css";
+import Slogan from '../components/slogan';
 
 class Login extends Component {
     constructor(props) {
@@ -113,54 +119,9 @@ class Login extends Component {
             <>
                 <div className="login-wrapper">
                     <div className="login-container">
-                        <App />;
-                        <div className="form_login">
-                            <h2 className="title">
-                                <FormattedMessage id="login.login" />
-                            </h2>
-                            <div className="form-group icon-true">
-                                <img className="icon" src={userIcon} alt="this" />
-                                <input
-                                    placeholder={LanguageUtils.getMessageByKey("login.username", lang)}
-                                    id="username"
-                                    name="username"
-                                    type="text"
-                                    className="form-control"
-                                    value={username}
-                                    onChange={this.onUsernameChange}
-                                />
-                            </div>
-
-                            <div id="phone-input-container" className="form-group icon-true">
-                                <img className="icon" src={passIcon} alt="this" />
-                                <input
-                                    placeholder={LanguageUtils.getMessageByKey("login.password", lang)}
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    className="form-control"
-                                    value={password}
-                                    onChange={this.onPasswordChange}
-                                />
-                            </div>
-
-                            {loginError !== '' && (
-                                <div className='login-error'>
-                                    <span className='login-error-message'>{loginError}</span>
-                                </div>
-                            )}
-
-                            <div className="form-group login">
-                                <input
-                                    ref={this.btnLogin}
-                                    id="btnLogin"
-                                    type="submit"
-                                    className="btn"
-                                    value={LanguageUtils.getMessageByKey("login.login", lang)}
-                                    onClick={this.processLogin}
-                                />
-                            </div>
-                        </div>
+                        <Slogan />
+                        <SearchBar />
+                        <Slider />
                     </div>
                 </div>
             </>

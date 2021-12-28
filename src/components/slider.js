@@ -23,7 +23,7 @@ import SwiperCore, {
 SwiperCore.use([Pagination, Navigation]);
 
 
-export default function App() {
+export default function Slider() {
 
 
 

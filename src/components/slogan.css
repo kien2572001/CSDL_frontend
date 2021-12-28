@@ -1,0 +1,42 @@
+@font-face {
+    font-family: Opensans;
+    src:'../fonttext/OpenSans/OpenSans-Bold.ttf';
+}
+
+h1 {
+    font-size: 3.5rem !important;
+    line-height: 1;
+    font-family: Opensans,system-ui,sans-serif;
+}
+
+.font-bold {
+    font-weight: 700;
+
+}
+
+.xl\:text-lg {
+    font-size: 1.35rem;
+    line-height: 1.75rem;
+}
+
+.lg\:space-y-10>:not([hidden])~:not([hidden]) {
+    --tw-space-y-reverse: 0;
+    margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+
+.text-heading {
+    --tw-text-opacity: 1;
+    color: rgba(var(--text-heading),var(--tw-text-opacity));
+}
+
+.text1 {
+    padding-top: 150px !important;
+    text-align: center;
+}
+
+.text2 {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+    text-align: center;   
+}
