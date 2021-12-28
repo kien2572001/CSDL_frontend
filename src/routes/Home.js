@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import ViewProduct from '../components/Product/ViewProduct';
 
 class Home extends Component {
 
     render() {
         const { isLoggedIn } = this.props;
-        let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/login';
-
+        //let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/login';
+        //let linkToRedirect = '/'
         return (
-            <Redirect to={linkToRedirect} />
+            // <Redirect to={linkToRedirect} />
+            <>
+                <ViewProduct/>
+            </>
         );
     }
 

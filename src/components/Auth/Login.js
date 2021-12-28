@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import './Login.scss';
-import { FormattedMessage } from 'react-intl';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ViewProduct from '../Product/ViewProduct';
+import {handleLogin} from '../../services/userService'
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -14,6 +14,7 @@ class Login extends Component {
             password: '',
             isShowPassword: false,
             modal: false,
+            errMessage: ''
         }
     }
     handleShowLogin = () => {
@@ -35,9 +36,36 @@ class Login extends Component {
         //console.log(event.target.value);
 
     }
-    handleLogin = () => {
+    handleLoginButton = async () => {
         console.log('username: ', this.state.username, 'password: ', this.state.password)
-        console.log('all stage: ', this.state);
+        //console.log('all stage: ', this.state);
+        this.setState({
+            errMessage: ''
+        })
+        
+        //console.log('tra loi: ',response)
+        try {
+            let response  = await handleLogin(this.state.username,this.state.password)
+            if (response && response.errCode!==0){
+                this.setState({
+                    errMessage: response.errMessage
+                })
+            }
+            else if (response && response.errCode ===0){
+                //Dang nhap thanh cong
+            }
+        } catch (e) {
+            console.log(e.response.data)
+            if (e.response){
+                if (e.response.data){
+                    this.setState({
+                        errMessage: e.response.data.errMessage
+                    })
+                }
+            }
+        }
+
+
     }
     handleShowHidePassword = () => {
         this.setState({
@@ -52,9 +80,13 @@ class Login extends Component {
             <>
 
                 <div >
-                    <Button color="danger" onClick={() => this.handleShowLogin()} className='btn-formLogin'>
+                    <button 
+                        type="button" 
+                        className="btn btn-danger" 
+                        style={{width: '50px',height: '30px',fontSize: '14px',backgroundColor: '#009F7F'}}  
+                        onClick={() => this.handleShowLogin()} >
                         Join
-                    </Button>
+                    </button>
                     <Modal funk='true' isOpen={this.state.modal} toggle={() => this.handleShowLogin()} className={'abcModalClass'} >
                         <div className='login-background'>
                             <div className='login-container'>
@@ -69,7 +101,7 @@ class Login extends Component {
                                     <div className='col-12 form-group login-input'>
                                         <label>
                                             <span>Username</span></label>
-                                        <input type='text' className='form-control login-input--text' placeholder='Enter you username'
+                                        <input type='email' className='form-control login-input--text' placeholder='Enter you username'
                                             value={this.state.username}
                                             onChange={(event) => this.handleOnChangeUsername(event)}
                                         />
@@ -90,10 +122,10 @@ class Login extends Component {
                                                 <i className={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
                                             </span>
                                         </div>
-
+                                    <div className='mt-3' style={{color: 'red'}}>{this.state.errMessage}</div>
                                     </div>
                                     <button className='btn-login btn-login-normal'
-                                        onClick={() => this.handleLogin()}
+                                        onClick={() => this.handleLoginButton()}
                                     >Login</button>
                                     <div className='col-12'>
 

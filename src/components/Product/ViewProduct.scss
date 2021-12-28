@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-.product-background {
+/* .product-background {
     height          : 800px;
     width           : 800px;
     background-color: #f3f4f6;
+} */
+
+.product-item-displaynon {
+    display: none;
 }
 
 .product-container {
@@ -35,8 +39,10 @@
 
 
     .item-image {
-        width: 100%;
+        width : 100%;
+        cursor: pointer;
     }
+
 
     .item-info {
         display       : flex;
@@ -46,11 +52,31 @@
         .item-price {
             padding-bottom: 8px;
             font-weight   : 500;
+
+            .item-price-discount {
+                color      : #aea7b7;
+                font-weight: 300;
+                position   : relative;
+
+
+                .item-price-line {
+                    content         : "";
+                    width           : 100%;
+                    height          : 2px;
+                    background-color: #aea7b7;
+                    position        : absolute;
+                    top             : 50%;
+                }
+            }
+
+
         }
 
         .item-name {
             padding-bottom: 16px;
         }
+
+
 
         .item-btn-quatily {
             width           : 100%;
@@ -62,22 +88,40 @@
             color           : #6f7883;
 
             .item-btn-icon {
-                font-size: 8px;
+                font-size  : 8px;
+                padding-top: 12px;
+            }
+
+            .item-btn-quatily-icon-add {
+                position     : absolute;
+                top          : 0;
+                right        : 0;
+                height       : 32px;
+                width        : 32px;
+                border-radius: 0 10px 10px 0;
+
 
             }
 
-            .item-btn-quatily-iconadd {
-                position: absolute;
-                right   : 10px;
 
+
+            .item-btn-quatily-icon-minus {
+                position     : absolute;
+                left         : 0;
+                top          : 0;
+                right        : 0px;
+                height       : 32px;
+                width        : 32px;
+                border-radius: 10px 0 0 10px;
 
             }
 
-            .item-btn-quatily-iconminus {
-                position: absolute;
-                left    : 10px;
-
+            .item-btn-quatily-icon-minus:hover,
+            .item-btn-quatily-icon-add:hover {
+                background-color: #008f72;
             }
+
+
 
         }
 
@@ -86,6 +130,11 @@
             color           : #fff;
         }
 
+        .item-btn-quatily-active {
+            background-color: #009f7f !important;
+            background-color: #009f7f;
+            color           : #fff;
+        }
 
 
     }
@@ -96,3 +145,17 @@
     box-shadow         : 0 0 4px rgba(33, 33, 33, .2);
     transition-duration: .2s
 }
+
+.item-product-modal {
+    max-width    : 1150px;
+    margin       : 1.75rem auto;
+    border-radius: 40px;
+}
+
+/* 
+@media (max-width: 576px) {
+    .item-product-modal {
+        max-width: 100%;
+        margin   : 1.75rem auto;
+    }
+} */
