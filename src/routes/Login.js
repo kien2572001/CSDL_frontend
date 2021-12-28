@@ -27,6 +27,9 @@ import SearchBar from '../components/SearchBar';
 import "../components/slogan.css";
 import Slogan from '../components/slogan';
 
+import background from "../assets/images/bg.png";
+
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -119,15 +122,16 @@ class Login extends Component {
             <>
                 <div className="login-wrapper">
                     <div className="login-container">
-                        <Slogan />
-                        <SearchBar />
+                        <div className='bg'>
+                            <Slogan />
+                            <SearchBar />
+                        </div>
                         <Slider />
                     </div>
                 </div>
             </>
         )
     }
-
 }
 
 

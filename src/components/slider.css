@@ -5,6 +5,10 @@
     margin-right: 15px;
   }
   
+  .swiper-container {
+    padding: 20px !important;
+}
+
   .swiper-slide {
     text-align: center;
     font-size: 18px;
@@ -40,8 +44,13 @@
   }
   
   .swiper-button-prev,  .swiper-button-next{
-    clip-path: circle();
+    /* clip-path: circle(); */
+    border-radius: 100%;
     background-color: #fff;
+    /* border: #000 solid 1px; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 40px !important;
+    height: 40px !important;
   }
   
   .swiper-button-prev:after, .swiper-button-next:after {

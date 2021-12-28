@@ -1,5 +1,11 @@
 @import "../styles/common.scss";
 
+.bg {
+    background-image: url(../assets/images/bg.png) ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .login-wrapper {
     overflow-y: scroll;
     .form-signin input[type=email],
