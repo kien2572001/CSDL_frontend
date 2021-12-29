@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../fontawesome/css/all.css'
+import './fontawesome/css/all.css';
 
 // import appchild from "./appchild";
 

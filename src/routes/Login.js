@@ -11,23 +11,21 @@ import './Login.scss';
 import { FormattedMessage } from 'react-intl';
 
 import adminService from '../services/adminService';
-// import "../components/vinh.js";
 
-// import React from "react";
 import ReactDOM from "react-dom";
 
 // eslint-disable-next-line
 import "swiper/bundle";
-import "../components/slider.css";
-import Slider from "../components/slider.js";
+import "../components/Decorate/slider.css";
+import Slider from "../components/Decorate/slider.js";
 
-import "../components/SearchBar.css";
-import SearchBar from '../components/SearchBar';
+import "../components//Decorate/SearchBar.css";
+import SearchBar from '../components/Decorate/SearchBar.js';
 
-import "../components/slogan.css";
-import Slogan from '../components/slogan';
+import "../components/Decorate/slogan.css";
+import Slogan from '../components/Decorate/slogan.js';
 
-import background from "../assets/images/bg.png";
+import background from '../components/Decorate/bg.png';
 
 
 class Login extends Component {
