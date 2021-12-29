@@ -6,6 +6,7 @@ import './Login.scss';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ViewProduct from '../Product/ViewProduct';
 import {handleLogin} from '../../services/userService'
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -43,25 +44,31 @@ class Login extends Component {
             errMessage: ''
         })
         
-        //console.log('tra loi: ',response)
+        
         try {
             let response  = await handleLogin(this.state.username,this.state.password)
+            console.log('tra loi: ',response)
             if (response && response.errCode!==0){
                 this.setState({
                     errMessage: response.errMessage
                 })
+                //this.props.userLoginFail()
             }
             else if (response && response.errCode ===0){
-                //Dang nhap thanh cong
+                //console.log(response)
+                console.log('Check ')
+                this.props.userLoginSuccess(response.user)
+                console.log('Check')
+                this.setState({
+                    modal: !this.state.modal
+                })         
             }
         } catch (e) {
-            console.log(e.response.data)
+            //console.log(e.response)
             if (e.response){
-                if (e.response.data){
-                    this.setState({
-                        errMessage: e.response.data.errMessage
-                    })
-                }
+                this.setState({
+                    errMessage: e.response.message
+                })
             }
         }
 
@@ -78,7 +85,6 @@ class Login extends Component {
         //JSX
         return (
             <>
-
                 <div >
                     <button 
                         type="button" 
@@ -159,8 +165,7 @@ class Login extends Component {
                         </div>
                     </Modal>
                 </div>
-                {/*  <ViewProduct />
-                <ViewProduct /> */}
+
             </>
         )
     }
@@ -175,8 +180,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
+        userLoginFail: () => dispatch(actions.userLoginFail()),
     };
 };
 

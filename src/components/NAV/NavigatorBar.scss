@@ -28,6 +28,12 @@
 
 
 
+.tag-display-none {
+    display: none;
+}
+
+
+//
 
 .header {
     font-family       : 'Roboto', sans-serif;
@@ -57,18 +63,28 @@
             }
 
             .header__navbar-item-btn {
-                width : 150px;
-                height: 44px;
+                display    : flex;
+                color      : #2eb097;
+                font-weight: 500;
+                font-size  : 16px;
+                padding    : 10px 24px;
+                border     : 1px solid #ccc;
+
+                text-decoration: none;
+                border-radius  : 12px;
+                box-shadow     : 0px 1px 1px #ccc;
+
+
+                i {
+                    align-self: center;
+                }
+
+                span {
+                    align-self: center;
+                    margin    : 0 10px;
+                }
             }
 
-            .header__navbar-item-btn-list {
-                position        : absolute;
-                z-index         : 88;
-                background-color: rgba(33, 33, 33, .2);
-                color           : var(--white-color);
-                width           : 100%;
-                display         : none;
-            }
         }
 
         .header__navbar-item,
@@ -78,23 +94,25 @@
             color          : #5e656f;
             text-decoration: none;
             font-weight    : 400;
-
-
         }
 
 
 
         .header__navbar-item:hover,
         .header__navbar-item-link:hover {
-            color : #2eb097;
-            cursor: pointer;
+            color      : #2eb097;
+            cursor     : pointer;
+            font-weight: 700;
+
         }
 
 
     }
 
     .hearder__navbar-search {
-        height: 48px;
+        height       : 48px;
+        border-radius: 10px;
+        box-shadow   : 0px 1px 1px #ccc;
 
         input {
             height: 100%;
@@ -105,25 +123,92 @@
             height          : 100%;
             width           : 56px;
             border          : none;
-            border-radius   : 10px 0 0 10px;
+            border-radius   : 10px;
             background-color: #f3f4f6;
+            position        : relative;
 
             .hearder__navbar-search-btn-icon {
                 font-size: 1rem;
                 color    : #707684;
+                position : absolute;
+                cursor   : pointer;
+                padding  : 16px;
+                top      : -14px;
 
+
+            }
+
+            .hearder__navbar-search-btn-icon:hover {
+                color: #2eb097;
+            }
+
+            .hearder__navbar-search-btn-icon--search {
+                left: 4px;
+            }
+
+            .hearder__navbar-search-btn-icon--remove {
+                right: 4px;
             }
         }
 
         .hearder__navbar-search-btn-search {
-            border-radius   : 0 10px 10px 0;
+            border-radius   : 10px;
             border          : none;
             background-color: #f3f4f6;
             color           : #707684;
+            padding-left    : 56px;
 
+        }
+
+        .hearder__navbar-search-btn-search:focus {
+            outline         : none;
+            background-color: var(--white-color);
+            border          : 2px solid #2eb097;
+            font-size       : 300;
         }
     }
 
+
+}
+
+
+
+
+.header__navbar-item-btn-list {
+    position        : absolute;
+    z-index         : 88;
+    width           : 130%;
+    margin-top      : 8px;
+    color           : #2eb097;
+    font-weight     : 500;
+    font-size       : 16px;
+    border          : 1px solid #ccc;
+    background-color: var(--white-color);
+    text-decoration : none;
+    border-radius   : 12px;
+    box-shadow      : 0px 1px 1px #ccc;
+
+    transform-origin: 0 0 0;
+    transform       : rotate3d(1, 0, 0, -90deg);
+
+    .header__nabar-item-btn-list-store {
+        list-style: none;
+        padding   : 10px 0;
+
+        a {
+            margin-left: 10px;
+        }
+    }
+
+
+}
+
+.header__navbar-item-btn:hover {
+    &.header__navbar-item-btn {
+        border    : 1px solid #2eb097;
+        transform : rotate(180deg);
+        transition: transform 0.3s;
+    }
 
 }
 
@@ -145,7 +230,6 @@
     transform       : rotate3d(1, 0, 0, -90deg);
     font-size       : 1.4rem;
 }
-
 
 
 

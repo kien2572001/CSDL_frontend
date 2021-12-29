@@ -45,66 +45,64 @@ class ViewProduct extends Component {
         //JSX
         return (
             <>
-                <div className='product-background'>
-                    <div className='product-container'>
+                <div className='product-container'>
 
-                        <div className={product.discount === 0 ? 'product-item-displaynon' : 'item-product-discount'}>
-                            <div className=''>{product.discount * 100}%</div>
-                        </div>
-                        <img src={product.img}
-                            className='item-image '
-                            onClick={() => this.toggle()}
-                        />
-                        <Modal funk='true' isOpen={this.state.modal} toggle={() => this.toggle()} className='item-product-modal' >
-                            <ViewProductDetail />
+                    <div className={product.discount === 0 ? 'product-item-displaynon' : 'item-product-discount'}>
+                        <div className=''>{product.discount * 100}%</div>
+                    </div>
+                    <img src={product.img}
+                        className='item-image '
+                        onClick={() => this.toggle()}
+                    />
+                    <Modal funk='true' isOpen={this.state.modal} toggle={() => this.toggle()} className='item-product-modal' >
+                        <ViewProductDetail />
 
-                        </Modal>
-
-
-                        <div className='item-info'>
-                            <div className='item-price'>
-
-                                {product.discount === 0 ?
-                                    <span className=''>{product.price}</span>
-                                    :
-                                    <>
-                                        <span className=''>
-                                            {product.price * (1 - product.discount)}&nbsp;&nbsp;&nbsp;
-                                        </span>
-                                        <span className='item-price-discount'>
-                                            <span className=' item-price-line'></span>
-                                            ${product.price}
-                                        </span>
-                                    </>
-                                }
+                    </Modal>
 
 
+                    <div className='item-info'>
+                        <div className='item-price'>
 
-                            </div>
-                            <div className='item-name'><span>{product.title}</span></div>
+                            {product.discount === 0 ?
+                                <span className=''>{product.price}</span>
+                                :
+                                <>
+                                    <span className=''>
+                                        {product.price * (1 - product.discount)}&nbsp;&nbsp;&nbsp;
+                                    </span>
+                                    <span className='item-price-discount'>
+                                        <span className=' item-price-line'></span>
+                                        ${product.price}
+                                    </span>
+                                </>
+                            }
 
-                            <button className={quatily === 0 ? 'item-btn-quatily' : 'item-btn-quatily item-btn-quatily-active'}>
-                                <span className='item-btn-quatily-icon-minus'
-                                    onClick={() => this.handleMinusItem()}
-                                >
-                                    <i className="fas fa-minus item-btn-icon"></i>
-                                </span>
-                                <span className='item-btn-quatilt-content'>
-                                    {quatily === 0 ? 'Add' : quatily}
-                                </span>
-                                <span className='item-btn-quatily-icon-add'
-                                    onClick={() => this.handleAddItem()}
-                                >
-                                    <i className="fas fa-plus item-btn-icon"></i>
-                                </span>
-                            </button>
 
 
                         </div>
+                        <div className='item-name'><span>{product.title}</span></div>
+
+                        <button className={quatily === 0 ? 'item-btn-quatily' : 'item-btn-quatily item-btn-quatily-active'}>
+                            <span className='item-btn-quatily-icon-minus'
+                                onClick={() => this.handleMinusItem()}
+                            >
+                                <i className="fas fa-minus item-btn-icon"></i>
+                            </span>
+                            <span className='item-btn-quatilt-content'>
+                                {quatily === 0 ? 'Add' : quatily}
+                            </span>
+                            <span className='item-btn-quatily-icon-add'
+                                onClick={() => this.handleAddItem()}
+                            >
+                                <i className="fas fa-plus item-btn-icon"></i>
+                            </span>
+                        </button>
 
 
                     </div>
-                </div>
+
+
+                    </div>
 
             </>
         )
@@ -120,8 +118,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (adminInfo) => dispatch(actions.userLoginSuccess(adminInfo)),
+        userLoginFail: () => dispatch(actions.userLoginFail()),
     };
 };
 

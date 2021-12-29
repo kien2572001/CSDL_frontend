@@ -14,7 +14,7 @@ const environment = process.env.NODE_ENV || "development";
 let isDevelopment = environment === "development";
 
 //hide redux logs
-isDevelopment = false;
+isDevelopment = true;
 
 
 export const history = createBrowserHistory({ basename: process.env.REACT_APP_ROUTER_BASE_NAME });

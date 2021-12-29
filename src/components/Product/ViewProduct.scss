@@ -14,11 +14,11 @@
     font-family     : 'Roboto', sans-serif;
     max-width       : 280px;
     max-height      : 420px;
-    margin          : 60px;
     background-color: #fff;
     border-radius   : 10px;
     position        : relative;
-
+    display: inline-block;
+    border: 1px solid black;
     .item-product-discount {
         position        : absolute;
         background-color: #009f7f;
@@ -148,7 +148,7 @@
 
 .item-product-modal {
     max-width    : 1150px;
-    margin       : 1.75rem auto;
+    margin       : 5rem auto;
     border-radius: 40px;
 }
 
