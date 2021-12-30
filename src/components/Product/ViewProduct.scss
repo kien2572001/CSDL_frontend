@@ -12,7 +12,7 @@
 
 .product-container {
     font-family     : 'Roboto', sans-serif;
-    width       : 300px;
+    max-width       : 300px;
     height      : 420px;
     background-color: #fff;
     border-radius   : 5px;
@@ -21,6 +21,7 @@
     border: 1px solid rgb(216, 212, 212);
     flex-basis: 20%;
     margin-bottom: 15px;
+    margin-right: 10px;
     .item-product-discount {
         position        : absolute;
         background-color: #009f7f;

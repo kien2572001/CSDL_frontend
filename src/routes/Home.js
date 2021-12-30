@@ -5,7 +5,7 @@ import ViewProduct from '../components/Product/ViewProduct';
 import SideBar from '../components/Sidebar/SideBar'
 import 'bootstrap'
 import './Home.scss'
-
+import HomeSearch from '../components/HomeSearch/HomeSearch';
 class Home extends Component {
 
     render() {
@@ -16,6 +16,7 @@ class Home extends Component {
             // <Redirect to={linkToRedirect} />
             <>  
                 <div className='.container-fluid'>
+                    <HomeSearch/>
                     <div className='row'>
                         <div className='col-sm-2 sidebar'>
                             <SideBar/>

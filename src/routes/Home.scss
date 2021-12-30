@@ -8,15 +8,16 @@
     display: flex;
     align-content: stretch;
     background-color: #f3f4f6;
-    padding: 35px 30px;
+    padding: 35px 20px;
     flex-wrap: wrap;
     align-content: flex-start;
-    margin-left: 285px;
+    //margin-left: 285px;
 }
 
 .sidebar{
     padding: 0;
     width: 285px;
     height: 100%;
-    position: fixed;
+    position: sticky;
+    top: 53px;
 }

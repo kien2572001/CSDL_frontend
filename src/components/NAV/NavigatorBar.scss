@@ -26,7 +26,11 @@
     font-weight: 440 !important;
 }
 
-
+.app{
+    width: 100%;
+    position: fixed;
+    z-index: 5;
+}
 
 .tag-display-none {
     display: none;

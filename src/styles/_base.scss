@@ -1,6 +1,8 @@
 /*
  * General styles
  */
+
+ 
  body, html {
     background-image: "#fff";
     background-repeat: no-repeat;
@@ -10,8 +12,9 @@
     height: 100vh;
     //overflow: hidden;
     //overflow:scroll;
-    overflow:auto;
+    //overflow:auto;
 }
+
 
 .btn {
     padding: 0;
