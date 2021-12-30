@@ -12,18 +12,21 @@
 
 .product-container {
     font-family     : 'Roboto', sans-serif;
-    max-width       : 280px;
-    max-height      : 420px;
+    width       : 300px;
+    height      : 420px;
     background-color: #fff;
-    border-radius   : 10px;
+    border-radius   : 5px;
     position        : relative;
     display: inline-block;
-    border: 1px solid black;
+    border: 1px solid rgb(216, 212, 212);
+    flex-basis: 20%;
+    margin-bottom: 15px;
     .item-product-discount {
         position        : absolute;
         background-color: #009f7f;
         height          : 24px;
-        width           : 40px;
+        width           :  45px;
+        max-width       : 45px;
         border-radius   : 4px;
         top             : 16px;
         right           : 16px;
@@ -41,14 +44,15 @@
     .item-image {
         width : 100%;
         cursor: pointer;
+        border-radius: 5px;
     }
 
 
     .item-info {
         display       : flex;
         flex-direction: column;
-        padding       : 24px;
-
+        //padding       : 24px;
+        padding: 0 24px;
         .item-price {
             padding-bottom: 8px;
             font-weight   : 500;
@@ -99,8 +103,7 @@
                 height       : 32px;
                 width        : 32px;
                 border-radius: 0 10px 10px 0;
-
-
+                background-color: #e5e7eb;
             }
 
 

@@ -16,8 +16,8 @@ class Home extends Component {
             // <Redirect to={linkToRedirect} />
             <>  
                 <div className='.container-fluid'>
-                    <div className='row '>
-                        <div className='col-sm-2'>
+                    <div className='row'>
+                        <div className='col-sm-2 sidebar'>
                             <SideBar/>
                         </div>
                         <div className='col-sm-10 item-container'>
@@ -26,6 +26,19 @@ class Home extends Component {
                         <ViewProduct/> 
                         <ViewProduct/>  
                         <ViewProduct/>       
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
+                        <ViewProduct/> 
                         </div>
                     </div>
                 </div>

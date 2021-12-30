@@ -68,7 +68,7 @@ class ViewProduct extends Component {
                                 :
                                 <>
                                     <span className=''>
-                                        {product.price * (1 - product.discount)}&nbsp;&nbsp;&nbsp;
+                                        ${product.price * (1 - product.discount)}&nbsp;&nbsp;&nbsp;
                                     </span>
                                     <span className='item-price-discount'>
                                         <span className=' item-price-line'></span>

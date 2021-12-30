@@ -1,6 +1,21 @@
+.row{
+    background-color: #f3f4f6;
+}
+
 .item-container{
     display: flex;
-    align-content: flex-start;
+    align-content: stretch;
     background-color: #f3f4f6;
-    padding: 10px 30px;
+    padding: 35px 30px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    margin-left: 285px;
+    
+}
+
+.sidebar{
+    padding: 0;
+    width: 285px;
+    height: 100%;
+    position: fixed;
 }
