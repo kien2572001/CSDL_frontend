@@ -20,7 +20,7 @@ class Home extends Component {
                         <div className='col-sm-2 sidebar'>
                             <SideBar/>
                         </div>
-                        <div className='col-sm-10 item-container'>
+                        <div className=' item-container'>
                         <ViewProduct/> 
                         <ViewProduct/> 
                         <ViewProduct/> 
