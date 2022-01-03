@@ -20,4 +20,62 @@
             font-family     : 'Roboto', sans-serif;
         }
     }
+
+    .fonttext {
+        font-family     : 'Roboto', sans-serif !important;
+      }
+      .bg-light {
+        background-color: #fff !important;
+      }
+      .form-inline {
+          width: 100% !important;
+          height: 56px !important;
+          text-align: center !important;
+        }
+        
+        .form-control {
+          width: 40% !important;
+          height: 100% !important;
+          display: inline !important;
+          vertical-align: middle !important;
+          border-right: 0 !important;
+          border-top-right-radius: 0 !important;
+          border-bottom-right-radius: 0 !important;
+        }
+        
+        .form-control:focus {
+          color: #212529;
+          background-color: #fff;
+          border-color: #009F7F !important;
+          outline: 0;
+          box-shadow: 0 0 0 0 !important
+        }
+        
+        .btn {
+          width: 10% !important;
+          height: 100% !important;
+          border-left: 0 !important;
+          background-color: #009F7F !important;
+          color: #fff !important;
+          border-top-left-radius: 0 !important;
+          border-bottom-left-radius: 0 !important;
+          opacity: 0.9;
+        }
+        
+        .btn:hover {
+          /* background-color: #009430 !important; */
+          opacity: 1;
+        }
+        
+        .fas {
+          width: 40px !important;
+        }
+      
+        span {
+          font-weight: 600;
+          font-size: 17px;
+        }
+        .nuller {
+          padding-bottom: 260px !important;
+        }
 }
