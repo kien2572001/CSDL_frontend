@@ -6,6 +6,8 @@ import './Login.scss';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ViewProduct from '../Product/ViewProduct';
 import {handleLogin} from '../../services/userService'
+import 'bootstrap'
+
 
 class Login extends Component {
     constructor(props) {
@@ -15,7 +17,8 @@ class Login extends Component {
             password: '',
             isShowPassword: false,
             modal: false,
-            errMessage: ''
+            errMessage: '',
+            isShowUserOption: false
         }
     }
     handleShowLogin = () => {
@@ -80,19 +83,52 @@ class Login extends Component {
         })
     }
 
+    hanldeShowUserOption = ()=>{
+        this.setState({
+            isShowUserOption: !this.state.isShowUserOption
+        })
+    }
+
+    handleLogoutButton = ()=>{
+        this.props.processLogout()
+    }
 
     render() {
         //JSX
         return (
             <>
                 <div >
+                    {this.props.isLoggedIn 
+                    ?
+                    <>
+                        <div className='dropdown-container'>
+                            <div className='dropdown-btn' onClick={()=>this.hanldeShowUserOption()}>
+                                <img src="https://pickbazar-react-rest.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fsrc%2Fassets%2Fplaceholders%2Favatar.2a4ed68cad8ebe21317b04e155b6b245.svg&w=1920&q=75" alt="Avatar"/>
+                            </div>
+                            <div className={this.state.isShowUserOption ? 'dropdown-box': 'dropdown-box display-none'}>
+                                <div className='dropdown-username'>
+                                    Username
+                                </div>
+                                <div className='dropdown-item'>
+                                    Profile
+                                </div>
+                                <div className='dropdown-item'>
+                                    My orders
+                                </div>
+                                <div className='dropdown-item' onClick={()=>this.handleLogoutButton()}>
+                                    Logout
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                    :
                     <button 
                         type="button" 
                         className="btn btn-danger" 
                         style={{width: '50px',height: '30px',fontSize: '14px',backgroundColor: '#009F7F'}}  
                         onClick={() => this.handleShowLogin()} >
                         Join
-                    </button>
+                    </button>}
                     <Modal funk='true' isOpen={this.state.modal} toggle={() => this.handleShowLogin()} className={'abcModalClass'} >
                         <div className='login-background'>
                             <div className='login-container'>
@@ -173,7 +209,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        language: state.app.language,
+        isLoggedIn: state.user.isLoggedIn
     };
 };
 
@@ -182,6 +219,7 @@ const mapDispatchToProps = dispatch => {
         navigate: (path) => dispatch(push(path)),
         userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
         userLoginFail: () => dispatch(actions.userLoginFail()),
+        processLogout: ()=>dispatch(actions.processLogout())
     };
 };
 

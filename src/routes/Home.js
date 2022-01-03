@@ -6,6 +6,7 @@ import SideBar from '../components/Sidebar/SideBar'
 import 'bootstrap'
 import './Home.scss'
 import HomeSearch from '../components/HomeSearch/HomeSearch';
+import Slider from '../components/Slider/Slider';
 class Home extends Component {
 
     render() {
@@ -17,6 +18,7 @@ class Home extends Component {
             <>  
                 <div className='.container-fluid'>
                     <HomeSearch/>
+                    <Slider/>
                     <div className='row'>
                         <div className='col-sm-2 sidebar'>
                             <SideBar/>
