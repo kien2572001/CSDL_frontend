@@ -10,7 +10,7 @@ class ViewProduct extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            product: { id: 'id1', title: 'Apples', price: 2.5, discount: 0.2, img: Apple },
+            product: this.props.product,
             quatily: 0,
             modal: false,
 
@@ -32,7 +32,7 @@ class ViewProduct extends Component {
         })
     }
     toggle = () => {
-        console.log(">>> check toggle ");
+        //console.log(">>> check toggle ");
         this.setState({
             modal: !this.state.modal,
         })
@@ -48,14 +48,14 @@ class ViewProduct extends Component {
                 <div className='product-container'>
 
                     <div className={product.discount === 0 ? 'product-item-displaynon' : 'item-product-discount'}>
-                        <div className=''>{product.discount * 100}%</div>
+                        <div className=''>{product.discount }%</div>
                     </div>
                     <img src={product.img}
                         className='item-image '
                         onClick={() => this.toggle()}
                     />
                     <Modal funk='true' isOpen={this.state.modal} toggle={() => this.toggle()} className='item-product-modal' >
-                        <ViewProductDetail />
+                        <ViewProductDetail product={this.props.product}/>
 
                     </Modal>
 
@@ -64,11 +64,11 @@ class ViewProduct extends Component {
                         <div className='item-price'>
 
                             {product.discount === 0 ?
-                                <span className=''>{product.price}</span>
+                                <span className=''>${Math.round(product.price * 100) / 100}</span>
                                 :
                                 <>
                                     <span className=''>
-                                        ${product.price * (1 - product.discount)}&nbsp;&nbsp;&nbsp;
+                                        ${((Math.round(product.price * 100) / 100) * (1 - product.discount/100)).toFixed(2)}&nbsp;&nbsp;&nbsp;
                                     </span>
                                     <span className='item-price-discount'>
                                         <span className=' item-price-line'></span>

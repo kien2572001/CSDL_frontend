@@ -105,7 +105,7 @@ export const links = [
         {
           id: 1,
           url: '',
-          text: 'Air Freshner',
+          text: 'Air Fresher',
         },
         {
           id: 2,

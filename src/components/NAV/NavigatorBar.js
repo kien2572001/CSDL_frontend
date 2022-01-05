@@ -5,7 +5,7 @@ import * as actions from "../../store/actions";
 import './NavigatorBar.scss';
 import LogoShop from '../../assets/images/Logo.png';
 import Login from '../Auth/Login';
-
+import {Link} from 'react-router-dom'
 
 class NavigatorBar extends Component {
     constructor(props) {
@@ -116,9 +116,7 @@ class NavigatorBar extends Component {
                                 </div>
                                 <ul className="header__navlist-list">
                                     <li className="header__navbar-item">
-                                        <a href="" className="header__navbar-item-link">
-                                            <span>Shops</span>
-                                        </a>
+                                        <Link to={'/'} className="header__navbar-item-link"><span>Shops</span></Link>
                                     </li>
                                     <li className="header__navbar-item">
                                         <a href="" className="header__navbar-item-link">
@@ -126,13 +124,12 @@ class NavigatorBar extends Component {
                                         </a>
                                     </li>
                                     <li className="header__navbar-item header__navbar-item--separate">
-                                        <a href="" className="header__navbar-item-link">
-                                            <span>FAQ</span>
-                                        </a>
+                                        
+                                        <Link to={'/faq'} className="header__navbar-item-link"><span>FAQ</span></Link>
 
                                     </li>
                                     <li className="header__navbar-item ">
-                                        <a href="" className="header__navbar-item-link">
+                                        <a href="" className="header__navbar-item-link" >
                                             <span>Contact</span>
                                         </a>
                                     </li>

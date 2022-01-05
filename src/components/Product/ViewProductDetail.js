@@ -10,7 +10,7 @@ class ViewProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            product: { id: 'id1', title: 'Apples', price: 2.5, discount: 0.2, img: Apples },
+            product: this.props.product,
             quatily: 1,
         }
     }
@@ -32,7 +32,6 @@ class ViewProductDetail extends Component {
     render() {
         let { product, quatily } = this.state;
 
-
         //JSX
         return (
             <>
@@ -40,17 +39,24 @@ class ViewProductDetail extends Component {
                 <div className='productDetail'>
                     <div className='productDetail-info '>
                         <div className='productDetail-slider '>
-                            <div className='slider-discount'>{product.discount * 100}%</div>
-                            <div><img className='slider-discount-img' src={Apples}></img></div>
+                            <div className='slider-discount'>{product.discount }%</div>
+                            <div><img className='slider-discount-img' src={product.img}></img></div>
                         </div>
                         <div className='productDetail-item '>
-                            <div className='item-title'>Apples</div>
-                            <div className='item-id'>1lb</div>
-                            <div className='item-content'><span>An apple is a sweet, edible fruit produced by an apple tree (Malus domestica). Apple trees are ... The skin of ripe apples is generally red, yellow, green, pink, or russetted, though many bi- or tri-colored cultivars may be found.</span></div>
+                            <div className='item-title'>{product.title}</div>
+                            <div className='item-id'>{product.unit}</div>
+                            <div className='item-content'><span>{product.content}</span></div>
                             <div className='item-price'>
-
-                                <span className='item-price--nodiscount '>$1.60 </span>
-                                <span className='item-price--discount'><span className=' item-price-line'></span>$2.00</span>
+                                {product.discount
+                                ?
+                                    <>
+                                        <span className='item-price--nodiscount '>${((Math.round(product.price * 100) / 100) * (1 - product.discount/100)).toFixed(2)} </span>
+                                        <span className='item-price--discount'><span className=' item-price-line'></span>${product.price}</span>
+                                    </>
+                                :
+                                <span className='item-price--nodiscount '>${product.price} </span>
+                                }
+                                
 
                             </div>
                             <div className='item-btnAndQuatily'>

@@ -20,6 +20,7 @@ import System from '../routes/System';
 import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import NavigatorBar from '../components/NAV/NavigatorBar';
+import Faq from '../components/NAV/Faq';
 
 class App extends Component {
 
@@ -52,6 +53,7 @@ class App extends Component {
                         <span className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
+                                <Route path={path.FAQ} exact component={(Faq)} />
                                 {/* <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} /> */}
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
                             </Switch>

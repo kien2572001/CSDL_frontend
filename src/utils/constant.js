@@ -2,7 +2,8 @@ export const path = {
     HOME: '/',
     LOGIN: '/login',
     LOG_OUT: '/logout',
-    SYSTEM: '/system'
+    SYSTEM: '/system',
+    FAQ: '/faq'
 };
 
 export const languages = {

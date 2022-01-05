@@ -11,21 +11,28 @@ import healty from '../../assets/images/healty.png'
 
 class SideBar extends React.Component{
 
+
+    handleRenderProductByCategory = (category)=>{
+        //console.log('Sidebar: ',category)
+        this.props.changeCategory(category)
+    }
+
     render(){
         return (
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" 
+                        onClick={()=>this.handleRenderProductByCategory("Fruits & Vegetables")}>
                         <i class="far fa-lemon"></i>
                         Fruits &amp; Vegetables
                     </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
+                        <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory("Fruits")} >
                             Fruits
                         </div>
-                        <div class="accordion-body">
+                        <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory("Vegetables")}>
                             Vegetables
                         </div>
                     </div>
@@ -33,22 +40,26 @@ class SideBar extends React.Component{
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        <img src={meatLogo}/>
+                        <img src={meatLogo}
+                        onClick={()=>this.handleRenderProductByCategory("Meat & Fish")}    
+                    />
                         Meat &amp; Fish
                     </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory("Meat")}>
                             Meat
                     </div>
-                        <div class="accordion-body">
+                        <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory("Fish")}>
                             Fish
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"
+                        onClick={()=>this.handleRenderProductByCategory("Snacks")}
+                    >
                         <i class="fas fa-coffee"></i>
                         Snacks
                     </button>
@@ -57,7 +68,7 @@ class SideBar extends React.Component{
                     {links[2].sublinks.map((item,index)=>{
                         return (
                             <>
-                                <div class="accordion-body">
+                                <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory(item.text)}>
                                     {item.text}
                                 </div>
                             </>
@@ -67,7 +78,9 @@ class SideBar extends React.Component{
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFour">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"
+                        onClick={()=>this.handleRenderProductByCategory("Pet Care")}
+                    >
                         <i class="fas fa-paw"></i>
                         Pet Care
                     </button>
@@ -76,7 +89,7 @@ class SideBar extends React.Component{
                     {links[3].sublinks.map((item,index)=>{
                         return (
                             <>
-                                <div class="accordion-body">
+                                <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory(item.text)}>
                                     {item.text}
                                 </div>
                             </>
@@ -86,7 +99,9 @@ class SideBar extends React.Component{
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFive">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"
+                        onClick={()=>this.handleRenderProductByCategory("Home & Cleaning")}
+                    >
                         <i class="fas fa-home"></i>
                         Home &amp; Cleaning
                     </button>
@@ -95,7 +110,7 @@ class SideBar extends React.Component{
                     {links[4].sublinks.map((item,index)=>{
                         return (
                             <>
-                                <div class="accordion-body">
+                                <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory(item.text)}>
                                     {item.text}
                                 </div>
                             </>
@@ -105,7 +120,9 @@ class SideBar extends React.Component{
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingSix">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"
+                        onClick={()=>this.handleRenderProductByCategory("Dairy")}
+                    >
                     <img src={dairyLogo}/>
                         Dairy
                     </button>
@@ -114,7 +131,7 @@ class SideBar extends React.Component{
                     {links[5].sublinks.map((item,index)=>{
                         return (
                             <>
-                                <div class="accordion-body">
+                                <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory(item.text)}>
                                     {item.text}
                                 </div>
                             </>
@@ -124,7 +141,9 @@ class SideBar extends React.Component{
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingSeven">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven"
+                        onClick={()=>this.handleRenderProductByCategory("Cooking")}
+                    >
                         <img src={cookingLogo}/>
                         Cooking
                     </button>
@@ -133,7 +152,7 @@ class SideBar extends React.Component{
                     {links[6].sublinks.map((item,index)=>{
                         return (
                             <>
-                                <div class="accordion-body">
+                                <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory(item.text)}>
                                     {item.text}
                                 </div>
                             </>
@@ -143,7 +162,9 @@ class SideBar extends React.Component{
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingEight">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight"
+                        onClick={()=>this.handleRenderProductByCategory("Breakfast")}
+                    >
                         <img src={breakfastLogo}/>
                         Breakfast
                     </button>
@@ -152,7 +173,7 @@ class SideBar extends React.Component{
                     {links[7].sublinks.map((item,index)=>{
                         return (
                             <>
-                                <div class="accordion-body">
+                                <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory(item.text)}>
                                     {item.text}
                                 </div>
                             </>
@@ -162,7 +183,9 @@ class SideBar extends React.Component{
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingNine">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine"
+                        onClick={()=>this.handleRenderProductByCategory("Beverage")}
+                    >
                         <img  src={beverage}/>
                         Beverage
                     </button>
@@ -171,7 +194,7 @@ class SideBar extends React.Component{
                     {links[8].sublinks.map((item,index)=>{
                         return (
                             <>
-                                <div class="accordion-body">
+                                <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory(item.text)}>
                                     {item.text}
                                 </div>
                             </>
@@ -181,7 +204,9 @@ class SideBar extends React.Component{
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTen">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen"
+                        onClick={()=>this.handleRenderProductByCategory("Health & Beautiful")}
+                    >
                         <img src={healty}/>
                         Health &amp; Beautiful
                     </button>
@@ -190,7 +215,7 @@ class SideBar extends React.Component{
                     {links[9].sublinks.map((item,index)=>{
                         return (
                             <>
-                                <div class="accordion-body">
+                                <div class="accordion-body" onClick={()=>this.handleRenderProductByCategory(item.text)}>
                                     {item.text}
                                 </div>
                             </>
