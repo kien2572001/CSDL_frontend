@@ -6,12 +6,15 @@ import * as actions from "../../store/actions";
 import { Carousel } from 'reactstrap';
 import './ViewProductDetail.scss'
 import Apples from '../../assets/images/Apples.jpg'
+import {handleGetCategoryById,handleGetStoreById} from '../../services/productService'
 class ViewProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
             product: this.props.product,
             quatily: 1,
+            categories: [],
+            store: ''
         }
     }
     handleMinusItem = () => {
@@ -29,6 +32,17 @@ class ViewProductDetail extends Component {
             quatily: quatilyItem,
         })
     }
+
+    async componentDidMount(){
+        let data = await handleGetCategoryById(this.props.product.pid)
+        let data1 = await handleGetStoreById(this.props.product.sid)
+        //console.log(data1.store)
+        this.setState({
+            categories: data.category,
+            store: data1.store.storeName
+        })
+    }
+
     render() {
         let { product, quatily } = this.state;
 
@@ -39,7 +53,11 @@ class ViewProductDetail extends Component {
                 <div className='productDetail'>
                     <div className='productDetail-info '>
                         <div className='productDetail-slider '>
-                            <div className='slider-discount'>{product.discount }%</div>
+                            {product.discount ===0?<></>
+                                :
+                                <div className='slider-discount'>{product.discount }%</div>
+                            }
+                            
                             <div><img className='slider-discount-img' src={product.img}></img></div>
                         </div>
                         <div className='productDetail-item '>
@@ -76,22 +94,23 @@ class ViewProductDetail extends Component {
                                         <i className="fas fa-plus item-btn-icon"></i>
                                     </span>
                                 </button>
-                                <span className='item-pieces'> 50 pieces available</span>
+                                <span className='item-pieces'> {product.quantity} pieces available</span>
 
 
                             </div>
                             <div className='item-categories'>
                                 <div className='item-categories-title' >Categories</div>
                                 <div className='item-categories-tag'>
-                                    <span>Fruits</span>
-                                    <span>Vegetables</span>
+                                    {this.state.categories.map((item,index)=>{
+                                        return <span>{item.title}</span>
+                                    })}
                                 </div>
 
                             </div>
                             <div className='sellers'>
                                 <span className='sellers-title'>Sellers</span>
                                 <div className='sellers-shop'>
-                                    <a src='/'> Grocery Shop</a>
+                                    <a src='/'> {this.state.store}</a>
 
                                 </div>
                             </div>

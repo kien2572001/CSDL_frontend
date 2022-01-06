@@ -6,4 +6,12 @@ let handleGetProductByCategory = (category)=>{
 }
 
 
-export {handleGetProductByCategory}
+let handleGetCategoryById = (id)=>{
+    return axios.get(`./api/get-category-by-id?id=${id}`)
+}
+
+let handleGetStoreById = (id)=>{
+    return axios.get(`./api/get-store-by-id?id=${id}`)
+}
+
+export {handleGetProductByCategory,handleGetCategoryById,handleGetStoreById}

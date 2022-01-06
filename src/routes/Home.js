@@ -39,7 +39,6 @@ class Home extends React.Component {
         //let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/login';
         //let linkToRedirect = '/'
         let arrProducts = this.state.products
-        console.log(arrProducts)
         return (
             // <Redirect to={linkToRedirect} />
             <>  
