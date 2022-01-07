@@ -21,6 +21,11 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import NavigatorBar from '../components/NAV/NavigatorBar';
 import Faq from '../components/NAV/Faq';
+import MyOders from '../components/MyOders/MyOders';
+import {
+    BrowserRouter,
+    Link
+} from "react-router-dom";
 
 class App extends Component {
 
@@ -49,7 +54,8 @@ class App extends Component {
                     <div className="main-container">
                         <ConfirmModal />
                         {/* {this.props.isLoggedIn && <Header />} */}
-                        <NavigatorBar/>
+                        <NavigatorBar />
+                        <MyOders />
                         <span className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
