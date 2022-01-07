@@ -77,6 +77,6 @@ const appReducer = (state = initialCart,action)=>{
                 ...state
             }
     }
-}
+} 
 
 export default appReducer;
