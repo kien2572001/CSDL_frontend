@@ -143,6 +143,7 @@
   line-height: 20px;
   margin: 0px 0px 12px;
   text-transform: capitalize;
+  display: flex;
 }
 
 .item-address {
@@ -213,6 +214,7 @@
   line-height: 24px;
   text-align: center;
   border-color: #009f7f;
+  margin-left: auto;
 }
 
 .delete-address {
