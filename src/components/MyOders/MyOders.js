@@ -55,7 +55,7 @@ class MyOders extends React.Component {
                                         <div className="Piece-Orders">
                                             <div className="scrollbar" id="style-3">
                                                 <div class="force-overflow">
-                                                    <a href="/Bill1">
+                                                    <NavLink to="/Bill1" activeClassName="selected" className="navlink">
                                                         <div className="Piece-Order">
                                                             <div className="id_Order">
                                                                 <span className="id_save">
@@ -95,8 +95,8 @@ class MyOders extends React.Component {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                    <a href="/Bill2">
+                                                    </NavLink>
+                                                    <NavLink to="/Bill2" activeClassName="selected" className="navlink">
                                                         <div className="Piece-Order" href="/Bill2">
                                                             <div className="id_Order">
                                                                 <span className="id_save">
@@ -136,8 +136,8 @@ class MyOders extends React.Component {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                    <a href="Bill3">
+                                                    </NavLink>
+                                                    <NavLink to="/Bill3" activeClassName="selected" className="navlink">
                                                         <div className="Piece-Order" href="/Bill3">
                                                             <div className="id_Order">
                                                                 <span className="id_save">
@@ -177,8 +177,8 @@ class MyOders extends React.Component {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                    <a href="/Bill4">
+                                                    </NavLink>
+                                                    <NavLink to="/Bill4" activeClassName="selected" className="navlink">
                                                         <div className="Piece-Order">
                                                             <div className="id_Order">
                                                                 <span className="id_save">
@@ -218,8 +218,8 @@ class MyOders extends React.Component {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </a>
-                                                    <a href="/Bill5">
+                                                    </NavLink>
+                                                    <NavLink to="/Bill5" activeClassName="selected" className="navlink">
                                                         <div className="Piece-Order">
                                                             <div className="id_Order">
                                                                 <span className="id_save">
@@ -259,7 +259,7 @@ class MyOders extends React.Component {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </a>
+                                                    </NavLink>
                                                 </div>
                                             </div>
                                         </div>
