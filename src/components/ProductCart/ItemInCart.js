@@ -8,28 +8,28 @@ class ItemInCart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            quantity: 1,
+            item: this.props.item,
+            quantity: this.props.item.quantity,
         }
     }
     handleUpItem = () => {
-        this.setState({
-            quantity: this.state.quantity + 1,
-        })
+        this.props.AddCart(this.state.item)
+        // this.setState({
+        //     quantity: this.state.quantity + 1,
+        // })
     }
     handleDownItem = () => {
-        this.setState({
-            quantity: this.state.quantity - 1,
-        })
+        this.props.DecreaseQuantity(this.state.item.pid)
+        // this.setState({
+        //     quantity: this.state.quantity - 1,
+        // })
     }
     handleCloseItem = () => {
-        this.setState({
-            quantity: 0,
-        })
+        this.props.DeleteItem(this.state.item.pid)
     }
 
     render() {
         let { quantity } = this.state;
-
 
         //JSX
         return (
@@ -55,18 +55,18 @@ class ItemInCart extends Component {
 
                     </div>
                     <div className='item__cart-img'>
-                        <img src={Apples} className='item__cart-image' />
+                        <img src={this.state.item.img} className='item__cart-image' />
                     </div>
                     <div className='item__cart-body'>
                         <div className='item__cart-infor'>
-                            <span className='item__cart-product-title'>Apples</span>
-                            <span className='item__cart-product-price'>$1.60</span>
-                            <span className='item__cart-product-quantity'>4 X 1lb</span>
+                            <span className='item__cart-product-title'>{this.state.item.title}</span>
+                            <span className='item__cart-product-price'>${this.state.item.price}</span>
+                            <span className='item__cart-product-quantity'>{this.state.item.quantity} X {this.state.item.unit}</span>
 
 
                         </div>
                         <div className='item__cart-total'>
-                            <span>$6.40</span>
+                            <span>${((Math.round(this.state.item.price * this.state.item.quantity * 100) / 100)).toFixed(2)}</span>
                             <div className='item__cart-close'
                                 onClick={() => this.handleCloseItem()}
                             ><i className="fas fa-times   item__cart-close-icon "></i></div>
@@ -92,6 +92,9 @@ const mapDispatchToProps = dispatch => {
         navigate: (path) => dispatch(push(path)),
         userLoginSuccess: (adminInfo) => dispatch(actions.userLoginSuccess(adminInfo)),
         userLoginFail: () => dispatch(actions.userLoginFail()),
+        AddCart: (payload) => dispatch(actions.AddCart(payload)),
+        DecreaseQuantity: (payload)=>dispatch(actions.DecreaseQuantity(payload)),
+        DeleteItem: (payload)=>dispatch(actions.DeleteItem(payload))
     };
 };
 

@@ -17,7 +17,9 @@ const appReducer = (state = initialCart,action)=>{
                 let item = {
                     pid: action.payload.pid,
                     quantity: 1,
-                    title: action.payload.img,
+                    title: action.payload.title,
+                    img: action.payload.img,
+                    unit: action.payload.unit,
                     price : Number.parseFloat(((Math.round(action.payload.price * 100) / 100) * (1 - action.payload.discount/100)).toFixed(2))
                 }
                 state.Carts.push(item)
@@ -34,7 +36,9 @@ const appReducer = (state = initialCart,action)=>{
                     let item = {
                         pid: action.payload.pid,
                         quantity: 1,
-                        title: action.payload.img,
+                        title: action.payload.title,
+                        img: action.payload.img,
+                        unit: action.payload.unit,
                         price : Number.parseFloat(((Math.round(action.payload.price * 100) / 100) * (1 - action.payload.discount/100)).toFixed(2))
                     }
                     state.Carts.push(item)
@@ -72,6 +76,19 @@ const appReducer = (state = initialCart,action)=>{
                 Carts: arr
             }
         
+        case actionTypes.DELETE_ITEM:
+            let did = action.payload //Paylod la id san pham muon tang so luon
+            let arr1 = state.Carts.filter(item => item.pid !== did)
+            let number = 0
+            arr1.map((item)=>{
+                number  = number + item.quantity
+            })
+            state.Carts = arr1
+            return {
+                numberCart: number,
+                Carts: arr1
+            }
+
         default :
             return {
                 ...state
