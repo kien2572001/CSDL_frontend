@@ -21,6 +21,7 @@ import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
 import NavigatorBar from '../components/NAV/NavigatorBar';
 import Faq from '../components/NAV/Faq';
+import Contact from '../components/NAV/Contact/Contact';
 
 class App extends Component {
 
@@ -49,11 +50,12 @@ class App extends Component {
                     <div className="main-container">
                         <ConfirmModal />
                         {/* {this.props.isLoggedIn && <Header />} */}
-                        <NavigatorBar/>
+                        <NavigatorBar />
                         <span className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
                                 <Route path={path.FAQ} exact component={(Faq)} />
+                                <Route path={path.CONTACT} exact component={(Contact)} />
                                 {/* <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} /> */}
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
                             </Switch>

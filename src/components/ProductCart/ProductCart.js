@@ -12,6 +12,8 @@ class ProductCart extends Component {
         super(props);
         this.state = {
             modal: false,
+            checkOutRight: false,
+
 
         }
     }
@@ -19,20 +21,21 @@ class ProductCart extends Component {
         console.log(">>>modal: ", this.state.modal);
         this.setState({
             modal: !this.state.modal,
+            checkOutRight: true,
         });
     };
 
-    sumCart(){
+    sumCart() {
         let Carts = this.props.Carts
-        let sum=0
-        Carts.map((item,key)=>{
-            sum=item.quantity * item.price + sum
+        let sum = 0
+        Carts.map((item, key) => {
+            sum = item.quantity * item.price + sum
         })
         return ((Math.round(sum * 100) / 100)).toFixed(2)
     }
 
     render() {
-        let { modal } = this.state;
+        let { modal, checkOutRight } = this.state;
 
         //JSX
         return (
@@ -73,8 +76,8 @@ class ProductCart extends Component {
                                     <div className='cart__body-noproduct-title'>No products found</div>
                                 </div> */}
                                     <div className='cart__body-item'>
-                                        {this.props.Carts.map((item)=>{
-                                            return <ItemInCart item={item} key={uuidv4()}/>
+                                        {this.props.Carts.map((item) => {
+                                            return <ItemInCart item={item} key={uuidv4()} />
                                         })}
                                     </div>
                                 </div>
@@ -91,7 +94,8 @@ class ProductCart extends Component {
 
                     </div>
                     :
-                    <div className='cart-modal__outRight'></div>
+                    <div className={checkOutRight === true ? 'cart-modal__outRight' : ''}></div>
+
 
                 }
 

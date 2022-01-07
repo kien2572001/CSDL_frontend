@@ -13,20 +13,24 @@
 .product-container {
     font-family     : 'Roboto', sans-serif;
     max-width       : 300px;
-    height      : 420px;
+    //height      : 420px;
     background-color: #fff;
     border-radius   : 5px;
     position        : relative;
-    display: inline-block;
-    border: 1px solid rgb(216, 212, 212);
-    flex-basis: 20%;
-    margin-bottom: 15px;
-    margin-right: 10px;
+    display         : inline-block;
+    border          : 1px solid rgb(216, 212, 212);
+    flex-basis      : 20%;
+    margin-bottom   : 15px;
+    margin-right    : 10px;
+    border          : none;
+    box-shadow      : 0 0 2px rgba(33, 33, 33, .2);
+
+
     .item-product-discount {
         position        : absolute;
         background-color: #009f7f;
         height          : 24px;
-        width           :  45px;
+        width           : 45px;
         max-width       : 45px;
         border-radius   : 4px;
         top             : 16px;
@@ -43,17 +47,19 @@
 
 
     .item-image {
-        width : 100%;
-        cursor: pointer;
+        width        : 100%;
+        height       : 68%;
+        cursor       : pointer;
         border-radius: 5px;
     }
 
 
     .item-info {
-        display       : flex;
-        flex-direction: column;
+        display         : flex;
+        flex-direction  : column;
         //padding       : 24px;
-        padding: 0 24px;
+        padding         : 0 24px;
+
         .item-price {
             padding-bottom: 8px;
             font-weight   : 500;
@@ -88,21 +94,23 @@
             border          : none;
             height          : 32px;
             background-color: #f3f4f6;
-            border-radius   : 10px;
+            border-radius   : 4px;
             position        : relative;
             color           : #6f7883;
+            margin-bottom   : 24px;
+
             .item-btn-icon {
                 font-size  : 8px;
                 padding-top: 12px;
             }
 
             .item-btn-quatily-icon-add {
-                position     : absolute;
-                top          : 0;
-                right        : 0;
-                height       : 32px;
-                width        : 32px;
-                border-radius: 0 10px 10px 0;
+                position          : absolute;
+                top               : 0;
+                right             : 0;
+                height            : 32px;
+                width             : 32px;
+                border-radius     : 0 10px 10px 0;
                 //background-color: #e5e7eb;
             }
 
@@ -144,7 +152,7 @@
 
 .product-container:hover {
     transform          : translateY(-4px);
-    box-shadow         : 0 0 4px rgba(33, 33, 33, .2);
+    box-shadow         : 0 0 6px rgba(33, 33, 33, .2);
     transition-duration: .2s
 }
 
@@ -152,6 +160,8 @@
     max-width    : 1150px;
     margin       : 5rem auto;
     border-radius: 40px;
+
+
 }
 
 /* 
