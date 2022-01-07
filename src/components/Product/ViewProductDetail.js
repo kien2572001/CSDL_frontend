@@ -102,7 +102,7 @@ class ViewProductDetail extends Component {
                                 <div className='item-categories-title' >Categories</div>
                                 <div className='item-categories-tag'>
                                     {this.state.categories.map((item,index)=>{
-                                        return <span>{item.title}</span>
+                                        return <span key={index}>{item.title}</span>
                                     })}
                                 </div>
 

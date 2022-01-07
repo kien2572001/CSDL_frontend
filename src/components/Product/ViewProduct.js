@@ -20,12 +20,14 @@ class ViewProduct extends Component {
         if (this.state.quatily === 0) {
             return;
         }
+        this.props.DecreaseQuantity(this.state.product.pid)
         let quatilyItem = this.state.quatily - 1;
         this.setState({
             quatily: quatilyItem,
         })
     }
     handleAddItem = () => {
+        this.props.AddCart(this.state.product)
         let quatilyItem = this.state.quatily + 1;
         this.setState({
             quatily: quatilyItem,
@@ -111,7 +113,8 @@ class ViewProduct extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        language: state.app.language,
+        numberCart: state.cart.numberCart
     };
 };
 
@@ -120,6 +123,8 @@ const mapDispatchToProps = dispatch => {
         navigate: (path) => dispatch(push(path)),
         userLoginSuccess: (adminInfo) => dispatch(actions.userLoginSuccess(adminInfo)),
         userLoginFail: () => dispatch(actions.userLoginFail()),
+        AddCart: (payload) => dispatch(actions.AddCart(payload)),
+        DecreaseQuantity: (payload)=>dispatch(actions.DecreaseQuantity(payload))
     };
 };
 
