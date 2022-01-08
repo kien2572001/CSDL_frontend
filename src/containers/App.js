@@ -24,7 +24,7 @@ import ConfirmModal from '../components/ConfirmModal'
 import NavigatorBar from '../components/NAV/NavigatorBar'
 import Faq from '../components/NAV/Faq'
 import PlaceOrder from '../components/PlaceOrder/Placeorder'
-import Checkout from '../components/Checkout/Checkout'
+import CheckoutOrder from '../components/Checkout/CheckoutOrder'
 
 class App extends Component {
   handlePersistorState = () => {
@@ -52,8 +52,8 @@ class App extends Component {
           <div className='main-container'>
             <ConfirmModal />
             {/* {this.props.isLoggedIn && <Header />} */}
-            <NavigatorBar />
-            <Checkout />
+            {/* <NavigatorBar /> */}
+            <CheckoutOrder />
           </div>
         </Router>
       </Fragment>
