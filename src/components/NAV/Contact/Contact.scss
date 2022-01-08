@@ -78,6 +78,12 @@
             .contact__shopInfor-linkweb {
                 display        : flex;
                 justify-content: space-between;
+
+                a {
+                    color      : var(--green-color);
+                    font-weight: 600;
+                    font-size  : 14px;
+                }
             }
 
             .contact__shopInfor-link {
