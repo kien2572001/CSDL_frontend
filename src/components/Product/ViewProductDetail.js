@@ -6,13 +6,13 @@ import * as actions from "../../store/actions";
 import { Carousel } from 'reactstrap';
 import './ViewProductDetail.scss'
 import Apples from '../../assets/images/Apples.jpg'
-import {handleGetCategoryById,handleGetStoreById} from '../../services/productService'
+import { handleGetCategoryById, handleGetStoreById } from '../../services/productService'
 class ViewProductDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
             product: this.props.product,
-            quatily: 1,
+            quatily: 0,
             categories: [],
             store: ''
         }
@@ -21,19 +21,21 @@ class ViewProductDetail extends Component {
         if (this.state.quatily === 0) {
             return;
         }
+        this.props.DecreaseQuantity(this.state.product.pid)
         let quatilyItem = this.state.quatily - 1;
         this.setState({
             quatily: quatilyItem,
         })
     }
     handleAddItem = () => {
+        this.props.AddCart(this.state.product)
         let quatilyItem = this.state.quatily + 1;
         this.setState({
             quatily: quatilyItem,
         })
     }
 
-    async componentDidMount(){
+    async componentDidMount() {
         let data = await handleGetCategoryById(this.props.product.pid)
         let data1 = await handleGetStoreById(this.props.product.sid)
         //console.log(data1.store)
@@ -45,7 +47,7 @@ class ViewProductDetail extends Component {
 
     render() {
         let { product, quatily } = this.state;
-
+        console.log('check prop detail:', this.props);
         //JSX
         return (
             <>
@@ -53,11 +55,11 @@ class ViewProductDetail extends Component {
                 <div className='productDetail'>
                     <div className='productDetail-info '>
                         <div className='productDetail-slider '>
-                            {product.discount ===0?<></>
+                            {product.discount === 0 ? <></>
                                 :
-                                <div className='slider-discount'>{product.discount }%</div>
+                                <div className='slider-discount'>{product.discount}%</div>
                             }
-                            
+
                             <div><img className='slider-discount-img' src={product.img}></img></div>
                         </div>
                         <div className='productDetail-item '>
@@ -66,15 +68,15 @@ class ViewProductDetail extends Component {
                             <div className='item-content'><span>{product.content}</span></div>
                             <div className='item-price'>
                                 {product.discount
-                                ?
+                                    ?
                                     <>
-                                        <span className='item-price--nodiscount '>${((Math.round(product.price * 100) / 100) * (1 - product.discount/100)).toFixed(2)} </span>
+                                        <span className='item-price--nodiscount '>${((Math.round(product.price * 100) / 100) * (1 - product.discount / 100)).toFixed(2)} </span>
                                         <span className='item-price--discount'><span className=' item-price-line'></span>${product.price}</span>
                                     </>
-                                :
-                                <span className='item-price--nodiscount '>${product.price} </span>
+                                    :
+                                    <span className='item-price--nodiscount '>${product.price} </span>
                                 }
-                                
+
 
                             </div>
                             <div className='item-btnAndQuatily'>
@@ -101,8 +103,8 @@ class ViewProductDetail extends Component {
                             <div className='item-categories'>
                                 <div className='item-categories-title' >Categories</div>
                                 <div className='item-categories-tag'>
-                                    {this.state.categories.map((item,index)=>{
-                                        return <span>{item.title}</span>
+                                    {this.state.categories.map((item, index) => {
+                                        return <span key={index}>{item.title}</span>
                                     })}
                                 </div>
 
@@ -127,12 +129,16 @@ class ViewProductDetail extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        language: state.app.language,
+        numberCart: state.cart.numberCart,
+        Carts: state.cart.Carts
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        AddCart: (payload) => dispatch(actions.AddCart(payload)),
+        DecreaseQuantity: (payload) => dispatch(actions.DecreaseQuantity(payload))
     };
 };
 

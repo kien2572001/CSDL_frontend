@@ -7,6 +7,7 @@ import 'bootstrap'
 import './Home.scss'
 import HomeSearch from '../components/HomeSearch/HomeSearch';
 import Slider from '../components/Slider/Slider';
+import ProductCart from '../components/ProductCart/ProductCart'
 import {handleGetProductByCategory} from '../services/productService'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -56,6 +57,10 @@ class Home extends React.Component {
                                 )
                             })}
                         </div>
+                    </div>
+
+                    <div className='cart-shopping'>
+                        <ProductCart />
                     </div>
                 </div>
                 

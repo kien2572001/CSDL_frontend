@@ -23,6 +23,7 @@ const actionTypes = Object.freeze({
     ADD_CART : 'ADD_CART' ,
     UPDATE_CART : 'UPDATE_CART',
     DELETE_CART : 'DELETE_CART',
+    DELETE_ITEM: 'DELETE_ITEM'
 })
 
 export default actionTypes;

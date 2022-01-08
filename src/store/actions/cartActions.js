@@ -38,3 +38,11 @@ export  const DecreaseQuantity = (payload)=>{
         payload
     }
 }
+
+export const DeleteItem = (payload)=>{
+    return {
+        type: actionTypes.DELETE_ITEM,
+        payload
+    }
+}
+

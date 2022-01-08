@@ -5,7 +5,7 @@ import * as actions from "../../store/actions";
 import './NavigatorBar.scss';
 import LogoShop from '../../assets/images/Logo.png';
 import Login from '../Auth/Login';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class NavigatorBar extends Component {
     constructor(props) {
@@ -13,6 +13,8 @@ class NavigatorBar extends Component {
         this.state = {
             titleProduct: '',
             removeSearchData: false,
+            checkDropdow: false,
+
         }
     }
 
@@ -42,9 +44,16 @@ class NavigatorBar extends Component {
         })
 
     }
+    handleButtonDropdown = () => {
+        this.setState({
+            checkDropdow: !this.state.checkDropdow,
+        })
+        console.log('>>> check dropdown', this.state.checkDropdow)
+    }
+
 
     render() {
-        let { titleProduct, removeSearchData } = this.state;
+        let { titleProduct, removeSearchData, checkDropdow } = this.state;
         //JSX
         return (
             <>
@@ -58,12 +67,13 @@ class NavigatorBar extends Component {
 
                                     </li>
                                     <li className="header__navbar-item">
-                                        <a className='header__navbar-item-btn '>
+                                        <button className='header__navbar-item-btn '
+                                            onClick={() => this.handleButtonDropdown()}>
                                             <i className="far fa-lemon "></i>
                                             <span>Grocery</span>
-                                            <i className="fas fa-caret-down .header__item--icon-down"></i>
-                                        </a>
-                                        <ul className='header__navbar-item-btn-list'>
+                                            <i className={checkDropdow ? 'fas fa-caret-down' : "fas fa-caret-up"}></i>
+                                        </button>
+                                        <ul className={checkDropdow ? 'header__navbar-item-btn-list' : ' tag-display-none  header__navbar-item-btn-list'}>
                                             <li className='header__nabar-item-btn-list-store'>
                                                 <i className="far fa-lemon "></i>
 
@@ -99,7 +109,7 @@ class NavigatorBar extends Component {
                                     </span>
                                     <input className='hearder__navbar-search-btn-search'
                                         type='text'
-                                        //value={removeSearchData ? titleProduct : 'Search your products from here'}
+                                        placeholder='Search your psroducts from here'
                                         value={titleProduct}
                                         onChange={(event) => this.handleChangeSearchTitleProduct(event)}
                                     />
@@ -124,14 +134,14 @@ class NavigatorBar extends Component {
                                         </a>
                                     </li>
                                     <li className="header__navbar-item header__navbar-item--separate">
-                                        
+
                                         <Link to={'/faq'} className="header__navbar-item-link"><span>FAQ</span></Link>
 
                                     </li>
                                     <li className="header__navbar-item ">
-                                        <a href="" className="header__navbar-item-link" >
+                                        <Link to={'/contact'} className="header__navbar-item-link" >
                                             <span>Contact</span>
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li className="header__navbar-item text--strong">
                                         {/* <button type="button" className="btn btn-danger" style={{width: '50px',height: '30px'}} onClick={()=>this.handleShowLogin()} >Join</button> */}

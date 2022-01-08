@@ -23,6 +23,7 @@ import { CustomToastCloseButton } from '../components/CustomToast'
 import ConfirmModal from '../components/ConfirmModal'
 import NavigatorBar from '../components/NAV/NavigatorBar'
 import Faq from '../components/NAV/Faq'
+import Contact from '../components/NAV/Contact/Contact'
 import PlaceOrderPage from '../components/PlaceOrder/PlaceorderPage'
 import CheckoutOrder from '../components/Checkout/CheckoutOrder'
 
@@ -39,10 +40,6 @@ class App extends Component {
         this.setState({ bootstrapped: true })
       }
     }
-  }
-
-  componentDidMount() {
-    this.handlePersistorState()
   }
 
   render() {

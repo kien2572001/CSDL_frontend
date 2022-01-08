@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
 
 .btn-formLogin {
@@ -6,7 +6,8 @@
 }
 
 .login-background {
-    font-family  : 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+
     height       : 750px;
     position     : relative;
     border-radius: 10px;
@@ -204,58 +205,61 @@
     }
 }
 
-.dropdown-container{
+.dropdown-container {
     position: relative;
-    .dropdown-btn{
-        img{
+
+    .dropdown-btn {
+        img {
             border-radius: 50%;
-            border: 0px solid rgb(194, 188, 188);
-            margin-left: 12px;
+            border       : 0px solid rgb(194, 188, 188);
+            margin-left  : 12px;
         }
     }
 
-    .dropdown-box{
-        position: absolute;
-        overflow: hidden;
-        right: 0px;
-        z-index: 10;
+    .dropdown-box {
+        position        : absolute;
+        overflow        : hidden;
+        right           : 0px;
+        z-index         : 10;
         background-color: #fff;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        box-shadow      : rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
-        .dropdown-username{
-            width: 190px;
-            height: 40px;
-            line-height: 40px;
-            user-select: none;
-            font-weight: 500;
-            font-size: 12px;
-            padding-left: 25px;
+        .dropdown-username {
+            width           : 190px;
+            height          : 40px;
+            line-height     : 40px;
+            user-select     : none;
+            font-weight     : 500;
+            font-size       : 12px;
+            padding-left    : 25px;
             background-color: #009f7f;
-            color: white;
-            &:hover{
+            color           : white;
+
+            &:hover {
                 background-color: #009f7f;
-                color: white;
+                color           : white;
             }
         }
 
-        .dropdown-item{
-            width: 190px;
-            height: 40px;
-            line-height: 40px;
-            user-select: none;
-            font-weight: 500;
-            font-size: 14px;
-            opacity: 0.8;
+        .dropdown-item {
+            width       : 190px;
+            height      : 40px;
+            line-height : 40px;
+            user-select : none;
+            font-weight : 500;
+            font-size   : 14px;
+            opacity     : 0.8;
             padding-left: 25px;
-            &:hover{
+
+            &:hover {
                 background-color: #fff;
-                color: #009f7f;
+                color           : #009f7f;
             }
         }
-        
+
     }
 
-    .display-none{
+    .display-none {
         display: none;
     }
 }

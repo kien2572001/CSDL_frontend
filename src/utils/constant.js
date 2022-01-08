@@ -3,14 +3,15 @@ export const path = {
     LOGIN: '/login',
     LOG_OUT: '/logout',
     SYSTEM: '/system',
-    FAQ: '/faq'
+    FAQ: '/faq',
+    CONTACT: '/contact',
 };
 
 export const languages = {
     VI: 'vi',
     EN: 'en'
 };
- 
+
 export const manageActions = {
     ADD: "ADD",
     EDIT: "EDIT",

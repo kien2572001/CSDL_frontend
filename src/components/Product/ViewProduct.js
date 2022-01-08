@@ -13,19 +13,20 @@ class ViewProduct extends Component {
             product: this.props.product,
             quatily: 0,
             modal: false,
-
         }
     }
     handleMinusItem = () => {
         if (this.state.quatily === 0) {
             return;
         }
+        this.props.DecreaseQuantity(this.state.product.pid)
         let quatilyItem = this.state.quatily - 1;
         this.setState({
             quatily: quatilyItem,
         })
     }
     handleAddItem = () => {
+        this.props.AddCart(this.state.product)
         let quatilyItem = this.state.quatily + 1;
         this.setState({
             quatily: quatilyItem,
@@ -36,6 +37,24 @@ class ViewProduct extends Component {
         this.setState({
             modal: !this.state.modal,
         })
+    }
+
+    componentWillReceiveProps(nextProps){
+        //console.log('Hello',nextProps)
+        if (this.props.numberCart!==nextProps.numberCart){
+            let id = this.state.product.pid
+            let quantity =0
+            nextProps.Carts.map((item,key)=>{
+                if (item.pid === id){
+                    quantity = item.quantity
+                }
+            })
+            console.log('Hello')
+            this.setState({
+                quatily: quantity
+            })
+        }
+        
     }
 
     render() {
@@ -77,8 +96,6 @@ class ViewProduct extends Component {
                                 </>
                             }
 
-
-
                         </div>
                         <div className='item-name'><span>{product.title}</span></div>
 
@@ -111,7 +128,9 @@ class ViewProduct extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        language: state.app.language,
+        numberCart: state.cart.numberCart,
+        Carts: state.cart.Carts
     };
 };
 
@@ -120,6 +139,8 @@ const mapDispatchToProps = dispatch => {
         navigate: (path) => dispatch(push(path)),
         userLoginSuccess: (adminInfo) => dispatch(actions.userLoginSuccess(adminInfo)),
         userLoginFail: () => dispatch(actions.userLoginFail()),
+        AddCart: (payload) => dispatch(actions.AddCart(payload)),
+        DecreaseQuantity: (payload)=>dispatch(actions.DecreaseQuantity(payload))
     };
 };
 

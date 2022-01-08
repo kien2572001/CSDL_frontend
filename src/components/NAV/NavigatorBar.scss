@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
     --white-color: #fff;
@@ -26,11 +26,15 @@
     font-weight: 440 !important;
 }
 
-.app{
-    width: 100%;
+.app {
+    width   : 100%;
     position: fixed;
-    z-index: 5;
+    z-index : 5;
 }
+
+
+
+
 
 .tag-display-none {
     display: none;
@@ -40,11 +44,12 @@
 //
 
 .header {
-    font-family       : 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+
     //background-image: linear-gradient(0, #fe6232, #f8492f);
-    padding           : 20px 32px;
-    background-color  : #fafafa;
-    box-shadow        : 0px 15px 10px -15px rgba(33, 33, 33, .2);
+    padding         : 20px 32px;
+    background-color: #fff;
+    box-shadow      : 0px 15px 10px -15px rgba(33, 33, 33, .2);
 
 }
 
@@ -67,15 +72,16 @@
             }
 
             .header__navbar-item-btn {
-                display    : flex;
-                color      : #2eb097;
-                font-weight: 500;
-                font-size  : 16px;
-                padding    : 10px 24px;
-                border     : 1px solid #ccc;
+                display         : flex;
+                color           : #2eb097;
+                background-color: #fff;
+                font-weight     : 500;
+                font-size       : 16px;
+                padding         : 10px 24px;
+                border          : 1px solid #ccc;
 
                 text-decoration: none;
-                border-radius  : 12px;
+                border-radius  : 4px;
                 box-shadow     : 0px 1px 1px #ccc;
 
 
@@ -97,17 +103,16 @@
             font-size      : 16px;
             color          : #5e656f;
             text-decoration: none;
-            font-weight    : 400;
+            font-weight    : 500;
         }
 
 
 
-        .header__navbar-item:hover,
-        .header__navbar-item-link:hover {
-            color      : #2eb097;
-            cursor     : pointer;
-            font-weight: 700;
-
+        .header__navbar-item {
+            a:hover {
+                color : #2eb097;
+                cursor: pointer;
+            }
         }
 
 
@@ -179,64 +184,69 @@
 
 
 .header__navbar-item-btn-list {
-    position        : absolute;
-    z-index         : 88;
-    width           : 130%;
-    margin-top      : 8px;
-    color           : #2eb097;
-    font-weight     : 500;
-    font-size       : 16px;
-    border          : 1px solid #ccc;
-    background-color: var(--white-color);
-    text-decoration : none;
-    border-radius   : 12px;
-    box-shadow      : 0px 1px 1px #ccc;
+    position          : absolute;
+    z-index           : 88;
+    width             : 130%;
+    margin-top        : 8px;
+    //color           : #2eb097;
+    font-weight       : 500;
+    font-size         : 16px;
+    border            : 1px solid #ccc;
+    background-color  : var(--white-color);
+    text-decoration   : none;
+    border-radius     : 4px;
+    box-shadow        : 0px 1px 1px #ccc;
+    transition        : width 2s, height 4s;
 
-    transform-origin: 0 0 0;
-    transform       : rotate3d(1, 0, 0, -90deg);
+
+
+
 
     .header__nabar-item-btn-list-store {
         list-style: none;
         padding   : 10px 0;
 
         a {
-            margin-left: 10px;
+            margin-left: 20px;
         }
     }
 
 
-}
 
-.header__navbar-item-btn:hover {
-    &.header__navbar-item-btn {
-        border    : 1px solid #2eb097;
-        transform : rotate(180deg);
-        transition: transform 0.3s;
+
+    .header__nabar-item-btn-list-store:hover {
+
+
+
+        color      : #2eb097;
+        cursor     : pointer;
+        font-weight: 700;
+        font-size  : 24px;
     }
 
-}
-
-
-.header__item:hover .header__item--icon-down {
-    transform : rotate(180deg);
-    transition: transform 0.3s;
-}
-
-.header__item-list {
-    position        : absolute;
-    background-color: var(--white-color);
-    top             : 78px;
-    box-shadow      : 0px 1px 1px #ccc;
-    border-top      : 2px solid #5c5c5c;
-    display         : block;
-    min-width       : 120px;
-    transform-origin: 0 0 0;
-    transform       : rotate3d(1, 0, 0, -90deg);
-    font-size       : 1.4rem;
-}
 
 
 
-.header__navbar-item--strong {
-    font-weight: 400;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
