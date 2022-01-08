@@ -197,6 +197,24 @@
   padding: 8px 0px;
 }
 
+.link-order {
+  width: 300px;
+  height: 45px;
+  background-color: #009f7f;
+  border-color: #009f7f;
+  padding: 7px;
+}
+.link-order:hover {
+  background-color: #00614e;
+}
+
+.link-order::after {
+  background-color: #00614e;
+}
+.link-order:focus {
+  background-color: #00614e;
+}
+
 .btn-order {
   width: 300px;
   height: 45px;

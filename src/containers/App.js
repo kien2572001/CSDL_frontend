@@ -53,7 +53,14 @@ class App extends Component {
             <ConfirmModal />
             {/* {this.props.isLoggedIn && <Header />} */}
             {/* <NavigatorBar /> */}
-            <PlaceOrderPage />
+            <Switch>
+              <Route path='/checkout'>
+                <CheckoutOrder />
+              </Route>
+              <Route path='/placeorder'>
+                <PlaceOrderPage />
+              </Route>
+            </Switch>
           </div>
         </Router>
       </Fragment>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export default class YourOrder extends Component {
   render() {
@@ -29,9 +30,11 @@ export default class YourOrder extends Component {
             <h4>$1.60</h4>
           </div>
         </div>
-        <button className='btn btn-primary btn-order btn-lg'>
+        {/* <button className='btn btn-primary btn-order btn-lg'> */}
+        <Link to='/placeorder' className='btn btn-primary link-order btn-lg'>
           Place Order
-        </button>
+        </Link>
+        {/* </button> */}
       </div>
     )
   }
