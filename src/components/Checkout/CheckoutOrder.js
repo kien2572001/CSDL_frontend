@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import NavigatorBar from '../NAV/NavigatorBar'
 import Checkout from './Checkout'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { createStore } from 'redux'
 import reducer from './reducer'

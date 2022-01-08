@@ -23,7 +23,7 @@ import { CustomToastCloseButton } from '../components/CustomToast'
 import ConfirmModal from '../components/ConfirmModal'
 import NavigatorBar from '../components/NAV/NavigatorBar'
 import Faq from '../components/NAV/Faq'
-import PlaceOrder from '../components/PlaceOrder/Placeorder'
+import PlaceOrderPage from '../components/PlaceOrder/PlaceorderPage'
 import CheckoutOrder from '../components/Checkout/CheckoutOrder'
 
 class App extends Component {
@@ -53,7 +53,7 @@ class App extends Component {
             <ConfirmModal />
             {/* {this.props.isLoggedIn && <Header />} */}
             {/* <NavigatorBar /> */}
-            <CheckoutOrder />
+            <PlaceOrderPage />
           </div>
         </Router>
       </Fragment>
