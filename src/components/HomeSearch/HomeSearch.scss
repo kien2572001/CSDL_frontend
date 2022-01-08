@@ -1,81 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-.home-search{
-    width: 100%;
-    background-image: url(../../assets/images/background.png);
-    height: 970px;
-    background-position: 0px -100px ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0 0;
-    padding: 20px 80px;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
-    .slogan-content{
-        text-align: center;
-        padding: 300px 0;
+.home-search {
+  width              : 100%;
+  background-image   : url(../../assets/images/background.png);
+  height             : 970px;
+  background-position: 0px -100px;
+  background-repeat  : no-repeat;
+  background-size    : cover;
+  margin             : 0 0;
+  padding            : 20px 80px;
 
-        h1{
-            font-size: 48px;
-            font-weight: 700;
-            letter-spacing: 0px;
-            font-family     : 'Roboto', sans-serif;
-        }
+  .slogan-content {
+    text-align: center;
+    padding   : 300px 0;
+
+    h1 {
+      font-size     : 48px;
+      font-weight   : 700;
+      letter-spacing: 0px;
+      font-family   : 'Open Sans', sans-serif;
+
     }
+  }
 
-    .fonttext {
-        font-family     : 'Roboto', sans-serif !important;
-      }
-      .bg-light {
-        background-color: #fff !important;
-      }
-      .form-inline {
-          width: 100% !important;
-          height: 56px !important;
-          text-align: center !important;
-        }
-        
-        .form-control {
-          width: 40% !important;
-          height: 100% !important;
-          display: inline !important;
-          vertical-align: middle !important;
-          border-right: 0 !important;
-          border-top-right-radius: 0 !important;
-          border-bottom-right-radius: 0 !important;
-        }
-        
-        .form-control:focus {
-          color: #212529;
-          background-color: #fff;
-          border-color: #009F7F !important;
-          outline: 0;
-          box-shadow: 0 0 0 0 !important
-        }
-        
-        .btn {
-          width: 10% !important;
-          height: 100% !important;
-          border-left: 0 !important;
-          background-color: #009F7F !important;
-          color: #fff !important;
-          border-top-left-radius: 0 !important;
-          border-bottom-left-radius: 0 !important;
-          opacity: 0.9;
-        }
-        
-        .btn:hover {
-          /* background-color: #009430 !important; */
-          opacity: 1;
-        }
-        
-        .fas {
-          width: 40px !important;
-        }
-      
-        span {
-          font-weight: 600;
-          font-size: 17px;
-        }
-        .nuller {
-          padding-bottom: 260px !important;
-        }
+  .fonttext {
+    font-family: 'Open Sans', sans-serif !important;
+  }
+
+  .bg-light {
+    background-color: #fff !important;
+  }
+
+  .form-inline {
+    width     : 100% !important;
+    height    : 56px !important;
+    text-align: center !important;
+  }
+
+  .form-control {
+    width                     : 40% !important;
+    height                    : 100% !important;
+    display                   : inline !important;
+    vertical-align            : middle !important;
+    border-right              : 0 !important;
+    border-top-right-radius   : 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
+  .form-control:focus {
+    color           : #212529;
+    background-color: #fff;
+    border-color    : #009F7F !important;
+    outline         : 0;
+    box-shadow      : 0 0 0 0 !important
+  }
+
+  .btn {
+    width                    : 10% !important;
+    height                   : 100% !important;
+    border-left              : 0 !important;
+    background-color         : #009F7F !important;
+    color                    : #fff !important;
+    border-top-left-radius   : 0 !important;
+    border-bottom-left-radius: 0 !important;
+    opacity                  : 0.9;
+  }
+
+  .btn:hover {
+    /* background-color: #009430 !important; */
+    opacity: 1;
+  }
+
+  .fas {
+    width: 40px !important;
+  }
+
+  span {
+    font-weight: 600;
+    font-size  : 17px;
+  }
+
+  .nuller {
+    padding-bottom: 260px !important;
+  }
 }
