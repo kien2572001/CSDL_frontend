@@ -241,7 +241,7 @@ class PlaceOrder extends Component {
                   width='20.894'
                   height='16'
                   viewBox='0 0 20.894 16'
-                  class='w-2 h-2 text-light flex-shrink-0'
+                  className='w-2 h-2 text-light flex-shrink-0'
                   className='checkbox-icon'
                 >
                   <path
@@ -253,8 +253,9 @@ class PlaceOrder extends Component {
                 </svg>
               </div>
               <p className='note-content'>
-                <h6>Note</h6>: This order has products from multiple vendors. So
-                we divided this order into multiple vendor orders
+                <span className='note-bold'>Note</span>: This order has products
+                from multiple vendors. So we divided this order into multiple
+                vendor orders
               </p>
             </div>
             <table className='table bgc-grey'>
