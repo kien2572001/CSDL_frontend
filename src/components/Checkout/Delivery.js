@@ -11,9 +11,13 @@ export default class Delivery extends Component {
 
   handleDelivery = (e) => {
     this.setState({
-      methodDelivery: e.target.childNodes[0].textContent,
+      methodDelivery: e.currentTarget.childNodes[0].textContent,
     })
   }
+
+  // componentDidUpdate() {
+  //   console.log(this.state.methodDelivery)
+  // }
 
   render() {
     return (
