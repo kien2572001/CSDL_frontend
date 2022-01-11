@@ -1,29 +1,35 @@
 import axios from '../axios'
 
-let handleGetProductByCategory = (category)=>{
-    let link  = '/api/get-product?category=' + encodeURIComponent(category)
-    return axios.get(link)
+let handleGetProductByCategory = (category) => {
+  let link = '/api/get-product?category=' + encodeURIComponent(category)
+  return axios.get(link)
 }
 
-
-let handleGetCategoryById = (id)=>{
-    return axios.get(`/api/get-category-by-id?id=${id}`)
+let handleGetCategoryById = (id) => {
+  return axios.get(`/api/get-category-by-id?id=${id}`)
 }
 
-let handleGetStoreById = (id)=>{
-    return axios.get(`/api/get-store-by-id?id=${id}`)
+let handleGetStoreById = (id) => {
+  return axios.get(`/api/get-store-by-id?id=${id}`)
 }
 
-let handleSaveToOrderItem  = (item)=>{
-    return axios.post('/api/save-to-order-item',item)
+let handleSaveToOrderItem = (item) => {
+  return axios.post('/api/save-to-order-item', item)
 }
 
-let handleFindOrderById = (id)=>{
-    return axios.get('/api/find-order-by-id?id='+encodeURIComponent(id))
+let handleFindOrderById = (id) => {
+  return axios.get('/api/find-order-by-id?id=' + encodeURIComponent(id))
 }
 
-let handleFindProductById = (id)=>{
-    return axios.get('/api/find-product-by-id?id='+id)
+let handleFindProductById = (id) => {
+  return axios.get(`/api/find-product-by-id?id=${id}`)
 }
 
-export {handleGetProductByCategory,handleGetCategoryById,handleGetStoreById,handleSaveToOrderItem,handleFindOrderById,handleFindProductById}
+export {
+  handleGetProductByCategory,
+  handleGetCategoryById,
+  handleGetStoreById,
+  handleSaveToOrderItem,
+  handleFindOrderById,
+  handleFindProductById,
+}
