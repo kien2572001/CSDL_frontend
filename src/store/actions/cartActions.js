@@ -19,10 +19,9 @@ export  const UpdateCart = (payload)=>{
         payload
     }
 }
-export  const DeleteCart = (payload)=>{
+export  const DeleteCart = ()=>{
     return{
         type: actionTypes.DELETE_CART,
-        payload
     }
 }
  

@@ -7,14 +7,19 @@ import './ProductCart.scss'
 import NoProduct from '../../assets/images/zyro-image.png'
 import ItemInCart from './ItemInCart';
 import { v4 as uuidv4 } from 'uuid';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useRouteMatch
+  } from "react-router-dom";
 class ProductCart extends Component {
     constructor(props) {
         super(props);
         this.state = {
             modal: false,
             checkOutRight: false,
-
-
         }
     }
     toggle = () => {
@@ -83,10 +88,14 @@ class ProductCart extends Component {
                                 </div>
 
                                 <div className='cart__footer'>
-                                    <button className='cart__footer-btn'>
+                                    <Link to={'/checkout'} className='cart__footer-btn'>
                                         <span className='cart__footer-btn-title'>Checkout</span>
                                         <span className='cart__footer-btn-price'>${this.sumCart()}</span>
-                                    </button>
+                                    </Link>
+                                    {/* <button className='cart__footer-btn'>
+                                        <span className='cart__footer-btn-title'>Checkout</span>
+                                        <span className='cart__footer-btn-price'>${this.sumCart()}</span>
+                                    </button> */}
                                 </div>
                             </div>
                         </div>

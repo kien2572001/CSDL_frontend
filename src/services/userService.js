@@ -8,4 +8,8 @@ let handleLogin = (email,passWord)=>{
 }
 
 
-export {handleLogin}
+let handleSaveOrder = (order)=>{
+    return axios.post('/api/save-order',order)
+}
+
+export {handleLogin,handleSaveOrder}

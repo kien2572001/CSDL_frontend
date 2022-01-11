@@ -7,11 +7,23 @@ let handleGetProductByCategory = (category)=>{
 
 
 let handleGetCategoryById = (id)=>{
-    return axios.get(`./api/get-category-by-id?id=${id}`)
+    return axios.get(`/api/get-category-by-id?id=${id}`)
 }
 
 let handleGetStoreById = (id)=>{
-    return axios.get(`./api/get-store-by-id?id=${id}`)
+    return axios.get(`/api/get-store-by-id?id=${id}`)
 }
 
-export {handleGetProductByCategory,handleGetCategoryById,handleGetStoreById}
+let handleSaveToOrderItem  = (item)=>{
+    return axios.post('/api/save-to-order-item',item)
+}
+
+let handleFindOrderById = (id)=>{
+    return axios.get('/api/find-order-by-id?id='+encodeURIComponent(id))
+}
+
+let handleFindProductById = (id)=>{
+    return axios.get('/api/find-product-by-id?id='+id)
+}
+
+export {handleGetProductByCategory,handleGetCategoryById,handleGetStoreById,handleSaveToOrderItem,handleFindOrderById,handleFindProductById}

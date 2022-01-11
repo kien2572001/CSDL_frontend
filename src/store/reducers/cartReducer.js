@@ -89,6 +89,12 @@ const appReducer = (state = initialCart,action)=>{
                 Carts: arr1
             }
 
+        case actionTypes.DELETE_CART:
+            return {
+                numberCart: 0,
+                Carts: []
+            }
+
         default :
             return {
                 ...state

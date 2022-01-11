@@ -23,6 +23,10 @@ import NavigatorBar from '../components/NAV/NavigatorBar';
 import Faq from '../components/NAV/Faq';
 import Contact from '../components/NAV/Contact/Contact';
 
+import PlaceOrder from '../components/PlaceOrder/Placeorder';
+import CheckoutOrder from '../components/Checkout/CheckoutOrder'
+import MyOders from '../components/MyOders/MyOders';
+
 class App extends Component {
 
     handlePersistorState = () => {
@@ -58,6 +62,11 @@ class App extends Component {
                                 <Route path={path.CONTACT} exact component={(Contact)} />
                                 {/* <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} /> */}
                                 <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                <Route path='/checkout'>
+                                    <CheckoutOrder />
+                                </Route>
+                                <Route path="/placeorder/:id" component={(PlaceOrder)}/>
+                                <Route path='/my-order'  component={(MyOders)}/>
                             </Switch>
                         </span>
                         <ToastContainer

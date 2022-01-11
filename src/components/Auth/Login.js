@@ -8,7 +8,10 @@ import ViewProduct from '../Product/ViewProduct';
 import { handleLogin } from '../../services/userService'
 import 'bootstrap'
 import LogoShop from '../../assets/images/Logo.png';
-
+import {
+    Link,
+    withRouter
+  } from "react-router-dom";
 
 class Login extends Component {
     constructor(props) {
@@ -113,9 +116,9 @@ class Login extends Component {
                                     <div className='dropdown-item'>
                                         Profile
                                     </div>
-                                    <div className='dropdown-item'>
+                                    <Link to='/my-order' className='dropdown-item'>
                                         My orders
-                                    </div>
+                                    </Link>
                                     <div className='dropdown-item' onClick={() => this.handleLogoutButton()}>
                                         Logout
                                     </div>
