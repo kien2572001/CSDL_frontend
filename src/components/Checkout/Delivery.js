@@ -1,4 +1,4 @@
- import React, { Component } from 'react'
+import React, { Component } from 'react'
 
 export default class Delivery extends Component {
   constructor(props) {
@@ -12,21 +12,19 @@ export default class Delivery extends Component {
   handleDelivery = (e) => {
     //console.log(e.target.childNodes[0].textContent)
     this.setState({
-      methodDelivery: e.target.childNodes[0].textContent,
+      methodDelivery: e.currentTarget.childNodes[0].textContent,
     })
-    this.props.setDelivery(e.target.childNodes[0].textContent)
+    this.props.setDelivery(e.currentTarget.childNodes[0].textContent)
   }
 
-  handleSave = ()=>{
+  handleSave = () => {
     this.props.setDelivery(this.state.methodDelivery)
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
     })
   }
 
-  componentDidMount(){
-    
-  }
+  componentDidMount() {}
 
   render() {
     return (

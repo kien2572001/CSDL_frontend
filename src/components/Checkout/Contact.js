@@ -19,10 +19,10 @@ export default class Contact extends Component {
     }
   }
 
-  handleSave = ()=>{
+  handleSave = () => {
     this.props.setPhoneNumber(this.state.phoneNumber)
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
     })
   }
 
@@ -44,7 +44,7 @@ export default class Contact extends Component {
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
-                class='w-4 h-4 stroke-2 me-0.5'
+                className='w-4 h-4 stroke-2 me-0.5'
                 data-selected='true'
                 data-label-id='0'
                 // data-metatip='true'
@@ -83,7 +83,12 @@ export default class Contact extends Component {
                     this.setState({ phoneNumber: e.target.value })
                   }
                 />
-                <Button color='success btn-custom h-auto' onClick={()=>this.handleSave}>Save</Button>
+                <Button
+                  color='success btn-custom h-auto'
+                  onClick={() => this.handleSave}
+                >
+                  Save
+                </Button>
               </InputGroup>
             </FormGroup>
           </ModalBody>

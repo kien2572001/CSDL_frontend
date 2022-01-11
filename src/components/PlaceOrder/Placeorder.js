@@ -1,48 +1,66 @@
 import React, { Component } from 'react'
 import './PlaceOrder.scss'
+import { Link, withRouter } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 import {
-  Link,
-  withRouter
-} from "react-router-dom";
-
-
-import {handleFindOrderById,handleFindProductById} from '../../services/productService'
+  handleFindOrderById,
+  handleFindProductById,
+} from '../../services/productService'
 class PlaceOrder extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        orderItem: null,
-        orderId: '',
-        createdAt: null,
-        total: null,
-        address: null,
-        phone: null,
-        total: null,
-        delivery: null,
-        status: null,
-        arr: [],
+      orderItem: null,
+      orderId: '',
+      createdAt: null,
+      total: null,
+      address: null,
+      phone: null,
+      total: null,
+      delivery: null,
+      status: null,
+      arr: [],
     }
   }
 
-
-  async componentWillMount(){
+  async componentWillMount() {
     //console.log(this.props.match.params.id)
     let data = await handleFindOrderById(this.props.match.params.id)
     //console.log('Data',data)
     //Gan them push vao de tranh th data = null
-    if (data.length ===0) {
-      this.props.history.push('/');
-      return;
+    if (data.length === 0) {
+      this.props.history.push('/')
+      return
+    }
+    const findID = async (id) => {
+      const item = await handleFindProductById(id)
+      return item
     }
 
-    let arr  = []
-    data.map(async (item)=>{
-      let product = await handleFindProductById(item.pid)
-      product.quantity = item.quantity
-      product.price = item.price
-      arr.push(product)
+    // const tempArr = data.map(async (item) => {
+    //   let product = await handleFindProductById(item.pid)
+    //   product.quantity = item.quantity
+    //   product.price = item.price
+    //   console.log(product)
+    //   arr.push(product)
+    //   return product
+    // })
+    data.forEach((item) => {
+      let product = findID(item.pid)
+      product
+        .then((data) => {
+          const info = { ...data[0] }
+          info.quantity = item.quantity
+          info.price = item.price
+          console.log('info', info)
+          this.setState({ arr: [info, ...this.state.arr] })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     })
-    //console.log('Arr',arr)
+    // console.log('Arr', arr)
+    // console.log('Data', data)
     this.setState({
       orderItem: data,
       orderId: data[0].orderId,
@@ -52,14 +70,13 @@ class PlaceOrder extends Component {
       phone: data[0].phone,
       delivery: data[0].delivery,
       status: data[0].status,
-      arr: arr
+      // arr: arr,
     })
     //console.log('ARR: ',this.state.arr)
   }
 
   render() {
-    let arr = this.state.arr
-    console.log('Render: ',arr)
+    console.log('Render: ', this.state.arr)
     return (
       <section className='ph-page'>
         <div className='ph-container'>
@@ -70,7 +87,7 @@ class PlaceOrder extends Component {
                 <p>{this.state.status}</p>
               </div>
             </div>
-            <Link to="/">Back to Home</Link>
+            <Link to='/'>Back to Home</Link>
             {/* <a href=''>Back to Home</a> */}
           </div>
           <div className='ph-order'>
@@ -80,7 +97,13 @@ class PlaceOrder extends Component {
             </div>
             <div className='order-info'>
               <h3 className='info-title'>Date</h3>
-              <p className='info-content'>{(new Date(this.state.createdAt)).toLocaleDateString('en-US', {  year: 'numeric', month: 'long', day: 'numeric' })}</p>
+              <p className='info-content'>
+                {new Date(this.state.createdAt).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
             </div>
             <div className='order-info'>
               <h3 className='info-title'>Total</h3>
@@ -115,7 +138,13 @@ class PlaceOrder extends Component {
               <h2 className='detail-heading'>Order Details</h2>
               <div className='mb-15'>
                 <strong className='detail-body'>Total Item</strong>
-                <span className='detail-info pl-40'>6 Items</span>
+                <span className='detail-info pl-40'>
+                  {this.state.arr.reduce(
+                    (totalItem, item) => totalItem + item.quantity,
+                    0
+                  )}{' '}
+                  Items
+                </span>
               </div>
               <div className='mb-15'>
                 <strong className='detail-body'>Delivery Time</strong>
@@ -124,9 +153,7 @@ class PlaceOrder extends Component {
               <div className='mb-15'>
                 <strong className='detail-body'>Shipping Address</strong>
                 <div className='ship'>
-                  <span className='detail-address'>
-                    {this.state.address}
-                  </span>
+                  <span className='detail-address'>{this.state.address}</span>
                 </div>
               </div>
             </div>
@@ -141,35 +168,35 @@ class PlaceOrder extends Component {
             </thead>
           </table>
           <div className='ph-items overflow-auto'>
-          <table className='table table-borderless'>
-            <tbody>
-                {this.state.arr.map((item)=>{
-                  console.log('Item',item)
+            <table className='table table-borderless'>
+              <tbody>
+                {this.state.arr.map((item) => {
+                  console.log('Item', item)
                   return (
-                    <tr>
+                    <tr key={uuidv4()}>
                       <td>
                         <div className='list-items'>
-                          <img
-                            src='https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F6%2Fconversions%2Fclementines-thumbnail.jpg&w=1920&q=75'
-                            alt=''
-                          />
+                          <img src={item.img} alt={item.title} />
                           <div className='item-info'>
                             <span className='item-name'>
-                              Clementines x <span className='item-unit'>1lb</span>
+                              {item.title} x{' '}
+                              <span className='item-unit'>{item.unit}</span>
                             </span>
-                            <span className='item-price'>$2.50</span>
+                            <span className='item-price'>${item.price}</span>
                           </div>
                         </div>
                       </td>
-                      <td>1</td>
-                      <td className='text-center'>$2.50</td>
+                      <td>{item.quantity}</td>
+                      <td className='text-center'>
+                        ${(item.price * item.quantity).toFixed(2)}
+                      </td>
                     </tr>
                   )
                 })}
-            </tbody>
-          </table>
+              </tbody>
+            </table>
           </div>
-          <div className='ph-sub-orders'>
+          {/* <div className='ph-sub-orders'>
             <h2 className='detail-heading'>Sub Order</h2>
             <div className='box-note'>
               <div className='box-icon'>
@@ -226,7 +253,7 @@ class PlaceOrder extends Component {
                 </tbody>
               </table>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     )
