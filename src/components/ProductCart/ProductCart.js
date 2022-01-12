@@ -13,7 +13,7 @@ import {
     Route,
     Link,
     useRouteMatch
-  } from "react-router-dom";
+} from "react-router-dom";
 class ProductCart extends Component {
     constructor(props) {
         super(props);
@@ -84,6 +84,9 @@ class ProductCart extends Component {
                                         {this.props.Carts.map((item) => {
                                             return <ItemInCart item={item} key={uuidv4()} />
                                         })}
+                                    </div>
+                                    <div className='cart__body-item--not'>
+
                                     </div>
                                 </div>
 
