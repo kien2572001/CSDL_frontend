@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import './NavigatorBar.scss';
-import LogoShop from '../../assets/images/Logo.png';
+import LogoShop from '../../assets/images/PickBazar.png';
 import Login from '../Auth/Login';
 import { Link } from 'react-router-dom'
 
@@ -71,7 +71,7 @@ class NavigatorBar extends Component {
                                             onClick={() => this.handleButtonDropdown()}>
                                             <i className="far fa-lemon "></i>
                                             <span>Grocery</span>
-                                            <i className={checkDropdow ? 'fas fa-caret-down' : "fas fa-caret-up"}></i>
+                                            <i className={checkDropdow ? 'fas fa-caret-up' : "fas fa-caret-down"}></i>
                                         </button>
                                         <ul className={checkDropdow ? 'header__navbar-item-btn-list' : ' tag-display-none  header__navbar-item-btn-list'}>
                                             <li className='header__nabar-item-btn-list-store'>

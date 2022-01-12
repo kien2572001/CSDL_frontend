@@ -7,11 +7,11 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import ViewProduct from '../Product/ViewProduct';
 import { handleLogin } from '../../services/userService'
 import 'bootstrap'
-import LogoShop from '../../assets/images/Logo.png';
+import LogoShop from '../../assets/images/PickBazar.png';
 import {
     Link,
     withRouter
-  } from "react-router-dom";
+} from "react-router-dom";
 
 class Login extends Component {
     constructor(props) {
@@ -113,9 +113,9 @@ class Login extends Component {
                                     <div className='dropdown-username'>
                                         Username
                                     </div>
-                                    <div className='dropdown-item'>
+                                    <Link to='/profile' className='dropdown-item'>
                                         Profile
-                                    </div>
+                                    </Link>
                                     <Link to='/my-order' className='dropdown-item'>
                                         My orders
                                     </Link>
@@ -138,7 +138,7 @@ class Login extends Component {
                             <div className='login-container'>
                                 <div className='login-content'>
                                     <div className='col-12  text-login'>
-                                        <img src={LogoShop} />
+                                        <img src={LogoShop} className='login-logo' />
                                     </div>
                                     <div className='col-12 text-contentlogin'>
                                         Login with your email &amp; password

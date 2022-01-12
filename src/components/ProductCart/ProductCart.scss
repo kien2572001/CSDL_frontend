@@ -178,10 +178,10 @@
 
             .cart__body {
                 background-color: var(--white-color);
-                height          : 1080px;
+                height          : 980px;
                 top             : 20px;
                 padding-top     : 61px;
-
+                overflow        : auto;
 
                 .cart__body-noproduct {
 
@@ -221,7 +221,8 @@
                     font-size         : 14px;
                     font-weight       : 600;
                     border            : none;
-                    text-decoration: none;
+                    text-decoration   : none;
+
                     span {
                         align-self: center;
                     }
@@ -236,7 +237,7 @@
                         background-color: var(--white-color);
                         padding         : 12px 20px;
                         border-radius   : 30px;
-                        margin-right: 5px;
+                        margin-right    : 5px;
                     }
                 }
             }
