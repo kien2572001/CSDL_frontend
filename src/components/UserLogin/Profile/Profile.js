@@ -56,9 +56,9 @@ class Profile extends Component {
 
                                 </li>
                                 <li className='user_sidebar-list-item'>
-                                    <a className='user_sidebar-list-item-link'>
-                                        Change Password
-                                    </a>
+
+                                    <Link to={'/change-password'} className="user_sidebar-list-item-link"><span>Change Password</span></Link>
+
                                 </li>
                                 <li className='user_sidebar-list-item'>
                                     <a className='user_sidebar-list-item-link'>
@@ -107,12 +107,12 @@ class Profile extends Component {
                                 />
                             </div>
                             <div className='profile__infor-form'>
-                                <label className='profile__infor-title'>Name</label>
-                                <input className='profile__infor-input'></input>
+                                <label className='profile__infor-title' htmlFor='profile__infor-name'>Name</label>
+                                <input className='profile__infor-input' id='profile__infor-name'></input>
                             </div>
                             <div className='profile__infor-form'>
-                                <label className='profile__infor-title'>Bio</label>
-                                <textarea className='profile__infor-text'></textarea>
+                                <label className='profile__infor-title' htmlFor='profile__infor-bio'>Bio</label>
+                                <textarea className='profile__infor-text' id='profile__infor-bio'></textarea>
                             </div>
                             <div className='profile__infor-btn'>
                                 <button className='profile__infor-btn--save'>Save</button>

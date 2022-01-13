@@ -5,7 +5,8 @@ export const path = {
     SYSTEM: '/system',
     FAQ: '/faq',
     CONTACT: '/contact',
-    PROFILE: '/profile'
+    PROFILE: '/profile',
+    CHANGE_PASSWORD: '/change-password',
 };
 
 export const languages = {
