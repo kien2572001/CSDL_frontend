@@ -23,7 +23,18 @@ class PlaceOrder extends Component {
     }
   }
 
-  async componentWillMount() {
+  makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+    charactersLength));
+    }
+    return result;
+  }
+
+  async componentDidMount() {
     //console.log(this.props.match.params.id)
     let data = await handleFindOrderById(this.props.match.params.id)
     //console.log('Data',data)

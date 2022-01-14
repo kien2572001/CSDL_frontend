@@ -4,21 +4,28 @@ import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import './ItemInCart.scss'
 import Apples from "../../assets/images/Apples.jpg"
+import {
+    handleFindOrderById,
+    handleFindProductById,
+  } from '../../services/productService'
 class ItemInCart extends Component {
     constructor(props) {
         super(props);
         this.state = {
             item: this.props.item,
             quantity: this.props.item.quantity,
+            max: 1000
         }
     }
     handleUpItem = () => {
+        if (this.state.quantity===this.state.max) return
         this.props.AddCart(this.state.item)
         // this.setState({
         //     quantity: this.state.quantity + 1,
         // })
     }
     handleDownItem = () => {
+        if (this.state.quantity===0) return
         this.props.DecreaseQuantity(this.state.item.pid)
         // this.setState({
         //     quantity: this.state.quantity - 1,
@@ -26,6 +33,13 @@ class ItemInCart extends Component {
     }
     handleCloseItem = () => {
         this.props.DeleteItem(this.state.item.pid)
+    }
+
+    async componentDidMount(){
+        let data = await handleFindProductById(this.props.item.pid)
+        this.setState({
+            max: data[0].quantity
+        })
     }
 
     render() {

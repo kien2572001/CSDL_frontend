@@ -26,6 +26,8 @@ class ViewProduct extends Component {
         })
     }
     handleAddItem = () => {
+        console.log(`Hien tai: ${this.state.quatily} Tong: ${this.state.product.quantity}`)
+        if (this.state.quatily === this.state.product.quantity) return;
         this.props.AddCart(this.state.product)
         let quatilyItem = this.state.quatily + 1;
         this.setState({
@@ -49,7 +51,6 @@ class ViewProduct extends Component {
                     quantity = item.quantity
                 }
             })
-            console.log('Hello')
             this.setState({
                 quatily: quantity
             })

@@ -23,6 +23,17 @@ class Checkout extends Component {
     }
   }
 
+  makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+    charactersLength));
+    }
+    return result;
+  }
+
   setPhoneNumber = (phone) => {
     this.setState({
       phone: phone
@@ -55,7 +66,7 @@ class Checkout extends Component {
   }
 
   saveOrder = async () => {
-    let orderId = uuidv4()
+    let orderId = this.makeid(8)
     //Save order
     let order = {
       orderId: orderId,
@@ -77,7 +88,10 @@ class Checkout extends Component {
     })
     this.props.DeleteCart()
     //console.log( typeof orderId)
-    this.props.history.push('/placeorder/' + encodeURIComponent(orderId));
+    setTimeout(() => {
+      this.props.history.push('/placeorder/' + encodeURIComponent(orderId));
+    }, 1000);
+    
   }
 
   render() {

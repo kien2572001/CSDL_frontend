@@ -97,6 +97,12 @@ class Login extends Component {
         this.props.processLogout()
     }
 
+    handleOnMouseOut = ()=>{
+        this.setState({
+            isShowUserOption: false
+        })
+    }
+
     render() {
         //JSX
         return (
@@ -105,8 +111,8 @@ class Login extends Component {
                     {this.props.isLoggedIn
                         ?
                         <>
-                            <div className='dropdown-container'>
-                                <div className='dropdown-btn' onClick={() => this.hanldeShowUserOption()}>
+                            <div className='dropdown-container' onMouseOver={() => this.hanldeShowUserOption()} onMouseOut={()=>this.handleOnMouseOut()}>
+                                <div className='dropdown-btn' >
                                     <img src="https://pickbazar-react-rest.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fsrc%2Fassets%2Fplaceholders%2Favatar.2a4ed68cad8ebe21317b04e155b6b245.svg&w=1920&q=75" alt="Avatar" />
                                 </div>
                                 <div className={this.state.isShowUserOption ? 'dropdown-box' : 'dropdown-box display-none'}>
