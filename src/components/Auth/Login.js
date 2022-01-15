@@ -19,15 +19,20 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            isShowPassword: false,
             modal: false,
             errMessage: '',
-            isShowUserOption: false
+            isShowUserOption: false,
+            isShowPassword: false,
+
+            isShowModalForgotPassword: false,
+            isShowModalRegister: false,
         }
     }
     handleShowLogin = () => {
         this.setState({
             modal: !this.state.modal,
+            isShowModalForgotPassword: false,
+            isShowModalRegister: false,
         });
     };
     handleOnChangeUsername = (event) => {
@@ -83,7 +88,7 @@ class Login extends Component {
     }
     handleShowHidePassword = () => {
         this.setState({
-            isShowPassword: !this.state.isShowPassword
+            isShowPassword: !this.state.isShowPassword,
         })
     }
 
@@ -97,21 +102,38 @@ class Login extends Component {
         this.props.processLogout()
     }
 
-    handleOnMouseOut = ()=>{
+    handleOnMouseOut = () => {
         this.setState({
             isShowUserOption: false
         })
     }
 
+    handleShowModalForgotPassword = () => {
+        console.log('Check forgot password')
+        this.setState({
+            isShowModalForgotPassword: !this.state.isShowModalForgotPassword,
+
+        })
+    }
+    handleShowModalRegister = () => {
+        console.log('Check forgot Register')
+    }
+    handleShowModalLogin = () => {
+        console.log('Check login')
+    }
+
+
     render() {
         //JSX
+
+
         return (
             <>
                 <div >
                     {this.props.isLoggedIn
                         ?
                         <>
-                            <div className='dropdown-container' onMouseOver={() => this.hanldeShowUserOption()} onMouseOut={()=>this.handleOnMouseOut()}>
+                            <div className='dropdown-container' onMouseOver={() => this.hanldeShowUserOption()} onMouseOut={() => this.handleOnMouseOut()}>
                                 <div className='dropdown-btn' >
                                     <img src="https://pickbazar-react-rest.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fsrc%2Fassets%2Fplaceholders%2Favatar.2a4ed68cad8ebe21317b04e155b6b245.svg&w=1920&q=75" alt="Avatar" />
                                 </div>
@@ -137,81 +159,120 @@ class Login extends Component {
                             className="btn btn-danger"
                             style={{ width: '50px', height: '30px', fontSize: '14px', backgroundColor: '#009F7F' }}
                             onClick={() => this.handleShowLogin()} >
+
                             Join
                         </button>}
-                    <Modal funk='true' isOpen={this.state.modal} toggle={() => this.handleShowLogin()} className={'abcModalClass'} >
-                        <div className='login-background'>
-                            <div className='login-container'>
-                                <div className='login-content'>
-                                    <div className='col-12  text-login'>
-                                        <img src={LogoShop} className='login-logo' />
-                                    </div>
-                                    <div className='col-12 text-contentlogin'>
-                                        Login with your email &amp; password
-                                    </div>
-
-
-                                    <div className='col-12 form-group login-input'>
-                                        <label>
-                                            <span>Username</span></label>
-                                        <input type='email' className='form-control login-input--text' placeholder='Enter you username'
-                                            value={this.state.username}
-                                            onChange={(event) => this.handleOnChangeUsername(event)}
-                                        />
-                                    </div>
-                                    <div className='col-12 form-group login-input'>
-                                        <label className='login-input-password'>
-                                            <span>Password</span>
-                                            <span><a className='forgot-password'>Forgot password?</a></span>
-                                        </label>
-                                        <div className='custom-input-password'>
-                                            <input type={this.state.isShowPassword ? 'text' : 'password'} className='form-control login-input--text' placeholder='Enter you password'
-                                                value={this.state.password}
-                                                onChange={(event) => this.handleOnChangePassword(event)}
-                                            />
-                                            <span
-                                                onClick={() => this.handleShowHidePassword()}
-                                            >
-                                                <i className={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
-                                            </span>
+                    <Modal funk='true' isOpen={this.state.modal} toggle={() => this.setState({ modal: !this.state.modal })} className={'abcModalClass'} >
+                        {!this.state.isShowModalForgotPassword ?
+                            <div className='login-background' >
+                                <div className='login-container' >
+                                    <div className='login-content'>
+                                        <div className='col-12  text-login'>
+                                            <img src={LogoShop} className='login-logo' />
                                         </div>
-                                        <div className='mt-3' style={{ color: 'red' }}>{this.state.errMessage}</div>
-                                    </div>
-                                    <button className='btn-login btn-login-normal'
-                                        onClick={() => this.handleLoginButton()}
-                                    >Login</button>
-                                    <div className='col-12'>
+                                        <div className='col-12 text-contentlogin'>
+                                            Login with your email &amp; password
+                                        </div>
 
-                                    </div>
-                                    <div className='col-12  login-orther'>
-                                        <span className='text-orther-login '>
-                                            <span>Or</span>
-                                        </span>
 
-                                    </div>
-                                    <div className='col-12 social-login'>
-                                        <button className='btn-login btn-login--google'>
-                                            <i className="fab fa-google social-login-icon"></i>
-                                            Login with Google
-                                        </button>
-                                        <button className='btn-login btn-login--mobile'>
-                                            <i className="fas fa-mobile-alt social-login-icon"></i>
-                                            Login with Mobile number
-                                        </button>
-                                    </div>
-                                    <div className='col-12  login-line'>
+                                        <div className='col-12 form-group login-input'>
+                                            <label>
+                                                <span>Username</span></label>
+                                            <input type='email' className='form-control login-input--text' placeholder='Enter you username'
+                                                value={this.state.username}
+                                                onChange={(event) => this.handleOnChangeUsername(event)}
+                                            />
+                                        </div>
+                                        <div className='col-12 form-group login-input'>
+                                            <label className='login-input-password'>
+                                                <span>Password</span>
+                                                <span className='forgot-password'
+                                                    onClick={() => this.handleShowModalForgotPassword()}
+                                                >
+                                                    Forgot password?</span>
+                                            </label>
+                                            <div className='custom-input-password'>
+                                                <input type={this.state.isShowPassword ? 'text' : 'password'} className='form-control login-input--text' placeholder='Enter you password'
+                                                    value={this.state.password}
+                                                    onChange={(event) => this.handleOnChangePassword(event)}
+                                                />
+                                                <span
+                                                    onClick={() => this.handleShowHidePassword()}
+                                                >
+                                                    <i className={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
+                                                </span>
+                                            </div>
+                                            <div className='mt-3' style={{ color: 'red' }}>{this.state.errMessage}</div>
+                                        </div>
+                                        <button className='btn-login btn-login-normal'
+                                            onClick={() => this.handleLoginButton()}
+                                        >Login</button>
+                                        <div className='col-12'>
 
-                                    </div>
-                                    <div className='login-register-user '>
-                                        <span>Don't have any account?</span>
-                                        <a>Register</a>
+                                        </div>
+                                        <div className='col-12  login-orther'>
+                                            <span className='text-orther-login '>
+                                                <span>Or</span>
+                                            </span>
+
+                                        </div>
+                                        <div className='col-12 social-login'>
+                                            <button className='btn-login btn-login--google'>
+                                                <i className="fab fa-google social-login-icon"></i>
+                                                Login with Google
+                                            </button>
+                                            <button className='btn-login btn-login--mobile'>
+                                                <i className="fas fa-mobile-alt social-login-icon"></i>
+                                                Login with Mobile number
+                                            </button>
+                                        </div>
+                                        <div className='col-12  login-line'>
+
+                                        </div>
+                                        <div className='login-register-user '>
+                                            <span>Don't have any account?</span>
+                                            <a onClick={() => this.setState({ isShowModalRegister: !this.state.isShowModalRegister })}>Register</a>
+                                        </div>
                                     </div>
                                 </div>
+
+                            </div>
+                            :
+
+                            <div className='container-forgotPassword'>
+                                <div className='forgotPassword-logo' ><img src={LogoShop} /></div>
+                                <h3 className='forgotPassword__header'>
+                                    Forget Password?
+
+                                </h3>
+                                <div className='forgotPassword__body'>
+                                    <span>Relax and try to remmember your password.</span>
+
+                                </div>
+
+                                <div className='login-orther'>
+                                    <span className='text-orther-login '>
+                                        <span>Or</span>
+                                    </span>
+
+                                </div>
+                                <div className='forgotPassword__footer'>
+
+                                    <div className='forgotPassword__footer-login'>
+                                        <span>Back to&nbsp;</span>
+                                        <a onClick={() => this.handleShowModalForgotPassword()}>Login</a>
+
+                                    </div>
+                                </div>
+
                             </div>
 
-                        </div>
+
+                        }
+
+
                     </Modal>
-                </div>
+                </div >
 
             </>
         )

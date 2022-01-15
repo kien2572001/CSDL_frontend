@@ -72,29 +72,30 @@ class ChangePassword extends Component {
 
                         </div>
                     </div>
-                    {/*  <i className={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i> */}
+
+
                     <div className='change__password'>
                         <div className='change__password-form'>
                             <h3 className='change__password-title'>Change Password</h3>
                             <div className='change__password-item'>
-                                <label className='change__password-item-title'>Old Password</label>
-                                <input type={this.state.isShowPassword1 ? 'text' : 'password'} className='change__password-item-input' >
+                                <label className='change__password-item-title' htmlFor='OldPassword'>Old Password</label>
+                                <input type={this.state.isShowPassword1 ? 'text' : 'password'} className='change__password-item-input' id='OldPassword<' >
                                 </input>
                                 <span className='change__password-item-icon'
                                     onClick={() => this.setState({ isShowPassword1: !this.state.isShowPassword1 })}
                                 ><i className={this.state.isShowPassword1 ? 'far fa-eye' : 'far fa-eye-slash'}></i> </span>
                             </div>
                             <div className='change__password-item'>
-                                <label className='change__password-item-title'>New Password</label>
-                                <input type={this.state.isShowPassword2 ? 'text' : 'password'} className='change__password-item-input' >
+                                <label className='change__password-item-title' htmlFor='NewPassword'>New Password</label>
+                                <input type={this.state.isShowPassword2 ? 'text' : 'password'} className='change__password-item-input' id='NewPassword'>
                                 </input>
                                 <span className='change__password-item-icon'
                                     onClick={() => this.setState({ isShowPassword2: !this.state.isShowPassword2 })}
                                 ><i className={this.state.isShowPassword2 ? 'far fa-eye' : 'far fa-eye-slash'}></i> </span>
                             </div>
                             <div className='change__password-item'>
-                                <label className='change__password-item-title'>Confirm Password</label>
-                                <input type={this.state.isShowPassword3 ? 'text' : 'password'} className='change__password-item-input' >
+                                <label className='change__password-item-title' htmlFor='ConfirmPassword'>Confirm Password</label>
+                                <input type={this.state.isShowPassword3 ? 'text' : 'password'} className='change__password-item-input' id='ConfirmPassword'>
                                 </input>
                                 <span className='change__password-item-icon'
                                     onClick={() => this.setState({ isShowPassword3: !this.state.isShowPassword3 })}

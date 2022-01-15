@@ -12,7 +12,7 @@ import {
     Link
 } from "react-router-dom";
 
-import {handleGetOrderByUserId} from '../../services/userService'
+import { handleGetOrderByUserId } from '../../services/userService'
 import { v4 as uuidv4 } from 'uuid';
 
 class MyOders extends React.Component {
@@ -24,7 +24,7 @@ class MyOders extends React.Component {
         }
     }
 
-    async componentDidMount(){
+    async componentDidMount() {
         //console.log('CID: ',this.props.userInfo.cid)
         let data = await handleGetOrderByUserId(this.props.userInfo.cid)
         console.log(data)
@@ -33,7 +33,7 @@ class MyOders extends React.Component {
         })
     }
 
-    handleOnClickOrder = (order)=>{
+    handleOnClickOrder = (order) => {
         this.setState({
             orderId: order.orderId,
         })
@@ -80,64 +80,64 @@ class MyOders extends React.Component {
                                         <h3>My Orders</h3>
                                         <div className="Piece-Orders">
                                             <div className="scrollbar" id="style-3">
-                                                <div class="force-overflow">
-                                                    {this.state.order?.map((item,key)=>{
+                                                <div className="force-overflow">
+                                                    {this.state.order?.map((item, key) => {
                                                         return (
-                                                            <div activeclassName="selected" className="navlink" key={uuidv4()} onClick={()=>this.handleOnClickOrder(item)}>
-                                                        <div className="Piece-Order-Top Piece-Order">
-                                                            <div className="id_Order">
-                                                                <span className="id_save">
-                                                                    Orders
-                                                                    <span className="id">#{key+1}</span>
-                                                                </span>
-                                                                <span className="status">Order Received</span>
+                                                            <div activeclassName="selected" className="navlink" key={uuidv4()} onClick={() => this.handleOnClickOrder(item)}>
+                                                                <div className="Piece-Order-Top Piece-Order">
+                                                                    <div className="id_Order">
+                                                                        <span className="id_save">
+                                                                            Orders
+                                                                            <span className="id">#{key + 1}</span>
+                                                                        </span>
+                                                                        <span className="status">Order Received</span>
+                                                                    </div>
+                                                                    <div className="infor_Order">
+                                                                        <div>
+                                                                            <span>
+                                                                                <span className="infor_name">Order Date</span>
+                                                                                <span>:</span>
+                                                                            </span>
+                                                                            <span>{new Date(item.createdAt).toLocaleDateString('en-US', {
+                                                                                year: 'numeric',
+                                                                                month: 'long',
+                                                                                day: 'numeric',
+                                                                            })}</span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <span>
+                                                                                <span className="infor_name">Delivery Time</span>
+                                                                                <span>:</span>
+                                                                            </span>
+                                                                            <span>{item.delivery}</span>
+                                                                        </div>
+                                                                        <div className="Bolder">
+                                                                            <span>
+                                                                                <span className="infor_name">Amount</span>
+                                                                                <span>:</span>
+                                                                            </span>
+                                                                            <span>${item.total}</span>
+                                                                        </div>
+                                                                        <div className="Bolder">
+                                                                            <span>
+                                                                                <span className="infor_name">Total Price</span>
+                                                                                <span>:</span>
+                                                                            </span>
+                                                                            <span>${item.total}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div className="infor_Order">
-                                                                <div>
-                                                                    <span>
-                                                                        <span className="infor_name">Order Date</span>
-                                                                        <span>:</span>
-                                                                    </span>
-                                                                    <span>{new Date(item.createdAt).toLocaleDateString('en-US', {
-                                                                        year: 'numeric',
-                                                                        month: 'long',
-                                                                        day: 'numeric',
-                                                                    })}</span>
-                                                                </div>
-                                                                <div>
-                                                                    <span>
-                                                                        <span className="infor_name">Delivery Time</span>
-                                                                        <span>:</span>
-                                                                    </span>
-                                                                    <span>{item.delivery}</span>
-                                                                </div>
-                                                                <div className="Bolder">
-                                                                    <span>
-                                                                        <span className="infor_name">Amount</span>
-                                                                        <span>:</span>
-                                                                    </span>
-                                                                    <span>${item.total}</span>
-                                                                </div>
-                                                                <div className="Bolder">
-                                                                    <span>
-                                                                        <span className="infor_name">Total Price</span>
-                                                                        <span>:</span>
-                                                                    </span>
-                                                                    <span>${item.total}</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                         )
-                                                    })}                                                
+                                                    })}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="Details">
-                                    {this.state.order?.map((item)=>{
-                                        if (item.orderId===this.state.orderId){
+                                    {this.state.order?.map((item) => {
+                                        if (item.orderId === this.state.orderId) {
                                             return (
                                                 <div className="Order-Details">
                                                     <div className="title">
@@ -207,7 +207,7 @@ class MyOders extends React.Component {
                                             <th className="Price">Price</th>
                                             <div className="Scrollbar"></div>
                                         </tr>
-                                        <Bill orderId = {this.state.orderId} />
+                                        <Bill orderId={this.state.orderId} />
                                     </div>
                                 </div>
                             </div>

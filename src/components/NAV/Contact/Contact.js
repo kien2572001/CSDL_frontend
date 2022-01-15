@@ -36,7 +36,7 @@ class Contact extends React.Component {
                                         <i className="fab fa-facebook-square"></i>
                                     </a>
                                     <a className="shopInfor-link-icon">
-                                        <i class="fab fa-twitter"></i>
+                                        <i className="fab fa-twitter"></i>
                                     </a>
                                     <a className="shopInfor-link-icon">
                                         <i className="fab fa-instagram"></i>
