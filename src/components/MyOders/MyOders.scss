@@ -16,13 +16,13 @@
             display: flex;
             .Folderbar{
                 left: 0;
-                width: 22.7%;
+                width: 25.7%;
                 height: 100%;
                 font-weight: 600;
                 font-size: 18px;
                 .Wallet {
                     width: 90%;
-                    height: 25%;
+                    height: 22%;
                     border: 1px solid rgba(209, 207, 207, 0.836);
                     border-radius: 2%;
                     padding: 32px 40px;
@@ -36,7 +36,7 @@
                         height: 20%;
                         text-align: left;
                         .text {
-                            margin-right: 120px;
+                            margin-right: 157px;
                             min-width: 150px;
                             display: inline-flex;
                         }
@@ -83,10 +83,10 @@
                 height: 100%;
                 display: flex;
                 .Orders {
-                    width: 33.333%;
+                    width: 32%;
                     height: 80%;
                     .List-Order {
-                        width: 92%;
+                        width: 89%;
                         height: 100%;
                         border: 1px solid rgba(209, 207, 207, 0.836);
                         h3 {
@@ -107,6 +107,9 @@
                                 .navlink {
                                     text-decoration: none;
                                     color: black;
+                                    .Piece-Order-Top{
+                                        margin-top: 0 !important;
+                                    }
                                     .Piece-Order {
                                         color: black;
                                         text-decoration: initial;
@@ -139,8 +142,12 @@
                                                 background-color: #DBEAFE;
                                                 color: #3B82F6;
                                                 height: 70%;
+                                                width: 51%;
+                                                font-size: 16px;
                                                 padding: 8px 12px;
                                                 border-radius: 2%;
+                                                align-items: center;
+                                                display: flex;
                                             }      
                                         }
                                         .infor_Order {

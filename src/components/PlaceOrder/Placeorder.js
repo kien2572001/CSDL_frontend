@@ -182,7 +182,7 @@ class PlaceOrder extends Component {
             <table className='table table-borderless'>
               <tbody>
                 {this.state.arr.map((item) => {
-                  console.log('Item', item)
+                  //console.log('Item', item)
                   return (
                     <tr key={uuidv4()}>
                       <td>

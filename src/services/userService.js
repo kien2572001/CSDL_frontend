@@ -12,4 +12,8 @@ let handleSaveOrder = (order)=>{
     return axios.post('/api/save-order',order)
 }
 
-export {handleLogin,handleSaveOrder}
+let handleGetOrderByUserId = (cid)=>{
+    return axios.get(`/api/find-order-by-userid?id=${cid}`)
+}
+
+export {handleLogin,handleSaveOrder,handleGetOrderByUserId}
