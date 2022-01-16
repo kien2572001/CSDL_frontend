@@ -12,6 +12,7 @@ import {
     Link,
     withRouter
 } from "react-router-dom";
+import Register from './Register'
 
 class Login extends Component {
     constructor(props) {
@@ -69,6 +70,7 @@ class Login extends Component {
             else if (response && response.errCode === 0) {
                 //console.log(response)
                 console.log('Check ')
+                this.props.adminProcessLogout()
                 this.props.userLoginSuccess(response.user)
                 console.log('Check')
                 this.setState({
@@ -117,6 +119,7 @@ class Login extends Component {
     }
     handleShowModalRegister = () => {
         console.log('Check forgot Register')
+
     }
     handleShowModalLogin = () => {
         console.log('Check login')
@@ -231,7 +234,7 @@ class Login extends Component {
                                         </div>
                                         <div className='login-register-user '>
                                             <span>Don't have any account?</span>
-                                            <a onClick={() => this.setState({ isShowModalRegister: !this.state.isShowModalRegister })}>Register</a>
+                                            <a onClick={() => this.setState({ modal: !this.state.modal })}>Register</a>
                                         </div>
                                     </div>
                                 </div>
@@ -261,7 +264,6 @@ class Login extends Component {
                                     <div className='forgotPassword__footer-login'>
                                         <span>Back to&nbsp;</span>
                                         <a onClick={() => this.handleShowModalForgotPassword()}>Login</a>
-
                                     </div>
                                 </div>
 
@@ -291,7 +293,8 @@ const mapDispatchToProps = dispatch => {
         navigate: (path) => dispatch(push(path)),
         userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
         userLoginFail: () => dispatch(actions.userLoginFail()),
-        processLogout: () => dispatch(actions.processLogout())
+        processLogout: () => dispatch(actions.processLogout()),
+        adminProcessLogout: ()=>dispatch(actions.adminProcessLogout())
     };
 };
 

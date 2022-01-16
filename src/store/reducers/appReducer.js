@@ -8,6 +8,7 @@ const initContentOfConfirmModal = {
 }
 
 const initialState = {
+    mode: 'userMode',
     started: true,
     language: 'vi',
     systemMenuPath: '/system/user-manage',
@@ -31,6 +32,13 @@ const appReducer = (state = initialState, action) => {
                     ...action.contentOfConfirmModal
                 }
             }
+
+        case actionTypes.CHANGE_APP_MODE:
+            return {
+                ...state,
+                mode: action.payload
+            }
+        
         default:
             return state;
     }

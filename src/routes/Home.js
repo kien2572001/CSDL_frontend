@@ -62,9 +62,7 @@ class Home extends React.Component {
                     <div className='cart-shopping'>
                         <ProductCart />
                     </div>
-                </div>
-                
-                
+                </div>                
             </>
         );
     }

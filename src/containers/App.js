@@ -28,6 +28,8 @@ import CheckoutOrder from '../components/Checkout/CheckoutOrder'
 import MyOders from '../components/MyOders/MyOders';
 import Profile from '../components/UserLogin/Profile/Profile';
 import ChangePassword from '../components/UserLogin/ChangePassword/ChangePassword';
+import LoginAdmin from '../components/Admin/AuthAdmin/LoginAdmin';
+import Admin from '../components/Admin/Admin';
 
 class App extends Component {
 
@@ -56,22 +58,23 @@ class App extends Component {
                     <div className="main-container">
                         <ConfirmModal />
                         {/* {this.props.isLoggedIn && <Header />} */}
-                        <NavigatorBar />
+                        {this.props.mode ==='userMode'?<NavigatorBar />: <></>}
                         <span className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
                                 <Route path={path.FAQ} exact component={(Faq)} />
                                 <Route path={path.CONTACT} exact component={(Contact)} />
                                 {/* <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} /> */}
-                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                {/* <Route path={path.SYSTEM} component={userIsAuthenticated(System)} /> */}
                                 <Route path='/checkout'>
                                     <CheckoutOrder />
                                 </Route>
-                                <Route path="/placeorder/:id" component={(PlaceOrder)} />
-                                <Route path='/my-order' component={(MyOders)} />
-                                <Route path='/profile' component={(Profile)} />
-                                <Route path='/change-password' component={(ChangePassword)} />
-
+                                <Route path="/placeorder/:id" component={userIsAuthenticated(PlaceOrder)} />
+                                <Route path='/my-order' component={userIsAuthenticated(MyOders)} />
+                                <Route path='/profile' component={userIsAuthenticated(Profile)} />
+                                <Route path='/change-password' component={userIsAuthenticated(ChangePassword)} />
+                                <Route path='/admin/login' component={(LoginAdmin)} />
+                                <Route path='/admin' component={(Admin)}  />
                             </Switch>
                         </span>
                         <ToastContainer
@@ -91,7 +94,9 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         started: state.app.started,
+        mode: state.app.mode,
         isLoggedIn: state.user.isLoggedIn
+
     };
 };
 

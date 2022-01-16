@@ -8,3 +8,8 @@ export const setContentOfConfirmModal = (contentOfConfirmModal) => ({
     type: actionTypes.SET_CONTENT_OF_CONFIRM_MODAL,
     contentOfConfirmModal: contentOfConfirmModal
 });
+
+export const changeAppMode = (payload)=>({
+    type: actionTypes.CHANGE_APP_MODE,
+    payload
+})

@@ -110,7 +110,7 @@ class NavigatorBar extends Component {
                                     </span>
                                     <input className='hearder__navbar-search-btn-search'
                                         type='text'
-                                        placeholder='Search your psroducts from here'
+                                        placeholder='Search your products from here'
                                         value={titleProduct}
                                         onChange={(event) => this.handleChangeSearchTitleProduct(event)}
                                     />

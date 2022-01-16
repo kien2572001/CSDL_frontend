@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+.admin-sidebar-container {
+    font-family: 'Open Sans', sans-serif;
+    height: 100%;
+    opacity: 0.9;
+    padding: 35px 16px;
+    background-color: #ffffff;
+
+    i {
+        margin: 0 10px;
+        font-size: 18px;
+    }
+
+    .sidebar-item {
+        height: 50px;
+        line-height: 50px;
+        font-weight: 500;
+        font-size: 15px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            border-color: white;
+            color: #009F7F;
+            background-color: white;
+            border: none;
+        }
+
+    }
+}
