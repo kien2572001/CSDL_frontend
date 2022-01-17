@@ -54,7 +54,7 @@ class ProductsContainer extends Component {
           </Button>
         </article>
         <article className='products-table'>
-          <Table responsive className='table-list'>
+          <Table responsive borderless className='table-list'>
             <thead>
               <tr>
                 <th className='th-img'>Image</th>
@@ -68,7 +68,11 @@ class ProductsContainer extends Component {
               </tr>
             </thead>
             {this.state.products.map((product) => (
-              <ProductList key={product.pid} info={product} />
+              <ProductList
+                key={product.pid}
+                info={product}
+                state={this.state}
+              />
             ))}
           </Table>
         </article>

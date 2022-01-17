@@ -1,6 +1,6 @@
 .products-search {
   display: flex;
-  background-color: red;
+  background-color: #ffffff;
   width: 100rem;
   padding: 3rem;
   align-items: center;
@@ -20,17 +20,20 @@
     }
   }
   button:hover {
-    background-color: red;
+    background-color: #ffffff;
     color: rgb(34, 16, 97);
   }
 }
 
 .products-table {
-  background-color: #ffff;
+  background-color: #ffffff;
 
   img {
     width: 60px;
     height: 60px;
+  }
+  td:not(:first-child) {
+    padding-top: 23px;
   }
   .table-list {
     text-align: center;

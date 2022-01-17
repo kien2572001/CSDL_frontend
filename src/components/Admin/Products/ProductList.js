@@ -4,6 +4,10 @@ export default class ProductList extends Component {
   deleteProducts = (id) => {
     console.log(id)
   }
+
+  editProducts = (id) => {
+    console.log(id)
+  }
   render() {
     const { pid: id, img: url, title: name, price, quantity } = this.props.info
     return (
@@ -26,7 +30,7 @@ export default class ProductList extends Component {
                 class='far fa-trash-alt'
                 onClick={() => this.deleteProducts(id)}
               ></i>
-              <i class='far fa-edit'></i>
+              <i class='far fa-edit' onClick={() => this.editProducts(id)}></i>
             </td>
           </tr>
         </tbody>
