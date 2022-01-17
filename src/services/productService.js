@@ -25,8 +25,8 @@ let handleFindProductById = (id) => {
   return axios.get(`/api/find-product-by-id?id=${id}`)
 }
 
-let handleGetProductByStoreId = (sid)=>{
-  return axios.get('/api/get-product-by-storeId?sid=',sid)
+let handleGetProductByStoreId = (sid) => {
+  return axios.get(`/api/get-product-by-storeId?sid=${sid}`)
 }
 
 export {
@@ -36,5 +36,5 @@ export {
   handleSaveToOrderItem,
   handleFindOrderById,
   handleFindProductById,
-  handleGetProductByStoreId
+  handleGetProductByStoreId,
 }

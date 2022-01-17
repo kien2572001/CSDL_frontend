@@ -1,0 +1,85 @@
+.products-search {
+  display: flex;
+  background-color: red;
+  width: 100rem;
+  padding: 3rem;
+  align-items: center;
+  margin-bottom: 30px;
+  h3 {
+    margin-right: 10rem;
+    font-weight: bold;
+  }
+  input {
+    padding: 1rem;
+  }
+  button {
+    width: 7rem;
+    line-height: 0px;
+    i {
+      font-size: 25px;
+    }
+  }
+  button:hover {
+    background-color: red;
+    color: rgb(34, 16, 97);
+  }
+}
+
+.products-table {
+  background-color: #ffff;
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+  .table-list {
+    text-align: center;
+  }
+  .th-img {
+    width: 100px;
+  }
+  .th-name {
+    width: 300px;
+  }
+  span {
+    width: 73px;
+    height: 25px;
+    background-color: #009f7f;
+    border-radius: 9999px;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 12px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  i {
+    font-size: 20px;
+    margin-left: 0.5rem;
+  }
+
+  i:hover {
+    cursor: pointer;
+  }
+  .fa-trash-alt {
+    color: red;
+  }
+  .fa-trash-alt:hover {
+    color: rgb(136, 11, 11);
+  }
+  .fa-edit:hover {
+    color: rgb(107, 204, 107);
+  }
+}
+
+.products-pagination {
+  float: right;
+  margin-top: 10px;
+  .page-link {
+    margin: 0 0 0 0.75rem !important;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+  }
+}
