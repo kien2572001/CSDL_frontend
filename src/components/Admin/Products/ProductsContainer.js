@@ -49,9 +49,7 @@ class ProductsContainer extends Component {
               aria-describedby='basic-addon1'
             />
           </InputGroup>
-          <Button variant='outline-primary' className='mb-3'>
-            <i class='fas fa-search'></i>
-          </Button>
+          <i className='fas fa-search mb-3'></i> {/* kính lúp */}
         </article>
         <article className='products-table'>
           <Table responsive borderless className='table-list'>

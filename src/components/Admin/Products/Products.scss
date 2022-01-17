@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
 .products-search {
   display: flex;
   background-color: #ffffff;
@@ -12,14 +13,20 @@
   input {
     padding: 1rem;
   }
-  button {
+  i {
     width: 7rem;
+    margin-left: 30px;
     line-height: 0px;
-    i {
-      font-size: 25px;
-    }
+    border-color: #ffffff;
+    font-size: 25px;
+    color: rgb(31, 31, 238);
+    cursor: pointer;
   }
-  button:hover {
+  i:hover {
+    background-color: #ffffff;
+    color: rgb(34, 16, 97);
+  }
+  i:active {
     background-color: #ffffff;
     color: rgb(34, 16, 97);
   }
@@ -85,4 +92,66 @@
     border-style: solid;
     border-width: 1px;
   }
+}
+
+.featured-img {
+  display: flex;
+  justify-content: space-between;
+  img {
+    padding: 0 4px 3px 0;
+  }
+  h3 {
+    margin-top: 45px;
+  }
+}
+
+.gr-cate {
+  // display: flex;
+  .form-gr {
+    width: 75rem;
+    margin: auto;
+  }
+  .description {
+    word-wrap: break-word;
+    height: 100px;
+  }
+  input {
+    height: 3rem;
+  }
+  label {
+    margin-top: 20px;
+  }
+  h3 {
+    margin-top: 45px;
+  }
+}
+
+.modal-content {
+  border-radius: 20px;
+}
+.modal-header {
+  border-radius: 15px !important;
+  height: 60px !important;
+  background-color: #009f7f !important;
+}
+.modal-title {
+  margin: auto;
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+.modal-body {
+  margin-bottom: 33px;
+}
+
+.frame {
+  margin-right: 200px !important;
+}
+
+.modal-footer button {
+  width: 150px;
+  height: 40px;
+}
+
+.btn-back {
+  width: 80px !important;
 }
