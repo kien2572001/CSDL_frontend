@@ -11,8 +11,8 @@ class ProductsContainer extends Component {
     super(props)
     this.state = {
       page: 0,
-      data: [],
-      products: [],
+      data: [], // lưu các mảng của các page
+      products: [], // lưu sản phẩm của page
     }
   }
 
@@ -94,7 +94,8 @@ class ProductsContainer extends Component {
             containerClassName='pagination'
             activeClassName='active'
             renderOnZeroPageCount={null}
-          />
+          />{' '}
+          {/* thanh pagination chuyển page */}
         </div>
       </section>
     )

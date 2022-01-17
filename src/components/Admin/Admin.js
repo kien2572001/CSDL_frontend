@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import * as actions from '../../store/actions'
 import AdminSideBar from './AdminSidebar'
 import { Link } from 'react-router-dom'
-import Products from './Products/Products'
+import Products from './Products/ProductsContainer'
 class Admin extends Component {
   constructor(props) {
     super(props)

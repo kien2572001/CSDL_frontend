@@ -7,14 +7,11 @@ export default class ProductList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      files: [],
-      show: false,
-      details: { ...this.props.info },
+      files: [], // lưu props của ảnh
+      showEdit: false, // hiện ẩn modal edit
+      showDelete: false, // hiện ẩn modal edit
+      details: { ...this.props.info }, // lưu các props của 1 sản phẩm
     }
-  }
-
-  componentDidMount() {
-    this.setState({ restoreImg: this.props.info['img'] })
   }
 
   componentWillUnmount() {
@@ -33,15 +30,19 @@ export default class ProductList extends Component {
     })
   }
 
-  handleClose = () => this.setState({ show: false })
-  handleOpen = () => this.setState({ show: true })
+  handleCloseEdit = () => this.setState({ showEdit: false })
+  handleOpenEdit = () => this.setState({ showEdit: true })
+
+  handleCloseDelete = () => this.setState({ showDelete: false })
+  handleOpenDelete = () => this.setState({ showDelete: true })
 
   deleteProducts = (id) => {
+    this.handleOpenDelete()
     console.log(id)
   }
 
   editProducts = (id) => {
-    this.handleOpen()
+    this.handleOpenEdit()
     console.log(id)
   }
 
@@ -53,7 +54,7 @@ export default class ProductList extends Component {
 
   handleClickBack = () => {
     this.setState({ details: {} })
-    this.handleClose()
+    this.handleCloseEdit()
   }
 
   handleClickUpdate = () => {
@@ -65,7 +66,16 @@ export default class ProductList extends Component {
     if (this.state.files.length > 0) {
       this.props.info['img'] = this.state.files[0].preview
     }
-    this.handleClose()
+    this.handleCloseEdit()
+  }
+
+  handleClickCancel = () => {
+    this.handleCloseDelete()
+  }
+
+  handleClickDelete = () => {
+    console.log(this.props.info)
+    this.handleCloseDelete()
   }
 
   render() {
@@ -99,15 +109,21 @@ export default class ProductList extends Component {
               <i
                 class='far fa-trash-alt'
                 onClick={() => this.deleteProducts(id)}
-              ></i>
-
-              <i class='far fa-edit' onClick={() => this.editProducts(id)}></i>
+              ></i>{' '}
+              {/* icon delete */}
+              <i
+                class='far fa-edit'
+                onClick={() => this.editProducts(id)}
+              ></i>{' '}
+              {/* icon edit */}
             </td>
           </tr>
         </tbody>
+
+        {/* Modal xử lí phần edit */}
         <Modal
-          show={this.state.show}
-          onHide={this.handleClose}
+          show={this.state.showEdit}
+          onHide={this.handleCloseEdit}
           backdrop='static'
           keyboard={false}
           size='xl'
@@ -131,7 +147,8 @@ export default class ProductList extends Component {
                   addFile={this.addFile}
                   files={this.state.files}
                   info={this.props.info}
-                />
+                />{' '}
+                {/* upload Ảnh*/}
               </div>
             </div>
             <div className='gr-cate'>
@@ -239,6 +256,29 @@ export default class ProductList extends Component {
               Update Products
             </Button>
           </Modal.Footer>
+        </Modal>
+
+        {/* Modal xử lí phần delete */}
+        <Modal
+          show={this.state.showDelete}
+          onHide={this.handleCloseDelete}
+          aria-labelledby='contained-modal-title-vcenter'
+          centered
+          dialogClassName='modal-delete'
+        >
+          <Modal.Body className='modal-body-delete'>
+            <i class='far fa-trash-alt'></i>
+            <h3>Delete {this.props.info['title']}</h3>
+            <p>Are you sure, you want to delete?</p>
+            <div className='modal-btn-delete'>
+              <Button variant='success' onClick={this.handleClickCancel}>
+                Cancel
+              </Button>
+              <Button variant='danger' onClick={this.handleClickDelete}>
+                Delete
+              </Button>
+            </div>
+          </Modal.Body>
         </Modal>
       </>
     )

@@ -155,3 +155,39 @@
 .btn-back {
   width: 80px !important;
 }
+
+.modal-body-delete {
+  text-align: center;
+  i {
+    margin-top: 20px;
+    font-size: 80px;
+    color: #009f7f;
+  }
+
+  h3 {
+    margin: 20px 0 20px 0;
+    font-weight: bold;
+  }
+
+  p {
+    color: grey;
+  }
+
+  button {
+    width: 150px;
+    height: 40px;
+  }
+}
+
+.modal-btn-delete {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.modal-delete {
+  width: 30rem;
+  .modal-content {
+    height: 22rem;
+  }
+}
