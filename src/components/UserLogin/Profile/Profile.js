@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from "../../../store/actions";
+import { push } from "connected-react-router";
 import './Profile.scss';
 import { Link } from 'react-router-dom'
 import {
@@ -13,7 +15,7 @@ import {
     InputGroupText,
 } from 'reactstrap'
 
-import {cloudinaryUpload} from '../../../services/userService'
+import {cloudinaryUpload,changeFLA} from '../../../services/userService'
 import userImg from '../../../assets/images/admin/avatar-placeholder.svg'
 
 class Profile extends Component {
@@ -23,14 +25,16 @@ class Profile extends Component {
             modalContact: false,
             modalAddress: false,
             img: '',
-            name: '',
-            
+            firstName: '',
+            lastName: ''
         }
     }
 
     componentDidMount(){
         this.setState({
-            img: this.props.userInfo.image
+            img: this.props.userInfo.image,
+            firstName: this.props.userInfo.firstName,
+            lastName: this.props.userInfo.lastName
         })
     }
 
@@ -42,6 +46,36 @@ class Profile extends Component {
         this.setState({
             img: tmp.secure_url
         })
+    }
+
+    handleLogout = ()=>{
+        this.props.processLogout()      
+        this.props.navigate('/')
+         
+    }
+
+    handleFirstNameOnChange = (e)=>{
+        this.setState({
+            firstName: e.target.value
+        })
+    }
+
+    handleLastNameOnChange = (e)=>{
+        this.setState({
+            lastName: e.target.value
+        })
+    }
+
+    saveFLA = async ()=>{
+        let data = {
+            cid: this.props.userInfo.cid,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            image: this.state.img
+        }
+        console.log('data: ',data)
+        let tmp =   await changeFLA(data)
+        this.props.reduxChangeFLA(data)
     }
 
     render() {
@@ -95,7 +129,7 @@ class Profile extends Component {
                                 </li>
 
                             </ul>
-                            <div className='user_sidebar-logout'>
+                            <div className='user_sidebar-logout' onClick={(e)=>this.handleLogout(e)}>
                                 <a className='user_sidebar-logout-link'>
                                     Logout
                                 </a>
@@ -129,15 +163,19 @@ class Profile extends Component {
                                 <img src={this.state.img} alt='' width="100" height="100" />
                             </div>
                             <div className='profile__infor-form'>
-                                <label className='profile__infor-title' htmlFor='profile__infor-name'>Name</label>
-                                <input className='profile__infor-input' id='profile__infor-name'></input>
+                                <label className='profile__infor-title' htmlFor='profile__infor-name'>First Name</label>
+                                <input className='profile__infor-input' id='profile__infor-name' value={this.state.firstName} onChange={(e)=>this.handleFirstNameOnChange(e)}></input>
                             </div>
                             <div className='profile__infor-form'>
+                                <label className='profile__infor-title' htmlFor='profile__infor-name'>Last Name</label>
+                                <input className='profile__infor-input' id='profile__infor-name' value={this.state.lastName} onChange={(e)=>this.handleLastNameOnChange(e)} ></input>
+                            </div>
+                            {/* <div className='profile__infor-form'>
                                 <label className='profile__infor-title' htmlFor='profile__infor-bio'>Bio</label>
                                 <textarea className='profile__infor-text' id='profile__infor-bio'></textarea>
-                            </div>
+                            </div> */}
                             <div className='profile__infor-btn'>
-                                <button className='profile__infor-btn--save'>Save</button>
+                                <button className='profile__infor-btn--save' onClick={()=>this.saveFLA()}>Save</button>
                             </div>
                         </div>
                         <div className='profile__contact'>
@@ -262,6 +300,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        processLogout: () => dispatch(actions.processLogout()),
+        navigate: (path) => dispatch(push(path)),
+        reduxChangeFLA: (payload)=>dispatch(actions.changeFLA(payload))
     };
 };
 

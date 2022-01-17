@@ -25,6 +25,23 @@ const appReducer = (state = initialState, action) => {
                 isLoggedIn: false,
                 userInfo: null
             }
+
+        case actionTypes.RESET_USER_INFO:
+            return {
+                ...state,
+                userInfo: state.userInfo
+            }
+        
+        case actionTypes.CHANGE_FLA:
+            let tmp = state.userInfo
+            tmp.firstName = action.payload.firstName
+            tmp.lastName = action.payload.lastName
+            tmp.image = action.payload.image
+            return {
+                ...state,
+                userInfo: tmp
+            }
+
         default:
             return state;
     }

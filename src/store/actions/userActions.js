@@ -12,3 +12,13 @@ export const userLoginFail = () => ({
 export const processLogout = () => ({
     type: actionTypes.PROCESS_LOGOUT
 })
+
+export const resetUserInfo = (userInfo)=>({
+    type: actionTypes.RESET_USER_INFO,
+    userInfo: userInfo
+})
+
+export const changeFLA = (payload)=>({
+    type: actionTypes.CHANGE_FLA,
+    payload: payload
+})

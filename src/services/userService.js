@@ -27,4 +27,8 @@ let cloudinaryUpload = (fileToUpload) => {
     // .catch(err => console.log(err))
 }
 
-export {handleLogin,handleSaveOrder,handleGetOrderByUserId,handleChangePassWord,cloudinaryUpload}
+let changeFLA = (data)=>{
+    return axios.post('/api/change-fla',data)
+}
+
+export {handleLogin,handleSaveOrder,handleGetOrderByUserId,handleChangePassWord,cloudinaryUpload,changeFLA}
