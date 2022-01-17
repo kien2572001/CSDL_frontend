@@ -50,20 +50,17 @@ class Profile extends Component {
                         <div className='user_sidebar'>
                             <ul className='user_sidebar-list'>
                                 <li className='user_sidebar-list-item'>
-                                    <a className='user_sidebar-list-item-link user_sidebar-list-item-link-profile'>
-                                        Profile
-                                    </a>
+
+                                    <Link to={'/profile'} className="user_sidebar-list-item-link user_sidebar-list-item-link-profile"><span>Profile</span></Link>
+                                </li>
+                                <li className='user_sidebar-list-item'>
+
+                                    <Link to={'/change-password'} className="user_sidebar-list-item-link "><span>Change Password</span></Link>
 
                                 </li>
                                 <li className='user_sidebar-list-item'>
 
-                                    <Link to={'/change-password'} className="user_sidebar-list-item-link"><span>Change Password</span></Link>
-
-                                </li>
-                                <li className='user_sidebar-list-item'>
-                                    <a className='user_sidebar-list-item-link'>
-                                        My Orders
-                                    </a>
+                                    <Link to={'/my-order'} className="user_sidebar-list-item-link"><span>My Orders</span></Link>
                                 </li>
                                 <li className='user_sidebar-list-item'>
                                     <a className='user_sidebar-list-item-link'>

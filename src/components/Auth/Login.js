@@ -107,6 +107,7 @@ class Login extends Component {
     handleOnMouseOut = () => {
         this.setState({
             isShowUserOption: false
+
         })
     }
 
@@ -138,9 +139,10 @@ class Login extends Component {
                         <>
                             <div className='dropdown-container' onMouseOver={() => this.hanldeShowUserOption()} onMouseOut={() => this.handleOnMouseOut()}>
                                 <div className='dropdown-btn' >
-                                    <img src="https://pickbazar-react-rest.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fsrc%2Fassets%2Fplaceholders%2Favatar.2a4ed68cad8ebe21317b04e155b6b245.svg&w=1920&q=75" alt="Avatar" />
+                                    <img src="https://pickbazar-react-rest.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fsrc%2Fassets%2Fplaceholders%2Favatar.2a4ed68cad8ebe21317b04e155b6b245.svg&w=1920&q=75" alt="Avatar" className='dropdown-btn--avatar' />
                                 </div>
                                 <div className={this.state.isShowUserOption ? 'dropdown-box' : 'dropdown-box display-none'}>
+
                                     <div className='dropdown-username'>
                                         Username
                                     </div>
@@ -294,7 +296,7 @@ const mapDispatchToProps = dispatch => {
         userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
         userLoginFail: () => dispatch(actions.userLoginFail()),
         processLogout: () => dispatch(actions.processLogout()),
-        adminProcessLogout: ()=>dispatch(actions.adminProcessLogout())
+        adminProcessLogout: () => dispatch(actions.adminProcessLogout())
     };
 };
 

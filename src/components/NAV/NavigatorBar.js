@@ -63,9 +63,9 @@ class NavigatorBar extends Component {
                             <nav className="header__navbar">
                                 <ul className="header__navlist-list">
                                     <li className="header__navbar-item header__navbar-item--separate">
-                                       <Link to='/'>
-                                            <img src={LogoShop} />
-                                       </Link>
+                                        <Link to='/' >
+                                            <img className='header__navbar-item-logo' src={LogoShop} />
+                                        </Link>
                                     </li>
                                     <li className="header__navbar-item">
                                         <button className='header__navbar-item-btn '

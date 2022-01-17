@@ -45,35 +45,62 @@ class MyOders extends React.Component {
                 <div className="MyOders">
                     <div className="slogan-content">
                         <div className="san">
-                            <div className="Folderbar">
-                                <div className="Wallet">
-                                    <div className="WalletA">Wallet</div>
-                                    <div className="WalletB">
-                                        <span className="text">Total Points</span>
-                                        <span>0</span>
-                                    </div>
-                                    <div className="WalletB">
-                                        <span className="text">Points Used</span>
-                                        <span>0</span>
-                                    </div>
-                                    <div className="WalletB">
-                                        <span className="text">Available Points</span>
-                                        <span>0</span>
+                            <div className='userLogin'>
+                                <div className='user__wallet'>
+                                    <h3 className='user__wallet-title'>Wallet</h3>
+                                    <div className='user__wallet-list'>
+                                        <div className='user__wallet-list-item'>
+                                            <span>Total Points</span>
+                                            <span>0</span>
+                                        </div>
+                                        <div className='user__wallet-list-item'>
+                                            <span>Points Used</span>
+                                            <span>0</span>
+                                        </div>
+                                        <div className='user__wallet-list-item'>
+                                            <span>Available Points</span>
+                                            <span>0</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="Func-Category">
-                                    <ul className="Func-CategoryA">
-                                        <div className="Func-Categorya">Profile</div>
-                                        <div className="Func-Categorya">Change Password</div>
-                                        <div className="Func-Categorya">My Orders</div>
-                                        <div className="Func-Categorya">My Refunds</div>
-                                        <div className="Func-Categorya">Need Help</div>
+                                <div className='user_sidebar'>
+                                    <ul className='user_sidebar-list'>
+                                        <li className='user_sidebar-list-item'>
+
+                                            <Link to={'/profile'} className="user_sidebar-list-item-link"><span>Profile</span></Link>
+                                        </li>
+                                        <li className='user_sidebar-list-item'>
+
+                                            <Link to={'/change-password'} className="user_sidebar-list-item-link "><span>Change Password</span></Link>
+
+                                        </li>
+                                        <li className='user_sidebar-list-item'>
+
+                                            <Link to={'/my-order'} className="user_sidebar-list-item-link user_sidebar-list-item-link-profile"><span>My Orders</span></Link>
+                                        </li>
+                                        <li className='user_sidebar-list-item'>
+                                            <a className='user_sidebar-list-item-link'>
+                                                My Refunds
+                                            </a>
+                                        </li>
+                                        <li className='user_sidebar-list-item'>
+                                            <a className='user_sidebar-list-item-link'>
+                                                Need Help
+                                            </a>
+                                        </li>
+
                                     </ul>
-                                    <ul className="Func-CategoryB">
-                                        <div className="Func-Categoryb">Logout</div>
-                                    </ul>
+                                    <div className='user_sidebar-logout'>
+                                        <a className='user_sidebar-logout-link'>
+                                            Logout
+                                        </a>
+
+                                    </div>
+
                                 </div>
                             </div>
+
+
                             <div className="Infor">
                                 <div className="Orders">
                                     <div className="List-Order">
@@ -229,7 +256,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-
+        processLogout: () => dispatch(actions.processLogout()),
     };
 };
 

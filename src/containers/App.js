@@ -30,7 +30,7 @@ import Profile from '../components/UserLogin/Profile/Profile';
 import ChangePassword from '../components/UserLogin/ChangePassword/ChangePassword';
 import LoginAdmin from '../components/Admin/AuthAdmin/LoginAdmin';
 import Admin from '../components/Admin/Admin';
-
+import AdminNav from '../components/Admin/AdminNav';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -58,7 +58,7 @@ class App extends Component {
                     <div className="main-container">
                         <ConfirmModal />
                         {/* {this.props.isLoggedIn && <Header />} */}
-                        {this.props.mode ==='userMode'?<NavigatorBar />: <></>}
+                        {this.props.mode === 'userMode' ? <NavigatorBar /> : (this.props.isAdminLoggedIn===true?<AdminNav />:<></>)}
                         <span className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
@@ -74,7 +74,7 @@ class App extends Component {
                                 <Route path='/profile' component={userIsAuthenticated(Profile)} />
                                 <Route path='/change-password' component={userIsAuthenticated(ChangePassword)} />
                                 <Route path='/admin/login' component={(LoginAdmin)} />
-                                <Route path='/admin' component={(Admin)}  />
+                                <Route path='/admin' component={(Admin)} />
                             </Switch>
                         </span>
                         <ToastContainer
@@ -95,8 +95,8 @@ const mapStateToProps = state => {
     return {
         started: state.app.started,
         mode: state.app.mode,
-        isLoggedIn: state.user.isLoggedIn
-
+        isLoggedIn: state.user.isLoggedIn,
+        isAdminLoggedIn: state.admin.isLoggedIn
     };
 };
 

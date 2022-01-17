@@ -34,32 +34,36 @@ class LoginAdmin extends Component {
         })
     }
 
-    handleLogin  = async ()=>{
+    handleLogin = async () => {
         let userName = this.state.username
         let passWord = this.state.password
-        let data = await adminService.login(userName,passWord)
+        let data = await adminService.login(userName, passWord)
         console.log(data)
-        if (data.err !==4){ 
+        if (data.err !== 4) {
             this.setState({
                 err: data.err,
                 message: data.message
             })
         }
-        else{
+        else {
             //Thanh cong
             this.props.processLogout()
             this.props.adminLoginSuccess(data.admin)
+            let { navigate } = this.props;
+            //const redirectPath = '/system/user-manage';
+            navigate('/admin');
         }
-        
+
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.changeAppMode('adminMode')
+        //
+        
     }
 
     render() {
         //JSX
-
 
         return (
             <>
@@ -102,10 +106,10 @@ class LoginAdmin extends Component {
                                     </span>
                                 </div>
                             </div>
-                            <button className='btn-login btn-login-normal' onClick={()=>this.handleLogin()}
+                            <button className='btn-login btn-login-normal' onClick={() => this.handleLogin()}
                             >Login</button>
                             <div className='col-12'>
-                                <span style={{color: 'red'}}>{this.state.message}</span>
+                                <span style={{ color: 'red' }}>{this.state.message}</span>
                             </div>
                             <div className='col-12  login-orther'>
                                 <span className='text-orther-login '>
@@ -139,7 +143,7 @@ const mapDispatchToProps = dispatch => {
         adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
         adminLoginFail: () => dispatch(actions.adminLoginFail()),
         processLogout: () => dispatch(actions.processLogout()),
-        changeAppMode: (payload)=>dispatch(actions.changeAppMode(payload))
+        changeAppMode: (payload) => dispatch(actions.changeAppMode(payload))
     };
 };
 

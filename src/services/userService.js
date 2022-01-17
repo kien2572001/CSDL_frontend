@@ -16,4 +16,8 @@ let handleGetOrderByUserId = (cid)=>{
     return axios.get(`/api/find-order-by-userid?id=${cid}`)
 }
 
-export {handleLogin,handleSaveOrder,handleGetOrderByUserId}
+
+let handleChangePassWord = (data)=>{
+    return axios.post('/api/change-password',data)
+}
+export {handleLogin,handleSaveOrder,handleGetOrderByUserId,handleChangePassWord}
