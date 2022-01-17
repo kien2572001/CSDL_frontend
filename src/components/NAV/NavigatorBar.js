@@ -103,8 +103,6 @@ class NavigatorBar extends Component {
                                     <span className='hearder__navbar-search-btn'>
                                         <i className="fas fa-search hearder__navbar-search-btn-icon hearder__navbar-search-btn-icon--search"
                                             onClick={() => this.handleSearchTitleProduct()}
-
-
                                         ></i>
 
                                     </span>
