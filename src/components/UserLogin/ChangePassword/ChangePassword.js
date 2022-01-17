@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { push } from "connected-react-router";
+import * as actions from "../../../store/actions";
 import './ChangePassword.scss';
 import { Link } from 'react-router-dom'
 import {handleChangePassWord} from '../../../services/userService'
@@ -55,6 +57,12 @@ class ChangePassword extends Component {
         })
     }
 
+    handleLogout = ()=>{
+        this.props.processLogout()      
+        this.props.navigate('/')
+         
+    }
+
     render() {
         let { titleProduct, removeSearchData, checkDropdow } = this.state;
         return (
@@ -105,7 +113,7 @@ class ChangePassword extends Component {
                                 </li>
 
                             </ul>
-                            <div className='user_sidebar-logout'>
+                            <div className='user_sidebar-logout' onClick={()=>this.handleLogout()}>
                                 <a className='user_sidebar-logout-link'>
                                     Logout
                                 </a>
@@ -165,6 +173,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        processLogout: () => dispatch(actions.processLogout()),
+        navigate: (path) => dispatch(push(path)),
     };
 };
 

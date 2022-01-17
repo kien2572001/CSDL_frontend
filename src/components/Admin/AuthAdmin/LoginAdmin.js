@@ -57,9 +57,7 @@ class LoginAdmin extends Component {
     }
 
     componentDidMount() {
-        this.props.changeAppMode('adminMode')
-        //
-        
+        this.props.changeAppMode('adminMode')      
     }
 
     render() {

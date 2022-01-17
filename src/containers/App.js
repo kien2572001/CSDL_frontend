@@ -31,6 +31,7 @@ import ChangePassword from '../components/UserLogin/ChangePassword/ChangePasswor
 import LoginAdmin from '../components/Admin/AuthAdmin/LoginAdmin';
 import Admin from '../components/Admin/Admin';
 import AdminNav from '../components/Admin/AdminNav';
+import ScrollToTop from './ScrollToTop'
 class App extends Component {
 
     handlePersistorState = () => {
@@ -58,6 +59,7 @@ class App extends Component {
                     <div className="main-container">
                         <ConfirmModal />
                         {/* {this.props.isLoggedIn && <Header />} */}
+                        <ScrollToTop/>
                         {this.props.mode === 'userMode' ? <NavigatorBar /> : (this.props.isAdminLoggedIn===true?<AdminNav />:<></>)}
                         <span className="content-container">
                             <Switch>

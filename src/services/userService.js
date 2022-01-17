@@ -20,4 +20,11 @@ let handleGetOrderByUserId = (cid)=>{
 let handleChangePassWord = (data)=>{
     return axios.post('/api/change-password',data)
 }
-export {handleLogin,handleSaveOrder,handleGetOrderByUserId,handleChangePassWord}
+
+let cloudinaryUpload = (fileToUpload) => {
+    return axios.post('/cloudinary-upload', fileToUpload)
+    // .then(res => res.data)
+    // .catch(err => console.log(err))
+}
+
+export {handleLogin,handleSaveOrder,handleGetOrderByUserId,handleChangePassWord,cloudinaryUpload}

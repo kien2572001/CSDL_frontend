@@ -13,14 +13,35 @@ import {
     InputGroupText,
 } from 'reactstrap'
 
+import {cloudinaryUpload} from '../../../services/userService'
+import userImg from '../../../assets/images/admin/avatar-placeholder.svg'
+
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             modalContact: false,
             modalAddress: false,
-
+            img: '',
+            name: '',
+            
         }
+    }
+
+    componentDidMount(){
+        this.setState({
+            img: this.props.userInfo.image
+        })
+    }
+
+    onChangeInputImage = async (e)=>{
+        let uploadData  = new FormData()
+        uploadData.append('file',e.target.files[0],"file")
+        let tmp = await cloudinaryUpload(uploadData)
+        //console.log('Link',tmp)
+        this.setState({
+            img: tmp.secure_url
+        })
     }
 
     render() {
@@ -101,7 +122,11 @@ class Profile extends Component {
                                     id="avatar" name="avatar"
                                     accept="image/png, image/jpeg"
                                     className='profile__infor-avatar-input'
+                                    onChange={(e)=>this.onChangeInputImage(e)}
                                 />
+                            </div>
+                            <div className='avatar-img'>
+                                <img src={this.state.img} alt='' width="100" height="100" />
                             </div>
                             <div className='profile__infor-form'>
                                 <label className='profile__infor-title' htmlFor='profile__infor-name'>Name</label>
@@ -230,7 +255,8 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        language: state.app.language,
+        userInfo: state.user.userInfo
     };
 };
 
