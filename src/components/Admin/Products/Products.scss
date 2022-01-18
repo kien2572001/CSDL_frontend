@@ -1,219 +1,231 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap');
 
+.item-container {
+  section {
+    width: -webkit-fill-available;
+  }
+}
+
 .products-search {
-    display: flex;
+  display: flex;
+  background-color: #ffffff;
+  width: 100rem;
+  padding: 3rem;
+  align-items: center;
+  margin-bottom: 30px;
+  width: -webkit-fill-available;
+
+  h3 {
+    margin-right: 10rem;
+    font-weight: bold;
+  }
+
+  input {
+    padding: 1rem;
+  }
+
+  .search {
+    width: 7rem;
+    margin-left: 30px;
+    line-height: 0px;
+    border-color: #ffffff;
+    font-size: 25px;
+    color: rgb(31, 31, 238);
+    cursor: pointer;
+  }
+
+  i:hover {
     background-color: #ffffff;
-    width: 100rem;
-    padding: 3rem;
-    align-items: center;
-    margin-bottom: 30px;
+    color: rgb(34, 16, 97);
+  }
 
-    h3 {
-        margin-right: 10rem;
-        font-weight: bold;
-    }
+  i:active {
+    background-color: #ffffff;
+    color: rgb(34, 16, 97);
+  }
 
-    input {
-        padding: 1rem;
-    }
-
-    i {
-        width: 7rem;
-        margin-left: 30px;
-        line-height: 0px;
-        border-color: #ffffff;
-        font-size: 25px;
-        color: rgb(31, 31, 238);
-        cursor: pointer;
-    }
-
-    i:hover {
-        background-color: #ffffff;
-        color: rgb(34, 16, 97);
-    }
-
-    i:active {
-        background-color: #ffffff;
-        color: rgb(34, 16, 97);
-    }
+  button {
+    margin-bottom: auto;
+    width: 13rem;
+    height: 52px;
+  }
 }
 
 .products-table {
-    background-color: #ffffff;
+  background-color: #ffffff;
 
-    img {
-        width: 60px;
-        height: 60px;
-    }
+  img {
+    width: 60px;
+    height: 60px;
+  }
 
-    td:not(:first-child) {
-        padding-top: 23px;
-    }
+  td:not(:first-child) {
+    padding-top: 23px;
+  }
 
-    .table-list {
-        text-align: center;
-    }
+  .table-list {
+    text-align: center;
+  }
 
-    .th-img {
-        width: 100px;
-    }
+  .th-img {
+    width: 100px;
+  }
 
-    .th-name {
-        width: 300px;
-    }
+  .th-name {
+    width: 300px;
+  }
 
-    span {
-        width: 73px;
-        height: 25px;
-        background-color: #009f7f;
-        border-radius: 9999px;
-        color: #ffffff;
-        font-size: 12px;
-        line-height: 16px;
-        padding: 4px 12px;
-        text-align: center;
-        text-transform: uppercase;
-    }
+  span {
+    width: 73px;
+    height: 25px;
+    background-color: #009f7f;
+    border-radius: 9999px;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 4px 12px;
+    text-align: center;
+    text-transform: uppercase;
+  }
 
-    i {
-        font-size: 20px;
-        margin-left: 0.5rem;
-    }
+  i {
+    font-size: 20px;
+    margin-left: 0.5rem;
+  }
 
-    i:hover {
-        cursor: pointer;
-    }
+  i:hover {
+    cursor: pointer;
+  }
 
-    .fa-trash-alt {
-        color: red;
-    }
+  .fa-trash-alt {
+    color: red;
+  }
 
-    .fa-trash-alt:hover {
-        color: rgb(136, 11, 11);
-    }
+  .fa-trash-alt:hover {
+    color: rgb(136, 11, 11);
+  }
 
-    .fa-edit:hover {
-        color: rgb(107, 204, 107);
-    }
+  .fa-edit:hover {
+    color: rgb(107, 204, 107);
+  }
 }
 
 .products-pagination {
-    float: right;
-    margin-top: 10px;
+  float: right;
+  margin-top: 10px;
 
-    .page-link {
-        margin: 0 0 0 0.75rem !important;
-        border-radius: 5px;
-        border-style: solid;
-        border-width: 1px;
-    }
+  .page-link {
+    margin: 0 0 0 0.75rem !important;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+  }
 }
 
 .featured-img {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 
-    img {
-        padding: 0 4px 3px 0;
-    }
+  img {
+    padding: 0 4px 3px 0;
+  }
 
-    h3 {
-        margin-top: 45px;
-    }
+  h3 {
+    margin-top: 45px;
+  }
 }
 
 .gr-cate {
+  // display: flex;
+  .form-gr {
+    width: 75rem;
+    margin: auto;
+  }
 
-    // display: flex;
-    .form-gr {
-        width: 75rem;
-        margin: auto;
-    }
+  .description {
+    word-wrap: break-word;
+    height: 100px;
+  }
 
-    .description {
-        word-wrap: break-word;
-        height: 100px;
-    }
+  input {
+    height: 3rem;
+  }
 
-    input {
-        height: 3rem;
-    }
+  label {
+    margin-top: 20px;
+  }
 
-    label {
-        margin-top: 20px;
-    }
-
-    h3 {
-        margin-top: 45px;
-    }
+  h3 {
+    margin-top: 45px;
+  }
 }
 
 .modal-content {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 .modal-header {
-    border-radius: 15px !important;
-    height: 60px !important;
-    background-color: #009f7f !important;
+  border-radius: 15px !important;
+  height: 60px !important;
+  background-color: #009f7f !important;
 }
 
 .modal-title {
-    margin: auto;
-    font-family: 'Mochiy Pop P One', sans-serif;
+  margin: auto;
+  font-family: 'Mochiy Pop P One', sans-serif;
 }
 
 .modal-body {
-    margin-bottom: 33px;
+  margin-bottom: 33px;
 }
 
 .frame {
-    margin-right: 200px !important;
+  margin-right: 200px !important;
 }
 
 .modal-footer button {
-    width: 150px;
-    height: 40px;
+  width: 150px;
+  height: 40px;
 }
 
 .btn-back {
-    width: 80px !important;
+  width: 80px !important;
 }
 
 .modal-body-delete {
-    text-align: center;
+  text-align: center;
 
-    i {
-        margin-top: 20px;
-        font-size: 80px;
-        color: #009f7f;
-    }
+  i {
+    margin-top: 20px;
+    font-size: 80px;
+    color: #009f7f;
+  }
 
-    h3 {
-        margin: 20px 0 20px 0;
-        font-weight: bold;
-    }
+  h3 {
+    margin: 20px 0 20px 0;
+    font-weight: bold;
+  }
 
-    p {
-        color: grey;
-    }
+  p {
+    color: grey;
+  }
 
-    button {
-        width: 150px;
-        height: 40px;
-    }
+  button {
+    width: 150px;
+    height: 40px;
+  }
 }
 
 .modal-btn-delete {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
 }
 
 .modal-delete {
-    width: 30rem;
+  width: 30rem;
 
-    .modal-content {
-        height: 22rem;
-    }
+  .modal-content {
+    height: 22rem;
+  }
 }

@@ -30,6 +30,12 @@ export default class ProductList extends Component {
     })
   }
 
+  onPreviewDrop = (files) => {
+    this.setState({
+      files: this.state.files.concat(files),
+    })
+  }
+
   handleCloseEdit = () => this.setState({ showEdit: false })
   handleOpenEdit = () => this.setState({ showEdit: true })
 
@@ -44,12 +50,6 @@ export default class ProductList extends Component {
   editProducts = (id) => {
     this.handleOpenEdit()
     console.log(id)
-  }
-
-  onPreviewDrop = (files) => {
-    this.setState({
-      files: this.state.files.concat(files),
-    })
   }
 
   handleClickBack = () => {

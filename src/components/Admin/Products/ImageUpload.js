@@ -56,10 +56,13 @@ class ImageUpload extends React.Component {
         files.map((file) => <aside key={uuidv4()}>{thumbs}</aside>)
       ) : (
         <p className='frame-img'>
-          <img src={this.props.info.img} alt='' style={thumbsContainer} />
+          {this.props.info ? (
+            <img src={this.props.info.img} alt='' style={thumbsContainer} />
+          ) : (
+            <img src='' alt='' style={thumbsContainer} />
+          )}
         </p>
       )
-
     return (
       <div>
         <p>{this.state.warningMsg}</p>
