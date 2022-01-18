@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import * as actions from "../../store/actions";
 import AdminSideBar from './AdminSidebar'
-import Products from './Products/ProductsContainer'
-import './Admin.scss'
+import Dashbroad from "./Dashbroad/Dashbroad";
+import EditShop from './EditShop/EditShop';
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -15,37 +15,27 @@ class Admin extends Component {
         this.props.changeAppMode('adminMode')
     }
 
-    changeMenu = (key)=>{
+    changeMenu = (key) => {
         this.setState({
             menu: key
         })
     }
 
     render() {
-        let {menu} = this.state
+        let { menu } = this.state
         return (
-            <div className='admin-component-container'>  
+            <>
                 <div className='.container-fluid'>
                     <div className='row'>
                         <div className='col-sm-2 sidebar'>
                             <AdminSideBar changeMenu={this.changeMenu} />
                         </div>
                         <div className=' item-container'>
-                            {menu === 1 ? (
-                                <div>Dashbroad</div>
-                            ) : menu === 2 ? (
-                                <Products />
-                            ) : menu === 3 ? (
-                                <div>Orders</div>
-                            ) : menu === 4 ? (
-                                <div>Analysis</div>
-                            ) : (
-                                <div>Khong biet</div>
-                            )}
-                            </div>
+                            {menu === 1 ? <Dashbroad /> : (menu === 2 ? <EditShop /> : (menu === 3 ? <div>Orders</div> : (menu === 4 ? <div>Analysis</div> : <div>Khong biet</div>)))}
+                        </div>
                     </div>
-                </div>                
-            </div>
+                </div>
+            </>
         )
     }
 }
@@ -59,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeAppMode: (payload)=>dispatch(actions.changeAppMode(payload))
+        changeAppMode: (payload) => dispatch(actions.changeAppMode(payload))
     };
 };
 

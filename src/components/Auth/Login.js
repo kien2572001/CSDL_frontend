@@ -139,15 +139,12 @@ class Login extends Component {
                         <>
                             <div className='dropdown-container' onMouseOver={() => this.hanldeShowUserOption()} onMouseOut={() => this.handleOnMouseOut()}>
                                 <div className='dropdown-btn' >
-                                    <img 
-                                        src={this.props.userInfo.image} alt="Avatar" className='dropdown-btn--avatar' 
-                                        // alt="https://pickbazar-react-rest.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fsrc%2Fassets%2Fplaceholders%2Favatar.2a4ed68cad8ebe21317b04e155b6b245.svg&w=1920&q=75"
-                                    />
+                                    <img src="https://pickbazar-react-rest.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fsrc%2Fassets%2Fplaceholders%2Favatar.2a4ed68cad8ebe21317b04e155b6b245.svg&w=1920&q=75" alt="Avatar" className='dropdown-btn--avatar' />
                                 </div>
                                 <div className={this.state.isShowUserOption ? 'dropdown-box' : 'dropdown-box display-none'}>
 
                                     <div className='dropdown-username'>
-                                        {this.props.userInfo.userName}
+                                        Username
                                     </div>
                                     <Link to='/profile' className='dropdown-item'>
                                         Profile
@@ -289,8 +286,7 @@ class Login extends Component {
 const mapStateToProps = state => {
     return {
         language: state.app.language,
-        isLoggedIn: state.user.isLoggedIn,
-        userInfo: state.user.userInfo
+        isLoggedIn: state.user.isLoggedIn
     };
 };
 

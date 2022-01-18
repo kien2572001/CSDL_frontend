@@ -49,19 +49,17 @@ class LoginAdmin extends Component {
             //Thanh cong
             this.props.processLogout()
             this.props.adminLoginSuccess(data.admin)
-            let { navigate } = this.props;
-            //const redirectPath = '/system/user-manage';
-            navigate('/admin');
         }
 
     }
 
     componentDidMount() {
-        this.props.changeAppMode('adminMode')      
+        this.props.changeAppMode('adminMode')
     }
 
     render() {
         //JSX
+
 
         return (
             <>

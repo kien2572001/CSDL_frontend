@@ -32,12 +32,12 @@ class AdminNav extends React.Component {
                                     <img src={LogoButtonAdmin} className="AdminNav__login-btn-logo"></img>
                                 </button>
                                 <ul className={this.state.isdropDown ? "AdminNav__dropdown--gowth AdminNav__login-list" : "AdminNav__dropdown--hidden  AdminNav__login-list"}>
-                                    <li className="AdminNav__login-list-item">
+                                    {/* <li className="AdminNav__login-list-item">
                                         Profile
                                     </li>
                                     <li className="AdminNav__login-list-item AdminNav__logout">
                                         Logout
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                         </div>

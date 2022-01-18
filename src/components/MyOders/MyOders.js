@@ -11,7 +11,7 @@ import {
     NavLink,
     Link
 } from "react-router-dom";
-import { push } from "connected-react-router";
+
 import { handleGetOrderByUserId } from '../../services/userService'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -37,12 +37,6 @@ class MyOders extends React.Component {
         this.setState({
             orderId: order.orderId,
         })
-    }
-
-    handleLogout = ()=>{
-        this.props.processLogout()      
-        this.props.navigate('/')
-         
     }
 
     render() {
@@ -96,7 +90,7 @@ class MyOders extends React.Component {
                                         </li>
 
                                     </ul>
-                                    <div className='user_sidebar-logout' onClick={()=>this.handleLogout()}>
+                                    <div className='user_sidebar-logout'>
                                         <a className='user_sidebar-logout-link'>
                                             Logout
                                         </a>
@@ -262,8 +256,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        processLogout: () => dispatch(actions.processLogout()),
-        navigate: (path) => dispatch(push(path)),
+
     };
 };
 

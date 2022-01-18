@@ -1,145 +1,169 @@
 import React, { Component } from 'react'
-import { Modal, Button, Form } from 'react-bootstrap'
+// import { connect } from 'react-redux'
+// import { push } from 'connected-react-router'
+// import * as actions from '../../store/actions'
 import './Register.scss'
+import 'bootstrap'
+import LogoShop from '../../assets/images/PickBazar.png'
+// import adminService from '../../services/adminService'
 
-export default class Register extends Component {
+class Register extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      show: false,
-      validated: false,
       name: '',
-      email: '',
-      username: '',
       password: '',
+      email: '',
+      modal: false,
+      isShowUserOption: false,
+      isShowPassword: false,
+      err: 4,
+      message: '',
     }
   }
-
-  handleClose = () => this.setState({ show: false }) //ẩn form
-  handleShow = () => this.setState({ show: !this.state.show }) //hiện form
-  handleRegister = (e) => {
-    const form = e.currentTarget
-    if (form.checkValidity() === false) {
-      e.preventDefault()
-      e.stopPropagation()
-    }
-
-    this.setState({ validated: true })
+  handleOnChangeName = (event) => {
+    this.setState({
+      name: event.target.value,
+      message: '',
+    })
   }
+  handleOnChangePassword = (event) => {
+    this.setState({
+      password: event.target.value,
+      message: '',
+    })
+  }
+
+  handleRegister = async () => {
+    // let userName = this.state.name
+    // let passWord = this.state.password
+    // let data = await adminService.login(userName, passWord)
+    // console.log(data)
+    // if (data.err !== 4) {
+    //   this.setState({
+    //     err: data.err,
+    //     message: data.message,
+    //   })
+    // } else {
+    //   //Thanh cong
+    //   this.props.processLogout()
+    //   this.props.adminLoginSuccess(data.admin)
+    // }
+  }
+
+  // componentDidMount() {
+  //   this.props.changeAppMode('adminMode')
+  // }
 
   render() {
+    //JSX
+
     return (
-      <span className='register-container'>
-        <Button variant='primary' onClick={this.handleShow}>
-          Register
-        </Button>
-
-        <Modal show={this.state.show} onHide={this.handleClose}>
-          <div className='center mt-32'>
-            <img
-              src='https://pickbazar-react-rest.vercel.app/_next/image?url=https%3A%2F%2Fpickbazarlaravel.s3.ap-southeast-1.amazonaws.com%2F860%2FPickBazar.png&w=1920&q=75'
-              alt=''
-            />
-          </div>
-          <Modal.Header className='center'>
-            <p className='text-muted center'>
-              By signing up, you agree to our <a href='#'>terms</a> &{' '}
-              <a href='#'>policy</a>
-            </p>
-          </Modal.Header>
-          <Modal.Body>
-            <Form
-              noValidate
-              validated={this.state.validated}
-              onSubmit={this.handleRegister}
-            >
-              <Form.Group className='mb-3' controlId='formBasicName'>
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  required
-                  type='text'
-                  placeholder='Name'
-                  value={this.state.name}
-                  onChange={(e) => {
-                    this.setState({
-                      name: e.target.value,
-                    })
-                  }}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  Vui lòng điền họ và tên
-                </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group className='mb-3' controlId='formBasicEmail'>
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  required
-                  type='email'
-                  placeholder='email@address.com'
-                  value={this.state.email}
-                  onChange={(e) => {
-                    return this.setState({
-                      email: e.target.value,
-                    })
-                  }}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  {this.state.email
-                    ? 'Sai định dạng email'
-                    : 'Vui lòng điền email'}
-                </Form.Control.Feedback>
-              </Form.Group>
-
-              <Form.Group className='mb-3' controlId='formBasicUserName'>
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  required
-                  type='text'
-                  placeholder='username'
-                  value={this.state.username}
-                  onChange={(e) => {
-                    this.setState({
-                      username: e.target.value,
-                    })
-                  }}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  Vui lòng điền username
-                </Form.Control.Feedback>
-              </Form.Group>
-
-              <Form.Group className='mb-3' controlId='formBasicPassword'>
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  required
-                  type='password'
-                  placeholder='Password'
-                  value={this.state.password}
-                  onChange={(e) => {
-                    return this.setState({
-                      password: e.target.value,
-                    })
-                  }}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  Vui lòng điền mật khẩu
-                </Form.Control.Feedback>
-              </Form.Group>
-
-              <div className='d-grid gap-2 pt-15'>
-                <Button variant='success bold register' type='submit'>
-                  Register
-                </Button>
+      <>
+        <div className='login-admin'>
+          <div className='login-container'>
+            <div className='login-content'>
+              <div className='col-12  text-login'>
+                <img src={LogoShop} className='login-logo' />
               </div>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <p className='text-muted justify-between'>
-              Already have an account? <a href='#'>Login</a>
-            </p>
-          </Modal.Footer>
-        </Modal>
-      </span>
+              <div className='col-12 text-contentlogin'></div>
+              <div className='col-12 form-group login-input'>
+                <label>
+                  <span>Name</span>
+                </label>
+                <input
+                  type='text'
+                  className='form-control login-input--text'
+                  placeholder='Enter you name'
+                  value={this.state.name}
+                  onChange={(event) => this.handleOnChangeName(event)}
+                />
+              </div>
+              <div className='col-12 form-group login-input'>
+                <label>
+                  <span>Email</span>
+                </label>
+                <input
+                  type='email'
+                  className='form-control login-input--text'
+                  placeholder='Enter you email'
+                  value={this.state.email}
+                  onChange={(event) => this.handleOnChangeName(event)}
+                />
+              </div>
+              <div className='col-12 form-group login-input'>
+                <label className='login-input-password'>
+                  <span>Password</span>
+                </label>
+                <div className='custom-input-password'>
+                  <input
+                    type={this.state.isShowPassword ? 'text' : 'password'}
+                    className='form-control login-input--text'
+                    placeholder='Enter you password'
+                    value={this.state.password}
+                    onChange={(event) => this.handleOnChangePassword(event)}
+                  />
+                  <span
+                    onClick={() =>
+                      this.setState({
+                        isShowPassword: !this.state.isShowPassword,
+                      })
+                    }
+                  >
+                    <i
+                      className={
+                        this.state.isShowPassword
+                          ? 'far fa-eye'
+                          : 'far fa-eye-slash'
+                      }
+                    ></i>
+                  </span>
+                </div>
+              </div>
+              <button
+                className='btn-login btn-login-normal'
+                onClick={() => this.handleRegister()}
+              >
+                Register
+              </button>
+              <div className='col-12'>
+                <span style={{ color: 'red' }}>{this.state.message}</span>
+              </div>
+              <div className='col-12  login-orther'>
+                <span className='text-orther-login '>
+                  <span>Or</span>
+                </span>
+              </div>
+
+              <div className='login-register-user '>
+                <span>Already have an account? </span>
+                <a>Login</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
     )
   }
 }
+
+// const mapStateToProps = (state) => {
+//   return {
+//     language: state.app.language,
+//     isLoggedIn: state.admin.isLoggedIn,
+//   }
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     navigate: (path) => dispatch(push(path)),
+//     adminLoginSuccess: (adminInfo) =>
+//       dispatch(actions.adminLoginSuccess(adminInfo)),
+//     adminLoginFail: () => dispatch(actions.adminLoginFail()),
+//     processLogout: () => dispatch(actions.processLogout()),
+//     changeAppMode: (payload) => dispatch(actions.changeAppMode(payload)),
+//   }
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default Register
