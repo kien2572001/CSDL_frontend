@@ -26,7 +26,7 @@ let handleFindProductById = (id) => {
 }
 
 let handleGetProductByStoreId = (sid)=>{
-  return axios.get('/api/get-product-by-storeId?sid=',sid)
+  return axios.get(`/api/get-product-by-storeId?sid=${sid}`)
 }
 
 export {
