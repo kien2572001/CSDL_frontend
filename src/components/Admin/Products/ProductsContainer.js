@@ -20,6 +20,7 @@ class ProductsContainer extends Component {
     super(props)
     this.state = {
       showAddProduct: false,
+      showFilter: false,
       files: [],
       page: 0,
       data: [], // lưu các mảng của các page
@@ -28,6 +29,8 @@ class ProductsContainer extends Component {
         createdAt: new Date().getTime().toString(),
         updatedAt: new Date().getTime().toString(),
       },
+      filterByGroup: '',
+      filterByCategory: '',
     }
   }
 
@@ -93,7 +96,6 @@ class ProductsContainer extends Component {
   }
 
   render() {
-    // console.log(this.state.details)
     return (
       <>
         <section>
@@ -110,7 +112,51 @@ class ProductsContainer extends Component {
             <Button variant='success' onClick={this.handleOpenAddProduct}>
               <i class='fas fa-plus plus'></i> Add Product
             </Button>
+            <div
+              className={`filter ${this.state.showFilter && 'filter-active'}`}
+              onClick={() =>
+                this.setState({ showFilter: !this.state.showFilter })
+              }
+            >
+              <h5>Filter</h5>
+              <i class='fas fa-arrow-down'></i>
+            </div>
           </article>
+          {this.state.showFilter && (
+            <article className='products-filter'>
+              <div className='filter-group'>
+                <h4>Filter By Group</h4>
+                <Form.Select
+                  aria-label='select group'
+                  onChange={(e) =>
+                    this.setState({ filterByGroup: e.target.value })
+                  }
+                >
+                  <option>- Open this select menu -</option>
+                  <option value='Grocery'>Grocery</option>
+                  <option value='Bakery'>Bakery</option>
+                  <option value='Makeup'>Makeup</option>
+                  <option value='Bags'>Bags</option>
+                  <option value='Clothings'>Clothings</option>
+                  <option value='Furniture'>Furniture</option>
+                  <option value='Daily Needs'>Daily Needs</option>
+                </Form.Select>
+              </div>
+              <div className='filter-category'>
+                <h4>Filter By Category</h4>
+                <Form.Select
+                  aria-label='select category'
+                  onChange={(e) =>
+                    this.setState({ filterByCategory: e.target.value })
+                  }
+                >
+                  <option>- Open this select menu -</option>
+                  <option value='No option'>No option</option>
+                </Form.Select>
+              </div>
+            </article>
+          )}
+
           <article className='products-table'>
             <Table responsive borderless className='table-list'>
               <thead>

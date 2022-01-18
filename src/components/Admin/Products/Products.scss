@@ -12,7 +12,6 @@
   width: 100rem;
   padding: 3rem;
   align-items: center;
-  margin-bottom: 30px;
   width: -webkit-fill-available;
 
   h3 {
@@ -49,10 +48,66 @@
     width: 13rem;
     height: 52px;
   }
+
+  .filter {
+    display: flex;
+    margin-left: 30px;
+    color: #009f7f;
+    cursor: pointer;
+    h5 {
+      font-weight: bold;
+    }
+    i {
+      margin: 4px;
+    }
+  }
+
+  .filter:hover {
+    color: #046b56;
+    cursor: pointer;
+  }
+
+  .filter-active {
+    color: #046b56;
+    cursor: pointer;
+    i {
+      transform: rotate(180deg);
+      padding-top: 6px;
+    }
+  }
+}
+
+.products-filter {
+  display: flex;
+  background-color: #ffffff;
+  width: 100rem;
+  padding: 3rem;
+  align-items: center;
+  justify-content: space-around;
+  width: -webkit-fill-available;
+  h4 {
+    margin-right: 10rem;
+    font-weight: bold;
+  }
+
+  .filter-group {
+    width: -webkit-fill-available;
+  }
+
+  .filter-category {
+    margin-left: 50px;
+    width: -webkit-fill-available;
+  }
+
+  select {
+    height: 4rem;
+    font-family: 'Mochiy Pop P One', sans-serif;
+  }
 }
 
 .products-table {
   background-color: #ffffff;
+  margin-top: 30px;
 
   img {
     width: 60px;
