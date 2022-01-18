@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import ImageUpload from './ImageUpload'
 import { v4 as uuidv4 } from 'uuid'
-
+import {deleteProductById} from '../../../services/productService'
 export default class ProductList extends Component {
   constructor(props) {
     super(props)
@@ -38,7 +38,7 @@ export default class ProductList extends Component {
 
   deleteProducts = (id) => {
     this.handleOpenDelete()
-    console.log(id)
+    //console.log(id)
   }
 
   editProducts = (id) => {
@@ -73,9 +73,16 @@ export default class ProductList extends Component {
     this.handleCloseDelete()
   }
 
-  handleClickDelete = () => {
-    console.log(this.props.info)
+  handleClickDelete = async() => {
+    //console.log(this.props.info)
+    await deleteProductById(this.props.info.pid)
+    this.reRenderList()
     this.handleCloseDelete()
+  }
+
+  //Render lai cac san pham sau khi sua xoa
+  reRenderList = ()=>{
+    this.props.updateChange(this.props.sid)
   }
 
   render() {

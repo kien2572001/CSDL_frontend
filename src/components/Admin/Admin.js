@@ -4,6 +4,8 @@ import * as actions from "../../store/actions";
 import AdminSideBar from './AdminSidebar'
 import Products from './Products/ProductsContainer'
 import './Admin.scss'
+import AdminOrder from './Order/AdminOrder';
+import Dashbroad from './Dashbroad/Dashbroad';
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -32,11 +34,11 @@ class Admin extends Component {
                         </div>
                         <div className=' item-container'>
                             {menu === 1 ? (
-                                <div>Dashbroad</div>
+                                <Dashbroad />
                             ) : menu === 2 ? (
                                 <Products />
                             ) : menu === 3 ? (
-                                <div>Orders</div>
+                                <AdminOrder />
                             ) : menu === 4 ? (
                                 <div>Analysis</div>
                             ) : (

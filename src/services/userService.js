@@ -31,4 +31,9 @@ let changeFLA = (data)=>{
     return axios.post('/api/change-fla',data)
 }
 
-export {handleLogin,handleSaveOrder,handleGetOrderByUserId,handleChangePassWord,cloudinaryUpload,changeFLA}
+
+let handleGetUserInfoByCid = (cid)=>{
+    return axios.get(`/api/get-userinfo-by-cid?cid=${cid}`)
+}
+
+export {handleLogin,handleSaveOrder,handleGetOrderByUserId,handleChangePassWord,cloudinaryUpload,changeFLA,handleGetUserInfoByCid}

@@ -29,6 +29,14 @@ let handleGetProductByStoreId = (sid)=>{
   return axios.get(`/api/get-product-by-storeId?sid=${sid}`)
 }
 
+let deleteProductById = (pid)=>{
+  return axios.post('/api/delete-product-by-pid',{pid: pid})
+}
+
+let handleGetAllCategory = ()=>{
+    return axios.get('/api/get-all-category')
+}
+
 export {
   handleGetProductByCategory,
   handleGetCategoryById,
@@ -36,5 +44,7 @@ export {
   handleSaveToOrderItem,
   handleFindOrderById,
   handleFindProductById,
-  handleGetProductByStoreId
+  handleGetProductByStoreId,
+  deleteProductById,
+  handleGetAllCategory
 }

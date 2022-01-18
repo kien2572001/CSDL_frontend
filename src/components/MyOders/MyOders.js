@@ -123,7 +123,7 @@ class MyOders extends React.Component {
                                                                             Orders
                                                                             <span className="id">#{key + 1}</span>
                                                                         </span>
-                                                                        <span className="status">Order Received</span>
+                                                                        <span className="status">{item.status}</span>
                                                                     </div>
                                                                     <div className="infor_Order">
                                                                         <div>

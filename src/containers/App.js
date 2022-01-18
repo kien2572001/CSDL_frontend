@@ -6,7 +6,7 @@ import { history } from '../redux'
 import { ToastContainer } from 'react-toastify';
 
 
-import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
+import { userIsAuthenticated, userIsNotAuthenticated,adminIsNotAuthenticated,adminIsAuthenticated } from '../hoc/authentication';
 
 import { path } from '../utils'
 
@@ -75,8 +75,8 @@ class App extends Component {
                                 <Route path='/my-order' component={userIsAuthenticated(MyOders)} />
                                 <Route path='/profile' component={userIsAuthenticated(Profile)} />
                                 <Route path='/change-password' component={userIsAuthenticated(ChangePassword)} />
-                                <Route path='/admin/login' component={(LoginAdmin)} />
-                                <Route path='/admin' component={(Admin)} />
+                                <Route path='/admin/login' component={adminIsNotAuthenticated(LoginAdmin)} />
+                                <Route path='/admin' component={adminIsAuthenticated(Admin)} />
                             </Switch>
                         </span>
                         <ToastContainer
