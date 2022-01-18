@@ -1,6 +1,21 @@
 import React from "react";
-import './AdminOrder.scss'
+import './AdminOrder.scss';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import OrderDetail from "./OrderDetail";
 class AdminOrder extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            modal: true,
+        }
+        this.toggle = this.toggle.bind(this);
+    }
+    toggle() {
+        console.log(">>> check Order", this.state.modal)
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
 
     render() {
         return (
@@ -30,7 +45,7 @@ class AdminOrder extends React.Component {
                                 <col></col>
                                 <col></col>
                                 <col></col>
-                                <col style={{ width: "150px" }}></col>
+                                <col style={{ width: "220px" }}></col>
                             </colgroup>
                             <thead>
                                 <tr>
@@ -57,12 +72,43 @@ class AdminOrder extends React.Component {
                                     <td>Content 1</td>
                                     <td>
                                         <div className="actions__status">
+                                            <button className="actions__status--detail"
+                                                onClick={() => this.toggle()}
+                                            >
+                                                Detail
+                                            </button>
                                             <button className="actions__status--accept">
                                                 Accept
                                             </button>
                                             <button className="actions__status--reject">
                                                 Reject
                                             </button>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>Content 1</td>
+                                    <td>
+                                        <div className="actions__status">
+                                            <button className="actions__status--detail">
+                                                Detail
+                                            </button>
+                                            <button className="actions__status--accept">
+                                                Accept
+                                            </button>
+                                            <button className="actions__status--reject">
+                                                Reject
+                                            </button>
+
                                         </div>
                                     </td>
                                 </tr>
@@ -77,32 +123,16 @@ class AdminOrder extends React.Component {
                                     <td>Content 1</td>
                                     <td>
                                         <div className="actions__status">
+                                            <button className="actions__status--detail">
+                                                Detail
+                                            </button>
                                             <button className="actions__status--accept">
                                                 Accept
                                             </button>
                                             <button className="actions__status--reject">
                                                 Reject
                                             </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>Content 1</td>
-                                    <td>
-                                        <div className="actions__status">
-                                            <button className="actions__status--accept">
-                                                Accept
-                                            </button>
-                                            <button className="actions__status--reject">
-                                                Reject
-                                            </button>
+
                                         </div>
                                     </td>
                                 </tr>
@@ -110,6 +140,11 @@ class AdminOrder extends React.Component {
                         </table>
                     </div>
                 </div>
+
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className="order-detail-modal">
+                    <OrderDetail />
+                </Modal>
+
             </>
         )
     }

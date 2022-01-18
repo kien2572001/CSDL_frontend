@@ -124,6 +124,7 @@
                 display        : flex;
                 justify-content: space-between;
 
+                .actions__status--detail,
                 .actions__status--accept,
                 .actions__status--reject {
                     border       : none;
@@ -146,6 +147,12 @@
 
                 }
 
+                .actions__status--detail {
+                    background: rgb(58, 15, 212);
+
+                }
+
+                .actions__status--detail:hover,
                 .actions__status--accept:hover,
                 .actions__status--reject:hover {
                     opacity: 1;
@@ -153,5 +160,11 @@
             }
         }
     }
+
+}
+
+.order-detail-modal {
+    max-width    : 860px;
+    border-radius: 8px;
 
 }
