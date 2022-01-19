@@ -1,12 +1,60 @@
 import React, { Component } from 'react';
 import './Analysis.scss'
+import Chart from './Chart';
+
 class Analysis extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             modal: true,
+            chartData: {},
         }
     }
+    async componentWillMount() {
+        // this.getchartData(); // this should be this.getChartData();
+
+        this.setState({
+            chartData: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets: [
+                    {
+                        label: 'Products',
+                        data: [
+                            10,
+                            100,
+                            153,
+                            80,
+                            20,
+                            95,
+                            10,
+                            100,
+                            133,
+                            80,
+                            105,
+                            95
+                        ],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.8)',
+                            'rgba(54, 162, 235, 0.8)',
+                            'rgba(255, 206, 86, 0.8)',
+                            'rgba(75, 192, 192, 0.8)',
+                            'rgba(153, 102, 255, 0.8)',
+                            'rgba(255, 159, 64, 0.8)',
+                            'rgba(60, 179, 113, 0.8)',
+                            'rgba(238, 130, 238, 0.8)',
+                            'rgba(0, 0, 255, 0.8)',
+                            'rgba(255, 0, 0, 0.8)',
+                            'rgba(255, 165, 0, 0.8)',
+                            'rgba(106, 90, 205, 0.8)'
+                        ]
+                    }
+                ]
+            }
+        });
+    }
+
+
+
     render() {
         return (
             <>
@@ -67,6 +115,7 @@ class Analysis extends React.Component {
 
                     </div>
                     <div className='analysis__body'>
+                        <Chart chartData={this.state.chartData} />
 
                     </div>
                     <div className='analysis__footer'>
