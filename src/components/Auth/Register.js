@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form, Button } from 'react-bootstrap'
 // import { connect } from 'react-redux'
 // import { push } from 'connected-react-router'
 // import * as actions from '../../store/actions'
@@ -15,6 +16,7 @@ class Register extends Component {
       password: '',
       email: '',
       modal: false,
+      validated: false,
       isShowUserOption: false,
       isShowPassword: false,
       err: 4,
@@ -27,6 +29,7 @@ class Register extends Component {
       message: '',
     })
   }
+
   handleOnChangePassword = (event) => {
     this.setState({
       password: event.target.value,
@@ -34,7 +37,14 @@ class Register extends Component {
     })
   }
 
-  handleRegister = async () => {
+  handleRegister = (event) => {
+    const form = event.currentTarget
+    if (form.checkValidity() === false) {
+      event.preventDefault()
+      event.stopPropagation()
+    }
+
+    this.setState({ validated: true })
     // let userName = this.state.name
     // let passWord = this.state.password
     // let data = await adminService.login(userName, passWord)
@@ -67,68 +77,64 @@ class Register extends Component {
                 <img src={LogoShop} className='login-logo' />
               </div>
               <div className='col-12 text-contentlogin'></div>
-              <div className='col-12 form-group login-input'>
-                <label>
-                  <span>Name</span>
-                </label>
-                <input
-                  type='text'
-                  className='form-control login-input--text'
-                  placeholder='Enter you name'
-                  value={this.state.name}
-                  onChange={(event) => this.handleOnChangeName(event)}
-                />
-              </div>
-              <div className='col-12 form-group login-input'>
-                <label>
-                  <span>Email</span>
-                </label>
-                <input
-                  type='email'
-                  className='form-control login-input--text'
-                  placeholder='Enter you email'
-                  value={this.state.email}
-                  onChange={(event) => this.handleOnChangeName(event)}
-                />
-              </div>
-              <div className='col-12 form-group login-input'>
-                <label className='login-input-password'>
-                  <span>Password</span>
-                </label>
-                <div className='custom-input-password'>
-                  <input
-                    type={this.state.isShowPassword ? 'text' : 'password'}
-                    className='form-control login-input--text'
-                    placeholder='Enter you password'
-                    value={this.state.password}
-                    onChange={(event) => this.handleOnChangePassword(event)}
-                  />
-                  <span
-                    onClick={() =>
-                      this.setState({
-                        isShowPassword: !this.state.isShowPassword,
-                      })
-                    }
-                  >
-                    <i
-                      className={
-                        this.state.isShowPassword
-                          ? 'far fa-eye'
-                          : 'far fa-eye-slash'
-                      }
-                    ></i>
-                  </span>
-                </div>
-              </div>
-              <button
-                className='btn-login btn-login-normal'
-                onClick={() => this.handleRegister()}
+              <Form
+                noValidate
+                validated={this.state.validated}
+                onSubmit={this.handleRegister}
+                className='col-12 form-group login-input'
               >
-                Register
-              </button>
-              <div className='col-12'>
-                <span style={{ color: 'red' }}>{this.state.message}</span>
-              </div>
+                <Form.Group md='4' controlId='validationCustom01'>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    required
+                    type='text'
+                    placeholder='Enter you name'
+                    defaultValue={this.state.name}
+                    onChange={(event) =>
+                      this.setState({ name: event.target.value })
+                    }
+                  />
+                  <Form.Control.Feedback type='invalid'>
+                    Name is required !
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group md='4' controlId='validationCustom01'>
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    required
+                    type='email'
+                    placeholder='Enter you email'
+                    defaultValue={this.state.email}
+                    onChange={(event) =>
+                      this.setState({ email: event.target.value })
+                    }
+                  />
+                  <Form.Control.Feedback type='invalid'>
+                    {this.state.email
+                      ? 'The provided email address format is not valid '
+                      : 'You must need to provide your email address'}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group md='4' controlId='validationCustom01'>
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    required
+                    type='password'
+                    placeholder='Enter you password'
+                    defaultValue={this.state.password}
+                    onChange={(event) =>
+                      this.setState({ password: event.target.value })
+                    }
+                  />
+                  <Form.Control.Feedback type='invalid'>
+                    Password is required !
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Button type='submit' className='btn-login btn-login-normal'>
+                  Register
+                </Button>
+              </Form>
+
               <div className='col-12  login-orther'>
                 <span className='text-orther-login '>
                   <span>Or</span>
