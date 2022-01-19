@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import * as actions from "../../store/actions";
 import AdminSideBar from './AdminSidebar'
 import AdminOrder from './Order/AdminOrder';
+import Analysis from './Analysis/Analysis';
+
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +32,7 @@ class Admin extends Component {
                             <AdminSideBar changeMenu={this.changeMenu} />
                         </div>
                         <div className=' item-container'>
-                            {menu === 1 ? <div>Dashbroad</div> : (menu === 2 ? <div>Products</div> : (menu === 3 ? <div><AdminOrder /></div> : (menu === 4 ? <div>Analysis</div> : <div>Khong biet</div>)))}
+                            {menu === 1 ? <div>Dashbroad</div> : (menu === 2 ? <div>Products</div> : (menu === 3 ? <div><AdminOrder /></div> : (menu === 4 ? <div><Analysis /></div> : <div>Khong biet</div>)))}
                         </div>
                     </div>
                 </div>
