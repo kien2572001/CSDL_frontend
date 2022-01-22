@@ -16,6 +16,9 @@ import paginate from './utils'
 import { v4 as uuidv4 } from 'uuid'
 import { connect } from 'react-redux';
 import * as actions from "../../../store/actions";
+import Multiselect from 'multiselect-react-dropdown';
+import {cloudinaryUpload} from '../../../services/userService'
+import adminService from '../../../services/adminService'
 class ProductsContainer extends Component {
   constructor(props) {
     super(props)
@@ -30,10 +33,36 @@ class ProductsContainer extends Component {
         createdAt: new Date().getTime().toString(),
         updatedAt: new Date().getTime().toString(),
       },
-      filterByGroup: '',
-      filterByCategory: '',
+      filterByGroup: 'none',
+      filterByCategory: 'none',
       category: null,
+      selectedValue: null,
+      listCategory: null, //Dung khi them san pham
+
+      //Them san pham
+      tmpName: null,
+      tmpUnit: null,
+      tmpDescription: null,
+      tmpPrice: null,
+      tmpDiscount: null,
+      tmpQuantity: null,
+      tmpImg: null,
+
+      //Fitler
+      sortBy: '',
+      searchCategory: '',
+      textSearch: ''
     }
+  }
+
+  onChangeInputImage = async (e)=>{
+    let uploadData  = new FormData()
+    uploadData.append('file',e.target.files[0],"file")
+    let tmp = await cloudinaryUpload(uploadData)
+    //console.log('Link',tmp)
+    this.setState({
+        tmpImg: tmp.secure_url
+    })
   }
 
   fetchProducts = async (sid) => {
@@ -45,7 +74,7 @@ class ProductsContainer extends Component {
   }
 
   async componentDidMount() {
-    this.fetchProducts(this.props.adminInfo.sid)  
+    await this.fetchProducts(this.props.adminInfo.sid)  
     let data = await handleGetAllCategory()
     this.setState({
       category: data
@@ -53,17 +82,16 @@ class ProductsContainer extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.page !== prevState.page) {
-      this.setState({ products: this.state.data[this.state.page] })
-    }
+    // if (this.state.page !== prevState.page) {
+    //   this.setState({ products: this.state.data[this.state.page] })
+    // }
   }
 
   componentWillUnmount() {
     // Make sure to revoke the data uris to avoid memory leaks
-    this.state.files.forEach((file) => URL.revokeObjectURL(file.preview))
   }
 
-  addFile = (file) => {
+  addFile = async (file) => {
     console.log(file)
     this.setState({
       files: file.map((file) =>
@@ -88,17 +116,61 @@ class ProductsContainer extends Component {
     this.handleCloseAddProduct()
   }
 
-  handleClickAddProduct = () => {
-    if (this.state.files.length > 0) {
-      this.state.details['img'] = this.state.files[0].preview
+  handleClickAddProduct = async() => {
+    // if (this.state.files.length > 0) {
+    //   this.state.details['img'] = this.state.files[0].preview
+    // }
+    //console.log('ID: ',nextPid.Auto_increment)
+    let product = {
+      ...this.state.details,
+      discount: Number.parseInt(this.state.details.discount),
+      price: Number.parseFloat(this.state.details.price),
+      quantity: Number.parseInt(this.state.details.quantity),
+      img: this.state.tmpImg,
+      sid: this.props.adminInfo.sid
     }
-    this.state.data[this.state.data.length - 1].push(this.state.details)
-
+    console.log('Add: ',product)
+    let insertedId =  await adminService.handleAddNewProductByStore(product)
+    for (let i=0;i<this.state.listCategory.length;i++){
+      let temp = {
+        categoryId: this.state.listCategory[i].id,
+        pid: insertedId.insertId
+      }
+      setTimeout(()=>adminService.handleAddProductCategory(temp),100)
+    }
+    //this.state.data[this.state.data.length - 1].push(this.state.details)
+    setTimeout(()=>this.fetchProducts(this.props.adminInfo.sid),100 )
     this.handleCloseAddProduct()
   }
 
   handlePage = (e) => {
     this.setState({ page: e.selected })
+  }
+
+  onSelect = (selectedList, selectedItem) =>{
+    //console.log('select: ',selectedList)
+    this.setState({
+      listCategory: selectedList
+    })
+  }
+
+  onRemove  = (selectedList, removedItem)=> {
+    //console.log('select: ',selectedList)
+  }
+
+  searchBtnOnClick = async()=>{
+    let data = {
+      name: this.state.textSearch,
+      sid: this.props.adminInfo.sid,
+      sortBy: this.state.filterByGroup,
+      category: this.state.filterByCategory
+    }
+    console.log(data)
+    let out = await adminService.handleSearchByFilter(data)
+    console.log('Out:',out)
+    this.setState({
+      products: out
+    })
   }
 
   render() {
@@ -109,12 +181,15 @@ class ProductsContainer extends Component {
             <h3>Products</h3>
             <InputGroup className='mb-3'>
               <FormControl
-                placeholder='Type your query and press enter'
+                placeholder='Type product name'
                 aria-label='search'
                 aria-describedby='basic-addon1'
+                onChange={(e) =>
+                  this.setState({ textSearch: e.target.value })
+                }
               />
             </InputGroup>
-            <i className='fas fa-search mb-3 search'></i> {/* kính lúp */}
+            <i className='fas fa-search mb-3 search' onClick={()=>this.searchBtnOnClick()}></i> {/* kính lúp */}
             <Button variant='success' onClick={this.handleOpenAddProduct}>
               <i class='fas fa-plus plus'></i> Add Product
             </Button>
@@ -138,7 +213,7 @@ class ProductsContainer extends Component {
                     this.setState({ filterByGroup: e.target.value })
                   }
                 >
-                  <option>- Sort by -</option>
+                  <option value='none' >- Sort by -</option>
                   <option value='name'>Name</option>
                   <option value='price'>Price</option>
                   <option value='discount'>Discount</option>
@@ -153,7 +228,7 @@ class ProductsContainer extends Component {
                     this.setState({ filterByCategory: e.target.value })
                   }
                 >
-                  <option>- Select a category -</option>
+                  <option value='none'>- Select a category -</option>
                   {
                     this.state.category?.map((item)=>{
                       return (
@@ -182,7 +257,7 @@ class ProductsContainer extends Component {
               </thead>
               {this.state.products.map((product) => (
                 <ProductList
-                  key={product.pid}
+                  key={uuidv4()}
                   info={product}
                   state={this.state}
                   sid={this.props.adminInfo.sid}
@@ -232,21 +307,29 @@ class ProductsContainer extends Component {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className='featured-img'>
-              <div className='header'>
-                <h3>Featured Image</h3>
-                <p>Upload your product featured image here</p>
-              </div>
-              <div className='up-img'>
-                <ImageUpload
-                  key={uuidv4()}
-                  addFile={this.addFile}
-                  files={this.state.files}
-                  // info={this.props.info}
-                />{' '}
-                {/* upload Ảnh*/}
-              </div>
+            <div className='upload-img-container'>
+              <div className='profile__infor-avatar'>
+                                <label htmlFor="avatar" className='profile__infor-avatar-title'>
+                                    <i className="fas fa-cloud-upload-alt avatar_upload-icon"></i>
+                                    <br />
+                                    <span className='avatar-title-bold'>UpLoad an image</span>
+                                    &nbsp; or drag and drop
+                                    <br></br>
+                                    <span>PNG, JPG</span>
+                                </label>
+
+                                <input type="file"
+                                    id="avatar" name="avatar"
+                                    accept="image/png, image/jpeg"
+                                    className='profile__infor-avatar-input'
+                                    onChange={(e)=>this.onChangeInputImage(e)}
+                                />
+                            </div>
+                            <div className='avatar-img'>
+              <img src={this.state.tmpImg} alt='' width="100" height="100" />
             </div>
+            </div>
+            
             <div className='gr-cate'>
               <div className='header'>
                 <h3>Detail</h3>
@@ -257,12 +340,20 @@ class ProductsContainer extends Component {
               </div>
               <div className='form-gr'>
                 <Form.Group>
-                  <Form.Label>Group</Form.Label>
-                  <Form.Control
+                  <Form.Label>Category</Form.Label>
+                  {/* <Form.Control
                     type='text'
                     defaultValue='Grocery'
                     disabled
                     readOnly
+                  /> */}
+                  <Multiselect
+                    options={this.state?.category} // Options to display in the dropdown
+                    selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
+                    onSelect={this.onSelect} // Function will trigger on select event
+                    onRemove={this.onRemove} // Function will trigger on remove event
+                    displayValue="title" // Property name to display in the dropdown options
+                    placeholder='Select product category'
                   />
                   <Form.Label>Name</Form.Label>
                   <Form.Control

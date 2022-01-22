@@ -200,6 +200,21 @@
     .form-gr {
         width: 75rem;
         margin: auto;
+
+        .item-categories-tag {
+            display: flex;
+            flex-wrap: wrap;
+
+            span {
+                border: 1px solid #eff1f3;
+                border-radius: 10px;
+                padding: 4px 10px;
+                margin-right: 8px;
+                cursor: pointer;
+                border: 1px solid #009f7f;
+                color: #009f7f;
+            }
+        }
     }
 
     .description {
@@ -287,5 +302,62 @@
 
     .modal-content {
         height: 22rem;
+    }
+}
+
+.multipleChosen,
+.multipleSelect2 {
+    width: 300px;
+}
+
+.upload-img-container {
+    .profile__infor-avatar {
+        margin-bottom: 32px;
+        border: 2px dashed rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        //height       : 140px; //
+
+
+        .profile__infor-avatar-title {
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 28px 0;
+            color: #6B7280;
+
+            .avatar_upload-icon {
+                font-size: 36px;
+                color: #6B7280;
+                opacity: 0.2;
+                margin-bottom: 8px;
+            }
+
+            .avatar-title-bold {
+                color: var(--green-color);
+                font-weight: 600;
+            }
+
+        }
+
+        .profile__infor-avatar-input {
+            //visibility: hidden;
+            display: none;
+            z-index: 0;
+        }
+
+    }
+
+    .avatar-img {
+        width: 100px;
+        height: 100px;
+        display: block;
+
+        .img {
+            width: 100px;
+            height: 100px;
+        }
+
+        margin-bottom: 10px;
     }
 }

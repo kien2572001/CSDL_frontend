@@ -117,7 +117,6 @@ class ViewProductDetail extends Component {
                                         return <span key={index}>{item.title}</span>
                                     })}
                                 </div>
-
                             </div>
                             <div className='sellers'>
                                 <span className='sellers-title'>Sellers</span>

@@ -36,6 +36,38 @@ const adminService = {
 
     handleGetProductBySid(sid){
         return axios.get(`/api/get-product-by-sid?sid=${sid}`)
+    },
+
+    handleAddNewProductByStore(data){
+        return axios.post('/api/add-new-product-by-store',data)
+    },
+
+    handleGetNextPid(){
+        return axios.get('/api/get-next-pid')
+    },
+
+    handleAddProductCategory(data){
+        return axios.post('/api/add-product-category',data)
+    },
+
+    handleUpdateProductByStore(data){
+        return axios.post('/api/update-product-by-store',data)
+    },
+
+    handleSearchByFilter(data){
+        return axios.post('/api/search-by-filter',data)
+    },
+
+    handleTotal30day(sid){
+        return axios.get(`/api/total30day?sid=${sid}`)
+    },
+
+    handleOrder30day(sid){
+        return axios.get(`/api/handleOrder30day?${sid}`)
+    },
+    
+    handleTotalRevenue(sid){
+        return axios.get(`/api/totalrevenue?sid=${sid}`)
     }
 
 };

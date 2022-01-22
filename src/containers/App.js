@@ -32,6 +32,7 @@ import LoginAdmin from '../components/Admin/AuthAdmin/LoginAdmin';
 import Admin from '../components/Admin/Admin';
 import AdminNav from '../components/Admin/AdminNav';
 import ScrollToTop from './ScrollToTop'
+import Register from '../components/Auth/Register';
 class App extends Component {
 
     handlePersistorState = () => {
@@ -71,6 +72,7 @@ class App extends Component {
                                 <Route path='/checkout'>
                                     <CheckoutOrder />
                                 </Route>
+                                <Route  path='/register'  component={Register}/>
                                 <Route path="/placeorder/:id" component={userIsAuthenticated(PlaceOrder)} />
                                 <Route path='/my-order' component={userIsAuthenticated(MyOders)} />
                                 <Route path='/profile' component={userIsAuthenticated(Profile)} />
@@ -79,11 +81,22 @@ class App extends Component {
                                 <Route path='/admin' component={adminIsAuthenticated(Admin)} />
                             </Switch>
                         </span>
-                        <ToastContainer
+                        {/* <ToastContainer
                             className="toast-container" toastClassName="toast-item" bodyClassName="toast-item-body"
                             autoClose={false} hideProgressBar={true} pauseOnHover={false}
                             pauseOnFocusLoss={true} closeOnClick={false} draggable={false}
                             closeButton={<CustomToastCloseButton />}
+                        /> */}
+                        <ToastContainer
+                            position="top-center"
+                            autoClose={2000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
                         />
                     </div>
                 </Router>

@@ -14,6 +14,8 @@ import {
     Link,
     useRouteMatch
 } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 class ProductCart extends Component {
     constructor(props) {
         super(props);
@@ -37,6 +39,24 @@ class ProductCart extends Component {
             sum = item.quantity * item.price + sum
         })
         return ((Math.round(sum * 100) / 100)).toFixed(2)
+    }
+
+    checkOutBtn = ()=>{
+        if (this.props.isLoggedIn===true){
+            this.props.navigate('/checkout')
+        }
+        else{
+            toast.error('You must login to buy something!', {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+        
     }
 
     render() {
@@ -91,14 +111,14 @@ class ProductCart extends Component {
                                 </div>
 
                                 <div className='cart__footer'>
-                                    <Link to={'/checkout'} className='cart__footer-btn'>
+                                    {/* <Link to={'/checkout'} className='cart__footer-btn' disabled={this.props.isLoggedIn?false: true}>
+                                        <span className='cart__footer-btn-title' >Checkout</span>
+                                        <span className='cart__footer-btn-price'>${this.sumCart()}</span>
+                                    </Link> */}
+                                    <button className='cart__footer-btn' onClick={()=>this.checkOutBtn()}>
                                         <span className='cart__footer-btn-title'>Checkout</span>
                                         <span className='cart__footer-btn-price'>${this.sumCart()}</span>
-                                    </Link>
-                                    {/* <button className='cart__footer-btn'>
-                                        <span className='cart__footer-btn-title'>Checkout</span>
-                                        <span className='cart__footer-btn-price'>${this.sumCart()}</span>
-                                    </button> */}
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +130,7 @@ class ProductCart extends Component {
 
 
                 }
-
+                
             </>
         )
     }
@@ -120,7 +140,8 @@ const mapStateToProps = state => {
     return {
         language: state.app.language,
         numberCart: state.cart.numberCart,
-        Carts: state.cart.Carts
+        Carts: state.cart.Carts,
+        isLoggedIn: state.user.isLoggedIn
     };
 };
 

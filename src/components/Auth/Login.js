@@ -239,7 +239,7 @@ class Login extends Component {
                                         </div>
                                         <div className='login-register-user '>
                                             <span>Don't have any account?</span>
-                                            <a onClick={() => this.setState({ modal: !this.state.modal })}>Register</a>
+                                            <Link  path='/register' onClick={() => this.setState({ modal: !this.state.modal })}>Register</Link>
                                         </div>
                                     </div>
                                 </div>

@@ -6,6 +6,8 @@ import Products from './Products/ProductsContainer'
 import './Admin.scss'
 import AdminOrder from './Order/AdminOrder';
 import Dashbroad from './Dashbroad/Dashbroad';
+import Analysis from './Analysis/Analysis';
+import EditShop from './EditShop/EditShop';
 class Admin extends Component {
     constructor(props) {
         super(props);
@@ -34,15 +36,15 @@ class Admin extends Component {
                         </div>
                         <div className=' item-container'>
                             {menu === 1 ? (
-                                <Dashbroad />
+                                <Dashbroad  changeMenu={this.changeMenu}/>
                             ) : menu === 2 ? (
                                 <Products />
                             ) : menu === 3 ? (
                                 <AdminOrder />
                             ) : menu === 4 ? (
-                                <div>Analysis</div>
+                                <Analysis/>
                             ) : (
-                                <div>Khong biet</div>
+                                <EditShop/>
                             )}
                             </div>
                     </div>

@@ -24,9 +24,13 @@ class Dashbroad extends React.Component {
         })
     }
 
+    handleChangeMenu = (key) => {
+        this.props.changeMenu(key)
+    }
+
     render() {
         let admin = this.props.adminInfo
-        console.log('admin: ',admin)
+        //console.log('admin: ',admin)
         return (
             <div className="order-container">
                 <div className="order-12">
@@ -52,7 +56,7 @@ class Dashbroad extends React.Component {
                     <div className="order-2">
                         <div className="but_edit">
                             <span className="logo_edit"><i class="far fa-edit"></i></span>
-                            <button className="edit_Shop">Edit Shop</button>
+                            <button className="edit_Shop" onClick={()=>this.handleChangeMenu(5)} >Edit Shop</button>
                         </div>
                         <img src={admin.img} />
                     </div>

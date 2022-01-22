@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import ImageUpload from './ImageUpload'
 import { v4 as uuidv4 } from 'uuid'
-import {deleteProductById} from '../../../services/productService'
-export default class ProductList extends Component {
+import {deleteProductById,handleGetCategoryById} from '../../../services/productService'
+import {cloudinaryUpload} from '../../../services/userService'
+import { connect } from 'react-redux';
+import * as actions from "../../../store/actions";
+import adminService from '../../../services/adminService'
+   class ProductList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -11,7 +15,16 @@ export default class ProductList extends Component {
       showEdit: false, // hiện ẩn modal edit
       showDelete: false, // hiện ẩn modal edit
       details: { ...this.props.info }, // lưu các props của 1 sản phẩm
+      listCategory: null
     }
+  }
+
+  async componentDidMount(){
+    let data = await handleGetCategoryById(this.state.details.pid)
+    //console.log(data.category)
+    this.setState({
+      listCategory: data.category
+    })
   }
 
   componentWillUnmount() {
@@ -57,15 +70,23 @@ export default class ProductList extends Component {
     this.handleCloseEdit()
   }
 
-  handleClickUpdate = () => {
-    this.props.info['title'] = this.state.details['title']
-    this.props.info['unit'] = this.state.details['unit']
-    this.props.info['content'] = this.state.details['content']
-    this.props.info['price'] = this.state.details['price']
-    this.props.info['quantity'] = this.state.details['quantity']
-    if (this.state.files.length > 0) {
-      this.props.info['img'] = this.state.files[0].preview
+  handleClickUpdate =  async() => {
+    // this.props.info['title'] = this.state.details['title']
+    // this.props.info['unit'] = this.state.details['unit']
+    // this.props.info['content'] = this.state.details['content']
+    // this.props.info['price'] = this.state.details['price']
+    // this.props.info['quantity'] = this.state.details['quantity']
+    // if (this.state.files.length > 0) {
+    //   this.props.info['img'] = this.state.files[0].preview
+    // }
+    let product = {
+      ...this.state.details,
+      discount: Number.parseInt(this.state.details.discount),
+      price: Number.parseFloat(this.state.details.price),
+      quantity: Number.parseInt(this.state.details.quantity),
     }
+    await adminService.handleUpdateProductByStore(product)
+    this.reRenderList()
     this.handleCloseEdit()
   }
 
@@ -83,6 +104,19 @@ export default class ProductList extends Component {
   //Render lai cac san pham sau khi sua xoa
   reRenderList = ()=>{
     this.props.updateChange(this.props.sid)
+  }
+
+  onChangeInputImage = async (e)=>{
+    let uploadData  = new FormData()
+    uploadData.append('file',e.target.files[0],"file")
+    let tmp = await cloudinaryUpload(uploadData)
+    //console.log('Link',tmp)
+    this.setState({
+        details: {
+          ...this.state.details,
+          img: tmp.secure_url
+        }
+    })
   }
 
   render() {
@@ -143,20 +177,27 @@ export default class ProductList extends Component {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className='featured-img'>
-              <div className='header'>
-                <h3>Featured Image</h3>
-                <p>Upload your product featured image here</p>
-              </div>
-              <div className='up-img'>
-                <ImageUpload
-                  key={uuidv4()}
-                  addFile={this.addFile}
-                  files={this.state.files}
-                  info={this.props.info}
-                />{' '}
-                {/* upload Ảnh*/}
-              </div>
+            <div className='upload-img-container'>
+              <div className='profile__infor-avatar'>
+                                <label htmlFor="avatar" className='profile__infor-avatar-title'>
+                                    <i className="fas fa-cloud-upload-alt avatar_upload-icon"></i>
+                                    <br />
+                                    <span className='avatar-title-bold'>UpLoad an image</span>
+                                    &nbsp; or drag and drop
+                                    <br></br>
+                                    <span>PNG, JPG</span>
+                                </label>
+
+                                <input type="file"
+                                    id="avatar" name="avatar"
+                                    accept="image/png, image/jpeg"
+                                    className='profile__infor-avatar-input'
+                                    onChange={(e)=>this.onChangeInputImage(e)}
+                                />
+                            </div>
+                            <div className='avatar-img'>
+              <img src={this.state.details.img} alt='' width="100" height="100" />
+            </div>
             </div>
             <div className='gr-cate'>
               <div className='header'>
@@ -168,13 +209,18 @@ export default class ProductList extends Component {
               </div>
               <div className='form-gr'>
                 <Form.Group>
-                  <Form.Label>Group</Form.Label>
-                  <Form.Control
+                  <Form.Label>Category</Form.Label>
+                  {/* <Form.Control
                     type='text'
                     defaultValue='Grocery'
                     disabled
                     readOnly
-                  />
+                  /> */}
+                  <div className='item-categories-tag'>
+                                    {this.state.listCategory?.map((item, index) => {
+                                        return <span key={index}>{item.title}</span>
+                                    })}
+                                </div>
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     type='text'
@@ -232,11 +278,15 @@ export default class ProductList extends Component {
                   <Form.Control
                     type='text'
                     defaultValue={
-                      discount !== 0
-                        ? ((price * discount) / 100).toFixed(2)
-                        : price
+                      discount
                     }
-                    readOnly
+                    onChange={(e) =>
+                      this.setState({
+                        details: {
+                          ...this.state.details,
+                          discount: e.target.value,
+                        },
+                      })}
                   />
                   <Form.Label>Quantity</Form.Label>
                   <Form.Control
@@ -291,3 +341,21 @@ export default class ProductList extends Component {
     )
   }
 }
+
+
+const mapStateToProps = state => {
+  return {
+      started: state.app.started,
+      isLoggedIn: state.admin.isLoggedIn,
+      adminInfo: state.admin.adminInfo
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+      changeAppMode: (payload)=>dispatch(actions.changeAppMode(payload))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
+
