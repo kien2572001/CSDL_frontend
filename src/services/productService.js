@@ -37,6 +37,10 @@ let handleGetAllCategory = ()=>{
     return axios.get('/api/get-all-category')
 }
 
+let handleSearchProductByName  = (name)=>{
+  return axios.get(`/api/search-by-name?name=${name}`)
+}
+
 export {
   handleGetProductByCategory,
   handleGetCategoryById,
@@ -46,5 +50,6 @@ export {
   handleFindProductById,
   handleGetProductByStoreId,
   deleteProductById,
-  handleGetAllCategory
+  handleGetAllCategory,
+  handleSearchProductByName,
 }

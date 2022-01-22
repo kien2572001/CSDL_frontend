@@ -2,6 +2,18 @@ import React from "react";
 import './HomeSearch.scss'
 
 class HomeSearch extends React.Component {
+
+    constructor(props){
+        super(props)
+        this.state = {
+            searchText: ''
+        }
+    }
+
+    handleSearchProduct = ()=>{
+        this.props.searchProduct(this.state.searchText)
+    }
+
     render() {
         return (
             <div className="home-search">
@@ -14,13 +26,16 @@ class HomeSearch extends React.Component {
                     </div>
                     <>
                         <nav className="navbar navbar-light justify-content-between fonttext">
-                            <form className="form-inline">
-                                <input className="form-control mr-sm-2" type="search" placeholder="Search your products from here" aria-label="Search" />
-                                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
-                                    <i className="fas fa-search"></i>
-                                    <span>Search</span>
-                                </button>
-                            </form>
+                            <div className="form-inline">
+                                <input className="form-control mr-sm-2" type="search" placeholder="Search your products from here" aria-label="Search" 
+                                    onChange={(e)=>this.setState({
+                                        searchText: e.target.value
+                                    })} />
+                                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={()=>this.handleSearchProduct()}>
+                                        <i className="fas fa-search"></i>
+                                        <span>Search</span>
+                                    </button>
+                            </div>
                         </nav>
                     </>
                     <div className="nuller"></div>

@@ -10,7 +10,7 @@ import Slider from '../components/Slider/Slider';
 import ProductCart from '../components/ProductCart/ProductCart'
 import {handleGetProductByCategory} from '../services/productService'
 import { v4 as uuidv4 } from 'uuid';
-
+import {handleSearchProductByName} from '../services/productService'
 class Home extends React.Component {
 
     constructor(props) {
@@ -35,6 +35,14 @@ class Home extends React.Component {
         })
     }
 
+    searchProduct = async (name)=>{
+        let data = await handleSearchProductByName(name)
+        console.log(data)
+        this.setState({
+            products: data
+        })
+    }
+
     render() {
         const { isLoggedIn } = this.props;
         //let linkToRedirect = isLoggedIn ? '/system/user-manage' : '/login';
@@ -44,7 +52,7 @@ class Home extends React.Component {
             // <Redirect to={linkToRedirect} />
             <>  
                 <div className='.container-fluid'>
-                    <HomeSearch/>
+                    <HomeSearch searchProduct={this.searchProduct} />
                     <Slider/>
                     <div className='row'>
                         <div className='col-sm-2 sidebar'>
