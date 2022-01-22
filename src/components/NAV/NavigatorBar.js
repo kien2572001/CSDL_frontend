@@ -67,7 +67,7 @@ class NavigatorBar extends Component {
                                             <img className='header__navbar-item-logo' src={LogoShop} />
                                         </Link>
                                     </li>
-                                    <li className="header__navbar-item">
+                                    {/*  <li className="header__navbar-item">
                                         <button className='header__navbar-item-btn '
                                             onClick={() => this.handleButtonDropdown()}>
                                             <i className="far fa-lemon "></i>
@@ -96,35 +96,9 @@ class NavigatorBar extends Component {
                                                 <a>Bags</a>
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li> */}
                                 </ul>
 
-                                <div className='hearder__navbar-search'>
-                                    <span className='hearder__navbar-search-btn'>
-                                        <i className="fas fa-search hearder__navbar-search-btn-icon hearder__navbar-search-btn-icon--search"
-                                            onClick={() => this.handleSearchTitleProduct()}
-
-
-                                        ></i>
-
-                                    </span>
-                                    <input className='hearder__navbar-search-btn-search'
-                                        type='text'
-                                        placeholder='Search your products from here'
-                                        value={titleProduct}
-                                        onChange={(event) => this.handleChangeSearchTitleProduct(event)}
-                                    />
-
-                                    <span className={removeSearchData ? 'hearder__navbar-search-btn' : 'tag-display-none'}
-
-                                    >
-                                        <i
-                                            className="fas fa-times hearder__navbar-search-btn-icon hearder__navbar-search-btn-icon--remove"
-                                            onClick={() => this.handleRemoveTitleProduct()}
-                                        ></i>
-                                    </span>
-
-                                </div>
                                 <ul className="header__navlist-list">
                                     <li className="header__navbar-item">
                                         <Link to={'/'} className="header__navbar-item-link"><span>Shops</span></Link>

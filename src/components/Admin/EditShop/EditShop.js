@@ -17,7 +17,7 @@ class EditShop extends React.Component {
                         <div className="box_Logo">
                             <section className="upload">
                                 <div className="box_upload">
-                                    <i class="fas fa-cloud-upload-alt" style={{ color: "#D1D5DB" }}></i>
+                                    <i className="fas fa-cloud-upload-alt" style={{ color: "#D1D5DB" }}></i>
                                     <div style={{ marginTop: "16px" }}>
                                         <span style={{ color: "#009F7F", fontWeight: "600" }}>Upload an image</span> or drag and drop
                                         <br />
@@ -46,7 +46,7 @@ class EditShop extends React.Component {
                         <div className="box_Logo">
                             <section className="upload">
                                 <div className="box_upload">
-                                    <i class="fas fa-cloud-upload-alt" style={{ color: "#D1D5DB" }}></i>
+                                    <i className="fas fa-cloud-upload-alt" style={{ color: "#D1D5DB" }}></i>
                                     <div style={{ marginTop: "16px" }}>
                                         <span style={{ color: "#009F7F", fontWeight: "600" }}>Upload an image</span> or drag and drop
                                         <br />
@@ -161,12 +161,12 @@ class EditShop extends React.Component {
                                         </select> */}
                                         <div className="platform">
                                             <div className="logo_Plat">
-                                                <i class="fab fa-facebook-square"></i>
+                                                <i className="fab fa-facebook-square"></i>
                                                 <span>Facebook</span>
                                             </div>
                                             <div className="tick_cancel">
-                                                <i class="fas fa-times"></i>
-                                                <i class="fas fa-chevron-down"></i>
+                                                <i className="fas fa-times"></i>
+                                                <i className="fas fa-chevron-down"></i>
                                                 {/* <select>
                                                     </select> */}
                                             </div>
@@ -183,12 +183,12 @@ class EditShop extends React.Component {
                                         <span className="tiltle_platform">Select social platform</span>
                                         <div className="platform">
                                             <div className="logo_Plat">
-                                                <i class="fab fa-instagram"></i>
+                                                <i className="fab fa-instagram"></i>
                                                 <span>Instagram</span>
                                             </div>
                                             <div className="tick_cancel">
-                                                <i class="fas fa-times"></i>
-                                                <i class="fas fa-chevron-down"></i>
+                                                <i className="fas fa-times"></i>
+                                                <i className="fas fa-chevron-down"></i>
                                                 {/* <select>
                                                     
                                                 </select> */}
@@ -206,12 +206,12 @@ class EditShop extends React.Component {
                                         <span className="tiltle_platform">Select social platform</span>
                                         <div className="platform">
                                             <div className="logo_Plat">
-                                                <i class="fab fa-twitter"></i>
+                                                <i className="fab fa-twitter"></i>
                                                 <span>Twitter</span>
                                             </div>
                                             <div className="tick_cancel">
-                                                <i class="fas fa-times"></i>
-                                                <i class="fas fa-chevron-down"></i>
+                                                <i className="fas fa-times"></i>
+                                                <i className="fas fa-chevron-down"></i>
                                                 {/* <select>
                                                 </select> */}
                                             </div>

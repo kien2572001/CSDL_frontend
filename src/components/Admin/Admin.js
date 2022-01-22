@@ -19,36 +19,39 @@ class Admin extends Component {
         this.props.changeAppMode('adminMode')
     }
 
-    changeMenu = (key)=>{
+    changeMenu = (key) => {
         this.setState({
             menu: key
         })
     }
 
     render() {
-        let {menu} = this.state
+        let { menu } = this.state
         return (
-            <div className='admin-component-container'>  
+            <div className='admin-component-container'>
                 <div className='.container-fluid'>
                     <div className='row'>
                         <div className='col-sm-2 sidebar'>
-                            <AdminSideBar changeMenu={this.changeMenu} />
+                            <AdminSideBar
+                                changeMenu={this.changeMenu}
+                                menu={this.state.menu}
+                            />
                         </div>
                         <div className=' item-container'>
                             {menu === 1 ? (
-                                <Dashbroad  changeMenu={this.changeMenu}/>
+                                <Dashbroad changeMenu={this.changeMenu} />
                             ) : menu === 2 ? (
                                 <Products />
                             ) : menu === 3 ? (
                                 <AdminOrder />
                             ) : menu === 4 ? (
-                                <Analysis/>
+                                <Analysis />
                             ) : (
-                                <EditShop/>
+                                <EditShop />
                             )}
-                            </div>
+                        </div>
                     </div>
-                </div>                
+                </div>
             </div>
         )
     }
@@ -63,7 +66,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        changeAppMode: (payload)=>dispatch(actions.changeAppMode(payload))
+        changeAppMode: (payload) => dispatch(actions.changeAppMode(payload))
     };
 };
 

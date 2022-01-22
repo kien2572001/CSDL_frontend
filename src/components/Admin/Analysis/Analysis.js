@@ -15,10 +15,10 @@ class Analysis extends React.Component {
         }
     }
 
-    async componentDidMount(){
+    async componentDidMount() {
         let data = await adminService.handleTotal30day()
         let data1 = await adminService.handleOrder30day()
-        let data2  = await adminService.handleTotalRevenue()
+        let data2 = await adminService.handleTotalRevenue()
         let data3 = await adminService.handleGetProductBySid(1)
         console.log(data)
         this.setState({
@@ -81,36 +81,42 @@ class Analysis extends React.Component {
                     <div className='analysis__header'>
                         <div className='analysis__header-total'>
                             <div className='total-title'>
-                                <span className='total-title--bold'>Total Revenue   ${this.state.totalRevenue}</span>
+                                <span className='total-title--bold'>Total Revenue   </span>
                                 {/* <span className='total-title--gray'>(Last 30 Days)</span> */}
                             </div>
                             <div className='analysis__header-logo'>
+                                <span className='analysis__header-logo-total  text-color--green'>${this.state.totalRevenue}</span>
+
                                 <div className='total-revenue'>
-                                    <i className="fas fa-dollar-sign header-logo-icon"></i>
+                                    <i className="fas fa-dollar-sign header-logo-icon  text-color--green"></i>
                                 </div>
 
                             </div>
                         </div>
                         <div className='analysis__header-total'>
                             <div className='total-title'>
-                                <span className='total-title--bold'>Total Order {this.state.order30day}</span>
+                                <span className='total-title--bold'>Total Order </span>
                                 <span className='total-title--gray'>(Last 30 Days)</span>
                             </div>
                             <div className='analysis__header-logo'>
+                                <span className='analysis__header-logo-total text-color--red '>{this.state.order30day}</span>
+
                                 <div className='total-order'>
-                                    <i className="fas fa-cart-arrow-down header-logo-icon"></i>
+                                    <i className="fas fa-cart-arrow-down header-logo-icon text-color--red"></i>
                                 </div>
 
                             </div>
                         </div>
                         <div className='analysis__header-total'>
                             <div className='total-title'>
-                                <span className='total-title--bold'>Todays Revenue ${this.state.total30day}</span>
+                                <span className='total-title--bold '>Todays Revenue </span>
                                 <span className='total-title--gray'>(Last 30 Days)</span>
                             </div>
                             <div className='analysis__header-logo'>
+                                <span className='analysis__header-logo-total text-color--orange'>${this.state.total30day}</span>
+
                                 <div className='todays-revenue'>
-                                    <i className="fas fa-hand-holding-usd header-logo-icon">
+                                    <i className="fas fa-hand-holding-usd header-logo-icon text-color--orange">
 
                                     </i>
                                 </div>
@@ -119,12 +125,13 @@ class Analysis extends React.Component {
                         </div>
                         <div className='analysis__header-total'>
                             <div className='total-title'>
-                                <span className='total-title--bold'>Total Product {this.state.countNumber}</span>
+                                <span className='total-title--bold'>Total Product </span>
                                 <span className='total-title--gray'>(Last 30 Days)</span>
                             </div>
                             <div className='analysis__header-logo'>
+                                <span className='analysis__header-logo-total text-color--blue '>{this.state.countNumber}</span>
                                 <div className='total-product'>
-                                    <i className="fas fa-store header-logo-icon"></i>
+                                    <i className="fas fa-store header-logo-icon text-color--blue "></i>
 
                                 </div>
 

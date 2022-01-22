@@ -9,7 +9,7 @@ import {
 } from 'react-bootstrap'
 import ReactPaginate from 'react-paginate'
 import './Products.scss'
-import { handleGetProductByStoreId,handleGetAllCategory } from '../../../services/productService'
+import { handleGetProductByStoreId, handleGetAllCategory } from '../../../services/productService'
 import ImageUpload from './ImageUpload'
 import ProductList from './ProductList'
 import paginate from './utils'
@@ -17,7 +17,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { connect } from 'react-redux';
 import * as actions from "../../../store/actions";
 import Multiselect from 'multiselect-react-dropdown';
-import {cloudinaryUpload} from '../../../services/userService'
+import { cloudinaryUpload } from '../../../services/userService'
 import adminService from '../../../services/adminService'
 class ProductsContainer extends Component {
   constructor(props) {
@@ -55,13 +55,13 @@ class ProductsContainer extends Component {
     }
   }
 
-  onChangeInputImage = async (e)=>{
-    let uploadData  = new FormData()
-    uploadData.append('file',e.target.files[0],"file")
+  onChangeInputImage = async (e) => {
+    let uploadData = new FormData()
+    uploadData.append('file', e.target.files[0], "file")
     let tmp = await cloudinaryUpload(uploadData)
     //console.log('Link',tmp)
     this.setState({
-        tmpImg: tmp.secure_url
+      tmpImg: tmp.secure_url
     })
   }
 
@@ -74,7 +74,7 @@ class ProductsContainer extends Component {
   }
 
   async componentDidMount() {
-    await this.fetchProducts(this.props.adminInfo.sid)  
+    await this.fetchProducts(this.props.adminInfo.sid)
     let data = await handleGetAllCategory()
     this.setState({
       category: data
@@ -116,7 +116,7 @@ class ProductsContainer extends Component {
     this.handleCloseAddProduct()
   }
 
-  handleClickAddProduct = async() => {
+  handleClickAddProduct = async () => {
     // if (this.state.files.length > 0) {
     //   this.state.details['img'] = this.state.files[0].preview
     // }
@@ -129,17 +129,17 @@ class ProductsContainer extends Component {
       img: this.state.tmpImg,
       sid: this.props.adminInfo.sid
     }
-    console.log('Add: ',product)
-    let insertedId =  await adminService.handleAddNewProductByStore(product)
-    for (let i=0;i<this.state.listCategory.length;i++){
+    console.log('Add: ', product)
+    let insertedId = await adminService.handleAddNewProductByStore(product)
+    for (let i = 0; i < this.state.listCategory.length; i++) {
       let temp = {
         categoryId: this.state.listCategory[i].id,
         pid: insertedId.insertId
       }
-      setTimeout(()=>adminService.handleAddProductCategory(temp),100)
+      setTimeout(() => adminService.handleAddProductCategory(temp), 100)
     }
     //this.state.data[this.state.data.length - 1].push(this.state.details)
-    setTimeout(()=>this.fetchProducts(this.props.adminInfo.sid),100 )
+    setTimeout(() => this.fetchProducts(this.props.adminInfo.sid), 100)
     this.handleCloseAddProduct()
   }
 
@@ -147,18 +147,18 @@ class ProductsContainer extends Component {
     this.setState({ page: e.selected })
   }
 
-  onSelect = (selectedList, selectedItem) =>{
+  onSelect = (selectedList, selectedItem) => {
     //console.log('select: ',selectedList)
     this.setState({
       listCategory: selectedList
     })
   }
 
-  onRemove  = (selectedList, removedItem)=> {
+  onRemove = (selectedList, removedItem) => {
     //console.log('select: ',selectedList)
   }
 
-  searchBtnOnClick = async()=>{
+  searchBtnOnClick = async () => {
     let data = {
       name: this.state.textSearch,
       sid: this.props.adminInfo.sid,
@@ -167,7 +167,7 @@ class ProductsContainer extends Component {
     }
     console.log(data)
     let out = await adminService.handleSearchByFilter(data)
-    console.log('Out:',out)
+    console.log('Out:', out)
     this.setState({
       products: out
     })
@@ -189,9 +189,9 @@ class ProductsContainer extends Component {
                 }
               />
             </InputGroup>
-            <i className='fas fa-search mb-3 search' onClick={()=>this.searchBtnOnClick()}></i> {/* kính lúp */}
+            <i className='fas fa-search mb-3 search' onClick={() => this.searchBtnOnClick()}></i> {/* kính lúp */}
             <Button variant='success' onClick={this.handleOpenAddProduct}>
-              <i class='fas fa-plus plus'></i> Add Product
+              <i className='fas fa-plus plus'></i> Add Product
             </Button>
             <div
               className={`filter ${this.state.showFilter && 'filter-active'}`}
@@ -200,7 +200,7 @@ class ProductsContainer extends Component {
               }
             >
               <h5>Filter</h5>
-              <i class='fas fa-arrow-down'></i>
+              <i className='fas fa-arrow-down'></i>
             </div>
           </article>
           {this.state.showFilter && (
@@ -230,7 +230,7 @@ class ProductsContainer extends Component {
                 >
                   <option value='none'>- Select a category -</option>
                   {
-                    this.state.category?.map((item)=>{
+                    this.state.category?.map((item) => {
                       return (
                         <option value={item.title}>{item.title}</option>
                       )
@@ -261,7 +261,7 @@ class ProductsContainer extends Component {
                   info={product}
                   state={this.state}
                   sid={this.props.adminInfo.sid}
-                  updateChange = {this.fetchProducts}
+                  updateChange={this.fetchProducts}
                 />
               ))}
             </Table>
@@ -309,27 +309,27 @@ class ProductsContainer extends Component {
           <Modal.Body>
             <div className='upload-img-container'>
               <div className='profile__infor-avatar'>
-                                <label htmlFor="avatar" className='profile__infor-avatar-title'>
-                                    <i className="fas fa-cloud-upload-alt avatar_upload-icon"></i>
-                                    <br />
-                                    <span className='avatar-title-bold'>UpLoad an image</span>
-                                    &nbsp; or drag and drop
-                                    <br></br>
-                                    <span>PNG, JPG</span>
-                                </label>
+                <label htmlFor="avatar" className='profile__infor-avatar-title'>
+                  <i className="fas fa-cloud-upload-alt avatar_upload-icon"></i>
+                  <br />
+                  <span className='avatar-title-bold'>UpLoad an image</span>
+                  &nbsp; or drag and drop
+                  <br></br>
+                  <span>PNG, JPG</span>
+                </label>
 
-                                <input type="file"
-                                    id="avatar" name="avatar"
-                                    accept="image/png, image/jpeg"
-                                    className='profile__infor-avatar-input'
-                                    onChange={(e)=>this.onChangeInputImage(e)}
-                                />
-                            </div>
-                            <div className='avatar-img'>
-              <img src={this.state.tmpImg} alt='' width="100" height="100" />
+                <input type="file"
+                  id="avatar" name="avatar"
+                  accept="image/png, image/jpeg"
+                  className='profile__infor-avatar-input'
+                  onChange={(e) => this.onChangeInputImage(e)}
+                />
+              </div>
+              <div className='avatar-img'>
+                <img src={this.state.tmpImg} alt='' width="100" height="100" />
+              </div>
             </div>
-            </div>
-            
+
             <div className='gr-cate'>
               <div className='header'>
                 <h3>Detail</h3>
@@ -453,17 +453,17 @@ class ProductsContainer extends Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        started: state.app.started,
-        isLoggedIn: state.admin.isLoggedIn,
-        adminInfo: state.admin.adminInfo
-    };
+  return {
+    started: state.app.started,
+    isLoggedIn: state.admin.isLoggedIn,
+    adminInfo: state.admin.adminInfo
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        changeAppMode: (payload)=>dispatch(actions.changeAppMode(payload))
-    };
+  return {
+    changeAppMode: (payload) => dispatch(actions.changeAppMode(payload))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsContainer);

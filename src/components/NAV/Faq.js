@@ -82,7 +82,7 @@ class Faq extends React.Component {
                                     onClick={() => this.handleShowFAQ1()}>
                                     <header className="FAQ_Index">
                                         <h2>How to contact with Customer Service?</h2>
-                                        <div className="FAQ_svg"><i class="fas fa-plus"></i></div>
+                                        <div className="FAQ_svg"><i className="fas fa-plus"></i></div>
                                     </header>
                                 </div>
                                 :
@@ -90,7 +90,7 @@ class Faq extends React.Component {
                                     onClick={() => this.handleShowFAQ1()}>
                                     <header className="FAQ_Index">
                                         <h2>How to contact with Customer Service?</h2>
-                                        <div className="FAQ_svg"><i class="fas fa-minus"></i></div>
+                                        <div className="FAQ_svg"><i className="fas fa-minus"></i></div>
                                     </header>
                                     <div className="FAQ_script">Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.</div>
                                 </div>
@@ -100,7 +100,7 @@ class Faq extends React.Component {
                                     onClick={() => this.handleShowFAQ2()}>
                                     <header className="FAQ_Index">
                                         <h2>App installation failed, how to update system information?</h2>
-                                        <div className="FAQ_svg"><i class="fas fa-plus"></i></div>
+                                        <div className="FAQ_svg"><i className="fas fa-plus"></i></div>
                                     </header>
                                 </div>
                                 :
@@ -108,7 +108,7 @@ class Faq extends React.Component {
                                     onClick={() => this.handleShowFAQ2()}>
                                     <header className="FAQ_Index">
                                         <h2>App installation failed, how to update system information?</h2>
-                                        <div className="FAQ_svg"><i class="fas fa-minus"></i></div>
+                                        <div className="FAQ_svg"><i className="fas fa-minus"></i></div>
                                     </header>
                                     <div className="FAQ_script">Please read the documentation carefully . We also have some online video tutorials regarding this issue . If the problem remains, Please Open a ticket in the support forum</div>
                                 </div>
@@ -118,7 +118,7 @@ class Faq extends React.Component {
                                     onClick={() => this.handleShowFAQ3()}>
                                     <header className="FAQ_Index">
                                         <h2>Website response taking time, how to improve?</h2>
-                                        <div className="FAQ_svg"><i class="fas fa-plus"></i></div>
+                                        <div className="FAQ_svg"><i className="fas fa-plus"></i></div>
                                     </header>
                                 </div>
                                 :
@@ -126,7 +126,7 @@ class Faq extends React.Component {
                                     onClick={() => this.handleShowFAQ3()}>
                                     <header className="FAQ_Index">
                                         <h2>Website response taking time, how to improve?</h2>
-                                        <div className="FAQ_svg"><i class="fas fa-minus"></i></div>
+                                        <div className="FAQ_svg"><i className="fas fa-minus"></i></div>
                                     </header>
                                     <div className="FAQ_script">At first, Please check your internet connection . We also have some online video tutorials regarding this issue . If the problem remains, Please Open a ticket in the support forum.</div>
                                 </div>
@@ -136,7 +136,7 @@ class Faq extends React.Component {
                                     onClick={() => this.handleShowFAQ4()}>
                                     <header className="FAQ_Index">
                                         <h2>How do I create a account?</h2>
-                                        <div className="FAQ_svg"><i class="fas fa-plus"></i></div>
+                                        <div className="FAQ_svg"><i className="fas fa-plus"></i></div>
                                     </header>
                                 </div>
                                 :
@@ -144,7 +144,7 @@ class Faq extends React.Component {
                                     onClick={() => this.handleShowFAQ4()}>
                                     <header className="FAQ_Index">
                                         <h2>How do I create a account?</h2>
-                                        <div className="FAQ_svg"><i class="fas fa-minus"></i></div>
+                                        <div className="FAQ_svg"><i className="fas fa-minus"></i></div>
                                     </header>
                                     <div className="FAQ_script">If you want to open an account for personal use you can do it over the phone or online. Opening an account online should only take a few minutes.</div>
                                 </div>

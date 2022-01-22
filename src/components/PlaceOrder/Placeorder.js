@@ -24,12 +24,12 @@ class PlaceOrder extends Component {
   }
 
   makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
-    charactersLength));
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() *
+        charactersLength));
     }
     return result;
   }
@@ -216,7 +216,7 @@ class PlaceOrder extends Component {
                   width='20.894'
                   height='16'
                   viewBox='0 0 20.894 16'
-                  class='w-2 h-2 text-light flex-shrink-0'
+                  className='w-2 h-2 text-light flex-shrink-0'
                   className='checkbox-icon'
                 >
                   <path

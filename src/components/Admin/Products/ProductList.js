@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import ImageUpload from './ImageUpload'
 import { v4 as uuidv4 } from 'uuid'
-import {deleteProductById,handleGetCategoryById} from '../../../services/productService'
-import {cloudinaryUpload} from '../../../services/userService'
+import { deleteProductById, handleGetCategoryById } from '../../../services/productService'
+import { cloudinaryUpload } from '../../../services/userService'
 import { connect } from 'react-redux';
 import * as actions from "../../../store/actions";
 import adminService from '../../../services/adminService'
-   class ProductList extends Component {
+class ProductList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -19,7 +19,7 @@ import adminService from '../../../services/adminService'
     }
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     let data = await handleGetCategoryById(this.state.details.pid)
     //console.log(data.category)
     this.setState({
@@ -70,7 +70,7 @@ import adminService from '../../../services/adminService'
     this.handleCloseEdit()
   }
 
-  handleClickUpdate =  async() => {
+  handleClickUpdate = async () => {
     // this.props.info['title'] = this.state.details['title']
     // this.props.info['unit'] = this.state.details['unit']
     // this.props.info['content'] = this.state.details['content']
@@ -94,7 +94,7 @@ import adminService from '../../../services/adminService'
     this.handleCloseDelete()
   }
 
-  handleClickDelete = async() => {
+  handleClickDelete = async () => {
     //console.log(this.props.info)
     await deleteProductById(this.props.info.pid)
     this.reRenderList()
@@ -102,20 +102,20 @@ import adminService from '../../../services/adminService'
   }
 
   //Render lai cac san pham sau khi sua xoa
-  reRenderList = ()=>{
+  reRenderList = () => {
     this.props.updateChange(this.props.sid)
   }
 
-  onChangeInputImage = async (e)=>{
-    let uploadData  = new FormData()
-    uploadData.append('file',e.target.files[0],"file")
+  onChangeInputImage = async (e) => {
+    let uploadData = new FormData()
+    uploadData.append('file', e.target.files[0], "file")
     let tmp = await cloudinaryUpload(uploadData)
     //console.log('Link',tmp)
     this.setState({
-        details: {
-          ...this.state.details,
-          img: tmp.secure_url
-        }
+      details: {
+        ...this.state.details,
+        img: tmp.secure_url
+      }
     })
   }
 
@@ -148,12 +148,12 @@ import adminService from '../../../services/adminService'
             </td>
             <td>
               <i
-                class='far fa-trash-alt'
+                className='far fa-trash-alt'
                 onClick={() => this.deleteProducts(id)}
               ></i>{' '}
               {/* icon delete */}
               <i
-                class='far fa-edit'
+                className='far fa-edit'
                 onClick={() => this.editProducts(id)}
               ></i>{' '}
               {/* icon edit */}
@@ -179,25 +179,25 @@ import adminService from '../../../services/adminService'
           <Modal.Body>
             <div className='upload-img-container'>
               <div className='profile__infor-avatar'>
-                                <label htmlFor="avatar" className='profile__infor-avatar-title'>
-                                    <i className="fas fa-cloud-upload-alt avatar_upload-icon"></i>
-                                    <br />
-                                    <span className='avatar-title-bold'>UpLoad an image</span>
-                                    &nbsp; or drag and drop
-                                    <br></br>
-                                    <span>PNG, JPG</span>
-                                </label>
+                <label htmlFor="avatar" className='profile__infor-avatar-title'>
+                  <i className="fas fa-cloud-upload-alt avatar_upload-icon"></i>
+                  <br />
+                  <span className='avatar-title-bold'>UpLoad an image</span>
+                  &nbsp; or drag and drop
+                  <br></br>
+                  <span>PNG, JPG</span>
+                </label>
 
-                                <input type="file"
-                                    id="avatar" name="avatar"
-                                    accept="image/png, image/jpeg"
-                                    className='profile__infor-avatar-input'
-                                    onChange={(e)=>this.onChangeInputImage(e)}
-                                />
-                            </div>
-                            <div className='avatar-img'>
-              <img src={this.state.details.img} alt='' width="100" height="100" />
-            </div>
+                <input type="file"
+                  id="avatar" name="avatar"
+                  accept="image/png, image/jpeg"
+                  className='profile__infor-avatar-input'
+                  onChange={(e) => this.onChangeInputImage(e)}
+                />
+              </div>
+              <div className='avatar-img'>
+                <img src={this.state.details.img} alt='' width="100" height="100" />
+              </div>
             </div>
             <div className='gr-cate'>
               <div className='header'>
@@ -217,10 +217,10 @@ import adminService from '../../../services/adminService'
                     readOnly
                   /> */}
                   <div className='item-categories-tag'>
-                                    {this.state.listCategory?.map((item, index) => {
-                                        return <span key={index}>{item.title}</span>
-                                    })}
-                                </div>
+                    {this.state.listCategory?.map((item, index) => {
+                      return <span key={index}>{item.title}</span>
+                    })}
+                  </div>
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     type='text'
@@ -324,7 +324,7 @@ import adminService from '../../../services/adminService'
           dialogClassName='modal-delete'
         >
           <Modal.Body className='modal-body-delete'>
-            <i class='far fa-trash-alt'></i>
+            <i className='far fa-trash-alt'></i>
             <h3>Delete {this.props.info['title']}</h3>
             <p>Are you sure, you want to delete?</p>
             <div className='modal-btn-delete'>
@@ -345,15 +345,15 @@ import adminService from '../../../services/adminService'
 
 const mapStateToProps = state => {
   return {
-      started: state.app.started,
-      isLoggedIn: state.admin.isLoggedIn,
-      adminInfo: state.admin.adminInfo
+    started: state.app.started,
+    isLoggedIn: state.admin.isLoggedIn,
+    adminInfo: state.admin.adminInfo
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-      changeAppMode: (payload)=>dispatch(actions.changeAppMode(payload))
+    changeAppMode: (payload) => dispatch(actions.changeAppMode(payload))
   };
 };
 

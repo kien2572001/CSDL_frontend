@@ -24,7 +24,7 @@ class Shipping extends Component {
     this.setState({ validated: true })
   }
 
-  handleSave = ()=>{
+  handleSave = () => {
     this.props.setAddres(this.state.address)
     this.setState({
       modal: !this.state.modal
@@ -49,7 +49,7 @@ class Shipping extends Component {
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
-                class='w-4 h-4 stroke-2 me-0.5'
+                className='w-4 h-4 stroke-2 me-0.5'
                 data-selected='true'
                 data-label-id='0'
                 // data-metatip='true'
@@ -69,7 +69,7 @@ class Shipping extends Component {
               Shipping
               <button className='add-address'>
                 <svg
-                  class='w-3 h-3'
+                  className='w-3 h-3'
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 20 20'
                   fill='currentColor'
@@ -80,7 +80,7 @@ class Shipping extends Component {
               </button>
               <button className='delete-address'>
                 <svg
-                  class='w-3 h-3'
+                  className='w-3 h-3'
                   xmlns='http://www.w3.org/2000/svg'
                   viewBox='0 0 20 20'
                   fill='currentColor'
@@ -150,7 +150,7 @@ class Shipping extends Component {
               </Form.Group>
 
               <div className='d-grid gap-2 pt-15'>
-                <Button variant='success bold ship-button' type='submit' onClick={()=>this.handleSave(this.state.address)}>
+                <Button variant='success bold ship-button' type='submit' onClick={() => this.handleSave(this.state.address)}>
                   Save Address
                 </Button>
               </div>
