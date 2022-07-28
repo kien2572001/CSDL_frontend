@@ -10,6 +10,7 @@
   margin             : 0 0;
   padding            : 20px 80px;
 
+
   .slogan-content {
     text-align: center;
     padding   : 300px 0;
@@ -45,6 +46,9 @@
     border-right              : 0 !important;
     border-top-right-radius   : 0 !important;
     border-bottom-right-radius: 0 !important;
+    border: none;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   .form-control:focus {
