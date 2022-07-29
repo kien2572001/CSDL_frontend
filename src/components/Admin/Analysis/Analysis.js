@@ -4,18 +4,20 @@ import Chart from "./Chart";
 import adminService from "../../../services/adminService";
 import { now } from "moment";
 import moment from "moment";
+import Dropdown from "react-bootstrap/Dropdown";
+
 class Analysis extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modal: true,
-      chartData: {},
       total30day: 0,
       order30day: 0,
       totalRevenue: 0,
       countNumber: 0,
       getChartData: [],
       year: moment(now()).year(),
+      bestSaler: [],
     };
   }
 
@@ -24,81 +26,34 @@ class Analysis extends React.Component {
     let data1 = await adminService.handleOrder30day();
     let data2 = await adminService.handleTotalRevenue();
     let data3 = await adminService.handleGetProductBySid(1);
-    console.log(data);
-    this.getChartData();
+    let bestSaler = await adminService.handleBestSaler(1);
+
+    let temp = [];
+    for (let i = 0; i < 5; i++) {
+      temp.push({
+        rank: bestSaler[0][i],
+        info: bestSaler[1][i],
+      });
+    }
+    console.log("bestSaler", temp);
     this.setState({
       total30day: data["SUM(total)"],
       order30day: data1["COUNT(orderId)"],
       totalRevenue: data2["SUM(total)"],
       countNumber: data3.length,
+      bestSaler: temp,
     });
   }
-
-  getChartData = async () => {
-    let data = await adminService.handleGetChartData();
-    console.log(data);
-  };
 
   async componentWillMount() {
     //this.getchartData(); // this should be this.getChartData();
-
-    this.setState({
-      chartData: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ],
-        datasets: [
-          {
-            label: "Products",
-            data: [10, 100, 153, 80, 20, 95, 10, 100, 133, 80, 105, 95],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.8)",
-              "rgba(54, 162, 235, 0.8)",
-              "rgba(255, 206, 86, 0.8)",
-              "rgba(75, 192, 192, 0.8)",
-              "rgba(153, 102, 255, 0.8)",
-              "rgba(255, 159, 64, 0.8)",
-              "rgba(60, 179, 113, 0.8)",
-              "rgba(238, 130, 238, 0.8)",
-              "rgba(0, 0, 255, 0.8)",
-              "rgba(255, 0, 0, 0.8)",
-              "rgba(255, 165, 0, 0.8)",
-              "rgba(106, 90, 205, 0.8)",
-            ],
-          },
-          {
-            label: "New customers",
-            data: [10, 100, 153, 80, 20, 95, 10, 100, 133, 80, 105, 95],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.8)",
-              "rgba(54, 162, 235, 0.8)",
-              "rgba(255, 206, 86, 0.8)",
-              "rgba(75, 192, 192, 0.8)",
-              "rgba(153, 102, 255, 0.8)",
-              "rgba(255, 159, 64, 0.8)",
-              "rgba(60, 179, 113, 0.8)",
-              "rgba(238, 130, 238, 0.8)",
-              "rgba(0, 0, 255, 0.8)",
-              "rgba(255, 0, 0, 0.8)",
-              "rgba(255, 165, 0, 0.8)",
-              "rgba(106, 90, 205, 0.8)",
-            ],
-          },
-        ],
-      },
-    });
   }
+
+  changeYear = (year) => {
+    this.setState({
+      year: year,
+    });
+  };
 
   render() {
     return (
@@ -166,7 +121,46 @@ class Analysis extends React.Component {
             </div>
           </div>
           <div className="analysis__body">
-            <Chart chartData={this.state.chartData} />
+            <div>
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="success"
+                  id="dropdown-basic"
+                  bsPrefix="dropdown-btn"
+                >
+                  {this.state.year}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item
+                    onClick={() => this.changeYear(moment(now()).year())}
+                  >
+                    {moment(now()).year()}
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => this.changeYear(moment(now()).year() - 1)}
+                  >
+                    {moment(now()).year() - 1}
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => this.changeYear(moment(now()).year() - 2)}
+                  >
+                    {moment(now()).year() - 2}
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => this.changeYear(moment(now()).year() - 3)}
+                  >
+                    {moment(now()).year() - 3}
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => this.changeYear(moment(now()).year() - 4)}
+                  >
+                    {moment(now()).year() - 4}
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <Chart year={this.state.year} />
           </div>
           <div className="analysis__footer">
             <h3 className="analysis__footer-title">Popular Products</h3>
@@ -184,101 +178,27 @@ class Analysis extends React.Component {
                 <tr>
                   <th>ID</th>
                   <th>Name</th>
-                  <th>Group</th>
-                  <th>Shop</th>
                   <th>Price/Unit</th>
+                  <th>Sale</th>
+                  <th>Sold</th>
                   <th>Quantity</th>
                 </tr>
+
+                {}
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
-
-                <tr>
-                  <td>2</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
-
-                <tr>
-                  <td>3</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
-
-                <tr>
-                  <td>4</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
-
-                <tr>
-                  <td>2</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
-
-                <tr>
-                  <td>3</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
-
-                <tr>
-                  <td>4</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
-
-                <tr>
-                  <td>1</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
-
-                <tr>
-                  <td>2</td>
-                  <td>Apples</td>
-                  <td>Grocery</td>
-                  <td>Grocery Shop</td>
-                  <td>$2.00</td>
-                  <td>18</td>
-                </tr>
+                {this.state.bestSaler?.map((item, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{item.rank.pid}</td>
+                      <td>{item.info.title}</td>
+                      <td>{item.info.price}$</td>
+                      <td>{item.info.discount}%</td>
+                      <td>{item.rank.sold}</td>
+                      <td>{item.info.quantity}</td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

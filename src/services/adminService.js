@@ -72,6 +72,10 @@ const adminService = {
   handleGetChartData(sid) {
     return axios.get(`/api/get-chart-data?sid=${sid}`);
   },
+
+  handleBestSaler(sid) {
+    return axios.get(`/api/best-saler?sid=${sid}`);
+  },
 };
 
 export default adminService;
